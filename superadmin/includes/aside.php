@@ -24,7 +24,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">GENERAL</li>
         <li><a href="dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-          <li class="header">OUVRAGE</li>
+          <li class="header">OUVRAGES</li>
           <li class="treeview">
               <a href="#">
                   <i class="fa fa-book"></i>
@@ -40,11 +40,112 @@
               </ul>
           </li>
 
-          <li class="header">CLIENT</li>
-          <li><a href="client.php"><i class="fa fa-user"></i> <span>Client</span></a></li>
-          <li><a href="ordonnance.php"><i class="fa fa-send"></i> <span>Ordonnance</span></a></li>
-          <li><a href="commande.php"><i class="fa fa-list"></i> <span>Commande</span></a></li>
-          <li><a href="vente.php"><i class="fa fa-money"></i> <span>Vente</span></a></li>
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-book"></i>
+                  <span>Memoire/TFC</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
+
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-book"></i>
+                  <span>Article scientifiques</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-book"></i>
+                  <span>Cours</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
+
+          <li class="header">QUESTIONNAIRES</li>
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-pencil"></i>
+                  <span>ITEM</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-pencil"></i>
+                  <span>Examen</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-pencil"></i>
+                  <span>Devoir</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
+
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-pencil"></i>
+                  <span>Interrogation</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
 
 
           <li class="header">PARAMETRES</li>
@@ -57,9 +158,9 @@
             </span>
               </a>
               <ul class="treeview-menu">
-                  <li><a href="medecin.php"><i class="fa fa-circle-o"></i> Medecin</a></li>
-                  <li><a href="user.php"><i class="fa fa-circle-o"></i> Utilisateur</a></li>
-                  <li><a href="fournisseur.php"><i class="fa fa-circle-o"></i> Fournisseur</a></li>
+                  <li><a href="superadmin"><i class="fa fa-circle-o"></i> Superadmin</a></li>
+                  <li><a href="admin"><i class="fa fa-circle-o"></i> Admin</a></li>
+                  <li><a href="domaine"><i class="fa fa-circle-o"></i> Domaine</a></li>
 
               </ul>
           </li>
