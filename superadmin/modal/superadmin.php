@@ -54,24 +54,31 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Modifier l'utilisateur</b></h4>
+              <h4 class="modal-title"><b>Modifier</b></h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="manager/update.php">
                     <input type="hidden" class="user" name="id">
-                    <input type="hidden" name="event" value="UPDATE_USER">
+                    <input type="hidden" name="event" value="UPDATE_SUPERADMIN">
+                    <div class="form-group">
+                        <label for="edit_email" class="col-sm-3 control-label">Nom complet</label>
+
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="edit_nom" name="nom">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="edit_email" class="col-sm-3 control-label">Email</label>
 
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="edit_email" name="email">
+                            <input type="email" class="form-control" id="edit_email" name="email" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="edit_password" class="col-sm-3 control-label">Password</label>
 
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="edit_password" name="password">
+                            <input type="password" class="form-control" id="edit_password" name="password" required>
                         </div>
                     </div>
             </div>
@@ -96,10 +103,10 @@
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="manager/delete.php">
                     <input type="hidden" class="user" name="id">
-                    <input type="hidden" name="event" value="DELETE_USER">
+                    <input type="hidden" name="event" value="DELETE_SUPERADMIN">
                     <div class="text-center">
-                        <p>SUPPRIMER L'UTILISATEUR</p>
-                        <h2 class="bold fullname"></h2>
+                        <p>SUPPRIMER</p>
+                        <h2 style="font-weight: bold;" class="bold fullname"></h2>
                     </div>
             </div>
             <div class="modal-footer">

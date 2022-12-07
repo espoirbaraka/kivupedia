@@ -11,9 +11,9 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <p style="font-weight: bold;">
+      <h1 style="font-weight: bold;">
         Dashboard::Superadmin
-</p>
+</h1>
     </section>
 
     <!-- Main content -->
