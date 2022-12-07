@@ -11,7 +11,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <p>
+      <p style="font-weight: bold;">
         Dashboard::Superadmin
 </p>
     </section>
@@ -122,10 +122,10 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
         </div>
         <!-- /.row -->
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Ordonnaces recues mensuellement</h3>
+                        <h3 class="box-title">Statistique de lecture</h3>
                         <div class="box-tools pull-right">
                             <form class="form-inline">
                                 <div class="form-group">
@@ -148,6 +148,22 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
                             <br>
                             <div id="legend" class="text-center"></div>
                             <canvas id="barChart" style="height:380px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Statistique de lecture</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="chart">
+                            <br>
+                            <div id="legend" class="text-center"></div>
+                            <canvas id="pieChart" style="height:400px"></canvas>
                         </div>
                     </div>
                 </div>
@@ -187,17 +203,17 @@ include("includes/footer.php");
 
 ?>
 <?php
-$commande = array();
+$livre = array();
 $months = array();
 for( $m = 1; $m <= 12; $m++ ) {
     try{
-        $stmt = "SELECT COUNT(CodeOrdonnance) as nombre FROM tbl_ordonnance WHERE MONTH(Created_On)=$m AND YEAR(Created_On)=$year";
+        $stmt = "SELECT COUNT(CodeLivre) as nombre FROM t_livre WHERE MONTH(Created_on)=$m AND YEAR(Created_on)=$year";
         $stmt = $app->fetchPrepared($stmt);
         $total = 0;
         foreach($stmt as $row){
             $nombre = $row['nombre'];
         }
-        array_push($commande, round($nombre, 2));
+        array_push($livre, round($nombre, 2));
     }
     catch(PDOException $e){
         echo $e->getMessage();
@@ -209,7 +225,7 @@ for( $m = 1; $m <= 12; $m++ ) {
 }
 
 $months = json_encode($months);
-$commande = json_encode($commande);
+$livre = json_encode($livre);
 
 ?>
 <!-- jQuery 3 -->
@@ -262,14 +278,14 @@ $commande = json_encode($commande);
             labels  : <?php echo $months; ?>,
             datasets: [
                 {
-                    label               : 'ORDONNANCES',
+                    label               : 'LIVRES',
                     fillColor           : 'rgba(60,141,188,0.9)',
                     strokeColor         : 'rgba(60,141,188,0.8)',
                     pointColor          : '#3b8bba',
                     pointStrokeColor    : 'rgba(60,141,188,1)',
                     pointHighlightFill  : '#fff',
                     pointHighlightStroke: 'rgba(60,141,188,1)',
-                    data                : <?php echo $commande; ?>
+                    data                : <?php echo $livre; ?>
                 }
             ]
         }
@@ -307,6 +323,62 @@ $commande = json_encode($commande);
         barChartOptions.datasetFill = false
         var myChart = barChart.Bar(barChartData, barChartOptions)
         document.getElementById('legend').innerHTML = myChart.generateLegend();
+
+
+
+
+        //PIECHART
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieChart       = new Chart(pieChartCanvas)
+
+        
+        var PieData        = [
+            <?php
+            $stmt = "SELECT COUNT(CodeLecture) as nombre, Titre FROM t_lecture
+                INNER JOIN t_livre
+                ON t_lecture.CodeLivre=t_livre.CodeLivre
+                WHERE MONTH(Created_On)=$m AND YEAR(Created_On)=$year
+                ORDER BY nombre DESC LIMIT 10";
+            $stmt = $app->fetchPrepared($stmt);
+            foreach ($stmt as $row){
+                ?>
+            {
+            value    : <?php echo $row['nombre'] ?>,
+            color    : '#f56954',
+            highlight: '#f56954',
+            label    : '<?php echo $row['Titre'] ?>'
+             },
+            <?php
+            }
+            ?>
+        ]
+        var pieOptions     = {
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke    : true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor   : '#fff',
+            //Number - The width of each segment stroke
+            segmentStrokeWidth   : 2,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Number - Amount of animation steps
+            animationSteps       : 100,
+            //String - Animation easing effect
+            animationEasing      : 'easeOutBounce',
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate        : true,
+            //Boolean - Whether we animate scaling the Doughnut from the centre
+            animateScale         : false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive           : true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio  : true,
+            //String - A legend template
+            legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart.Doughnut(PieData, pieOptions)
     });
 </script>
 
