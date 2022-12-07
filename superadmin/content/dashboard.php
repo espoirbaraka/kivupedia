@@ -56,7 +56,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
                         <p>Nos livres</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-list"></i>
+                        <i class="fa fa-book"></i>
                     </div>
                     <a href="#" class="small-box-footer">Plus d'info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -75,7 +75,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
                         <p>Nos lecteurs</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-thermometer"></i>
+                        <i class="fa fa-users"></i>
                     </div>
                     <a href="#" class="small-box-footer">Plus d'info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -91,10 +91,10 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
 
                         echo "<h3>".$admin['nbre']."</h3>";
                         ?>
-                        <p>Total administrateur</p>
+                        <p>Nos administrateurs</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-users"></i>
+                        <i class="fa fa-user"></i>
                     </div>
                     <a href="#" class="small-box-footer">Plus d'info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -113,7 +113,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
                         <p>Total lecture</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-users"></i>
+                        <i class="fa fa-pencil"></i>
                     </div>
                     <a href="#" class="small-box-footer">Plus d'info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -125,7 +125,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
             <div class="col-lg-6 col-xs-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Statistique de lecture</h3>
+                        <h3 class="box-title">Statistique de publication</h3>
                         <div class="box-tools pull-right">
                             <form class="form-inline">
                                 <div class="form-group">
@@ -337,16 +337,86 @@ $livre = json_encode($livre);
             $stmt = "SELECT COUNT(CodeLecture) as nombre, Titre FROM t_lecture
                 INNER JOIN t_livre
                 ON t_lecture.CodeLivre=t_livre.CodeLivre
-                WHERE MONTH(Created_On)=$m AND YEAR(Created_On)=$year
+                GROUP BY t_lecture.CodeLivre
                 ORDER BY nombre DESC LIMIT 10";
             $stmt = $app->fetchPrepared($stmt);
+            $index = 0;
             foreach ($stmt as $row){
+            $index++;
                 ?>
             {
-            value    : <?php echo $row['nombre'] ?>,
-            color    : '#f56954',
-            highlight: '#f56954',
-            label    : '<?php echo $row['Titre'] ?>'
+            value    : '<?php echo $row['nombre'] ?>',
+            color    : "<?php if($index==1)
+                    {
+                        echo "#f56954";
+                    }elseif($index==2)
+                    {
+                        echo "#00a65a";
+                    }elseif($index==3)
+                    {
+                        echo "#f39c12";
+                    }elseif($index==4)
+                    {
+                        echo "#00c0ef";
+                    }elseif($index==5)
+                    {
+                        echo "#3c8dbc";
+                    }elseif($index==6)
+                    {
+                        echo "#d2d6de";
+                    }elseif($index==7)
+                    {
+                        echo "#f56954";
+                    }
+                    elseif($index==8)
+                    {
+                        echo "#00a65a";
+                    }
+                    elseif($index==9)
+                    {
+                        echo "#f39c12";
+                    }
+                    elseif($index==10)
+                    {
+                        echo "#00c0ef";
+                    }
+                                ?>",
+            highlight: "<?php if($index==1)
+                    {
+                        echo "#f56954";
+                    }elseif($index==2)
+                    {
+                        echo "#00a65a";
+                    }elseif($index==3)
+                    {
+                        echo "#f39c12";
+                    }elseif($index==4)
+                    {
+                        echo "#00c0ef";
+                    }elseif($index==5)
+                    {
+                        echo "#3c8dbc";
+                    }elseif($index==6)
+                    {
+                        echo "#d2d6de";
+                    }elseif($index==7)
+                    {
+                        echo "#f56954";
+                    }
+                    elseif($index==8)
+                    {
+                        echo "#00a65a";
+                    }
+                    elseif($index==9)
+                    {
+                        echo "#f39c12";
+                    }
+                    elseif($index==10)
+                    {
+                        echo "#00c0ef";
+                    }
+                ?>",
+            label    : "<?php echo $row['Titre'] ?>"
              },
             <?php
             }
