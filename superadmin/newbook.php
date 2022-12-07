@@ -7,16 +7,11 @@ include("includes/header.php");
 
 include("includes/aside.php");
 
-include("content/books.php");
+include("content/newbook.php");
 
 include("includes/footer.php");
 
 include("includes/script.php");
-
-include("getrow/books.php");
-
-include("modal/books.php");
-
 ?>
 
 
