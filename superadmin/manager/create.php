@@ -31,3 +31,15 @@ if ($event == 'CREATE_DOMAINE') {
     header("Location: ../domaine");
 }
 
+if ($event == 'CREATE_SOUS_DOMAINE') {
+    $dom = $_POST['domaine'];
+    $data = [$_POST['sous-domaine'],$_POST['domaine']];
+    $sql = "INSERT INTO t_sous_domaine(Sous_domaine,CodeDomaine) VALUES(?,?)";
+    if ($app->prepare($sql, $data, 1)) {
+        $_SESSION['success'] = 'Sous-domaine ajouté';
+    }else{
+        $_SESSION['error'] = 'Problème d\'insertion';
+    }
+    header("Location: ../detail_domaine?domaine=$dom");
+}
+

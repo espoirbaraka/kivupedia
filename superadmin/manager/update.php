@@ -30,3 +30,13 @@ if($event=='UPDATE_DOMAINE'){
     }
     header("Location: ../domaine");
 }
+
+if($event=='UPDATE_SOUS_DOMAINE'){
+    $data=[$_POST['domaine'],$_POST['id']];
+    $dom = $_POST['id'];
+    $sql="UPDATE t_sous_domaine SET Sous_domaine=? WHERE CodeSousDomaine=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Sous-domaine modifié';
+    }
+    header("Location: ../detail_domaine?domaine=$dom");
+}

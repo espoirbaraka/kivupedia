@@ -29,3 +29,13 @@ if($event=='DELETE_DOMAINE'){
     }
     header("Location: ../domaine");
 }
+
+if($event=='DELETE_SOUS_DOMAINE'){
+    $data=[$_POST['id']];
+    $dom = $_POST['id'];
+    $sql="DELETE FROM t_sous_domaine WHERE CodeSousDomaine=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Sous-domaine supprimé';
+    }
+    header("Location: ../detail_domaine?domaine=$dom");
+}

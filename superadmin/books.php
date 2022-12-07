@@ -7,16 +7,15 @@ include("includes/header.php");
 
 include("includes/aside.php");
 
-include("content/profile_client.php");
+include("content/domaine.php");
 
 include("includes/footer.php");
 
 include("includes/script.php");
 
-include("getrow/commande.php");
+include("getrow/domaine.php");
 
-include("modal/commande.php");
-
+include("modal/domaine.php");
 
 ?>
 
