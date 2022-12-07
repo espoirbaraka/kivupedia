@@ -12,6 +12,9 @@ if(isset($_POST['login'])){
 		if($nbre == 1){
 			$row = $stmt->fetch();
 			$_SESSION['super'] = $row['CodeSuper'];
+			$today = date('Y-m-d');
+			$stmt = $conn->prepare("UPDATE t_superadmin SET Last_connection = ? WHERE CodeSuper=?");
+			$stmt->execute(array($today,$_SESSION['super']));
 		}
 		else{
 			$_SESSION['error'] = 'Utilisateur inexistant';
