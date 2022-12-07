@@ -9,7 +9,7 @@ include("includes/head_login_register.php");
     <a href="index.php"><b>Congopedia</b></a>
   </div>
   <div class="login-box-body">
-      <p class="login-box-msg">Connectez-vous</p>
+      <p class="login-box-msg">Login::Super-admin</p>
     <?php
     if(isset($_SESSION['error'])){
 					echo "

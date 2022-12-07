@@ -54,7 +54,7 @@
                 </thead>
                 <tbody>
                   <?php
-                  $sql = "SELECT * FROM t_superadmin";
+                  $sql = "SELECT * FROM t_superadmin WHERE CodeCategorie = 1";
                   $req = $app->fetchPrepared($sql);
                   foreach($req as $row){
                     ?>
