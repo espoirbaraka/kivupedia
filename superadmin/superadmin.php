@@ -7,12 +7,15 @@ include("includes/header.php");
 
 include("includes/aside.php");
 
-include("content/facture.php");
+include("content/superadmin.php");
 
 include("includes/footer.php");
 
 include("includes/script.php");
 
+include("getrow/superadmin.php");
+
+include("modal/superadmin.php");
 
 ?>
 
