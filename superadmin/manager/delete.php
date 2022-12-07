@@ -1,16 +1,16 @@
 <?php
 session_start();
-require '../class/app.php';
+require '../../class/app.php';
 $event=$_POST['event'];
 
 
- if($event=='DELETE_USER'){
+ if($event=='DELETE_SUPERADMIN'){
     $data=[$_POST['id']];
-    $sql="DELETE FROM tbl_user WHERE CodeUser=?";
+    $sql="DELETE FROM t_superadmin WHERE CodeSuper=?";
     if($app->prepare($sql,$data,1)){
-     $_SESSION['success'] = 'Utilisateur supprimé';
+     $_SESSION['success'] = 'Super administrateur supprimé';
     }
-    header("Location: ../user.php");
+    header("Location: ../superadmin");
  }
 
 if($event=='DELETE_MEDECIN'){

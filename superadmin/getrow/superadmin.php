@@ -2,14 +2,15 @@
     function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'operation/user_row.php',
+    url: 'operation/superadmin_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.user').val(response.CodeUser);
+      $('.user').val(response.CodeSuper);
+      $('#edit_nom').val(response.NomComplet);
       $('#edit_email').val(response.Email);
       $('#edit_password').val(response.Password);
-      $('.fullname').html(response.Username);
+      $('.fullname').html(response.NomComplet);
     }
   });
 }

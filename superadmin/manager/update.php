@@ -1,16 +1,16 @@
 <?php
 session_start();
-require '../class/app.php';
+require '../../class/app.php';
 $event=$_POST['event'];
 
 
- if($event=='UPDATE_USER'){
-    $data=[$_POST['email'],sha1($_POST['password']),$_POST['id']];
-    $sql="UPDATE tbl_user SET Email=?, Password=? WHERE CodeUser=?";
+ if($event=='UPDATE_SUPERADMIN'){
+    $data=[$_POST['nom'],$_POST['email'],sha1($_POST['password']),$_POST['id']];
+    $sql="UPDATE t_superadmin SET NomComplet=?, Email=?, Password=? WHERE CodeSuper=?";
     if($app->prepare($sql,$data,1)){
-     $_SESSION['success'] = 'Utilisateur modifié';
+     $_SESSION['success'] = 'Super administrateur modifié';
     }
-    header("Location: ../user.php");
+    header("Location: ../superadmin");
  }
 
 if($event=='UPDATE_MEDECIN'){
