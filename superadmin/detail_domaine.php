@@ -7,13 +7,15 @@ include("includes/header.php");
 
 include("includes/aside.php");
 
-include("content/detail_article.php");
+include("content/detail_domaine.php");
 
 include("includes/footer.php");
 
 include("includes/script.php");
 
+include("getrow/detail_domaine.php");
 
+include("modal/detail_domaine.php");
 
 ?>
 

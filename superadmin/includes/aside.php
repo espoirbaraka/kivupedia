@@ -148,6 +148,9 @@
           </li>
 
 
+          <li class="header">LECTEURS</li>
+          <li><a href="lecteur"><i class="fa fa-user"></i> <span>Nos lecteurs</span></a></li>
+
           <li class="header">PARAMETRES</li>
           <li class="treeview">
               <a href="#">

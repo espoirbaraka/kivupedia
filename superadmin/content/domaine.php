@@ -64,7 +64,7 @@
                                     <td><?php echo $app->dateconv($row['dat']); ?></td>
                                     <td><?php echo $row['NomComplet']; ?></td>
                                     <td>
-                                        <a href="detail_domaine" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
+                                        <a href="detail_domaine?domaine=<?php echo $row['CodeDomaine'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
                                         <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeDomaine'] ?>"><i class='fa fa-edit'></i> </button>
                                         <button class='btn btn-danger btn-sm delete btn-flat' data-id="<?php echo $row['CodeDomaine'] ?>"><i class='fa fa-trash'></i> </button>
                                     </td>
