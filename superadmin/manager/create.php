@@ -1,18 +1,18 @@
 <?php
 session_start();
-require '../class/app.php';
+require '../../class/app.php';
 $event = $_POST['event'];
 
 
-if ($event == 'CREATE_USER') {
-   $data = [$_POST['username'], $_POST['email'], sha1($_POST['password'])];
-   $sql = "INSERT INTO t_user(Username,Mail,Password) VALUES(?,?,?)";
+if ($event == 'CREATE_SUPERADMIN') {
+   $data = [$_POST['nom'], $_POST['email'], sha1($_POST['password'])];
+   $sql = "INSERT INTO t_superadmin(NomComplet,Email,Password) VALUES(?,?,?)";
   if ($app->prepare($sql, $data, 1)) {
-      $_SESSION['success'] = 'Utilisateur enregistré';
+      $_SESSION['success'] = 'Super administrateur ajouté';
    } if ($app->prepare($sql, $data, 1)) {
-      $_SESSION['success'] = 'Utilisateur enregistré';
+      $_SESSION['success'] = 'Super administrateur ajouté';
    }
-   header("Location: ../user.php");
+   header("Location: ../superadmin");
 }
 
 
