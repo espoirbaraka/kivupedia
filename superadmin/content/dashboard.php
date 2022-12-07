@@ -67,7 +67,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
                 <div class="small-box bg-green">
                     <div class="inner">
                         <?php
-                        $lecteur = "SELECT COUNT(CodeCompte) as nbre FROM t_compte WHERE CodeCategorieCompte=2";
+                        $lecteur = "SELECT COUNT(CodeCompte) as nbre FROM t_compte";
                         $lecteur = $app->fetch($lecteur);
 
                         echo "<h3>".$lecteur['nbre']."</h3>";
@@ -86,7 +86,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
                 <div class="small-box bg-yellow">
                     <div class="inner">
                         <?php
-                        $admin = "SELECT COUNT(CodeCompte) as nbre FROM t_compte WHERE CodeCategorieCompte=1";
+                        $admin = "SELECT COUNT(CodeSuper) as nbre FROM t_superadmin WHERE CodeCategorie=2";
                         $admin = $app->fetch($admin);
 
                         echo "<h3>".$admin['nbre']."</h3>";

@@ -1,5 +1,5 @@
 <!-- Add -->
-<div class="modal fade" id="addsuperadmin">
+<div class="modal fade" id="addadmin">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <form action="manager/create.php" class="form-horizontal" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="hidden" name="event" value="CREATE_SUPERADMIN" required>
+                        <input type="hidden" name="event" value="CREATE_ADMIN" required>
                         <label for="nom" class="col-sm-3 control-label">Nom complet</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="nom" name="nom" required>
@@ -52,14 +52,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Modifier</b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Modifier</b></h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="manager/update.php">
                     <input type="hidden" class="user" name="id">
-                    <input type="hidden" name="event" value="UPDATE_SUPERADMIN">
+                    <input type="hidden" name="event" value="UPDATE_ADMIN">
                     <div class="form-group">
                         <label for="edit_email" class="col-sm-3 control-label">Nom complet</label>
 
@@ -96,14 +96,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Suppression...</b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Suppression...</b></h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="manager/delete.php">
                     <input type="hidden" class="user" name="id">
-                    <input type="hidden" name="event" value="DELETE_SUPERADMIN">
+                    <input type="hidden" name="event" value="DELETE_ADMIN">
                     <div class="text-center">
                         <p>SUPPRIMER</p>
                         <h2 style="font-weight: bold;" class="bold fullname"></h2>
