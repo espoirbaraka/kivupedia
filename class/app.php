@@ -104,5 +104,4 @@ class App
 }
 
 $app=new App('congopedia');
-
 ?>

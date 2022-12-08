@@ -62,6 +62,7 @@ if ($event == 'CREATE_LIVRE') {
                if(move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file)){
                    $pdf = file_get_contents("../fichier/".$target_file);
                    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
+
                    $user = $_SESSION['super'];
                    $data = [$_POST['titre'],$_POST['domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$number];
                    $sql = "INSERT INTO t_livre(Titre,CodeDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,NombrePage) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
