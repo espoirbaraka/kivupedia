@@ -64,7 +64,7 @@
                                 ?>
                                 <tr>
                                     <td>
-                                        <embed src="./fichier/<?php echo $row['Fichier_livre']; ?>" width="600px" height="500px" />
+                                        <img src="<?php echo $im; ?>" />
                                     </td>
                                     <td><?php echo $row['Titre']; ?></td>
                                     <td><?php echo $row['Description']; ?></td>
