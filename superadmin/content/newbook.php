@@ -42,32 +42,126 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Titre</label>
-                                    <input class="form-control" name="titre" required>
+                                    <label>Titre <span style="color: red;">*</span></label>
+                                    <input type="text" class="form-control" name="titre" required>
                                 </div>
 
                             </div>
+
+
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Sous-titre</label>
-                                    <input class="form-control" name="sous-titre">
+                                    <label>Domaine <span style="color: red;">*</span></label>
+                                    <select name="domaine" id="domaine" class="form-control select2-example" onchange="FetchSousDomaine(this.value)" required>
+                                        <option value="">-- Selectionnez --</option>
+                                        <?php
+                                        $sql = "SELECT * FROM t_domaine";
+                                        $req = $app->fetchPrepared($sql);
+                                        foreach ($req as $row){
+                                            ?>
+                                            <option value="<?php echo $row['CodeDomaine'] ?>"><?php echo $row['Domaine'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
 
                             </div>
+
+
+
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" name="description" rows="5"></textarea>
+                                    <label>Sous-domaine</label>
+                                    <select name="sous-domaine" id="s_domaine" class="form-control select2-example">
+
+                                    </select>
                                 </div>
 
                             </div>
+
+
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Titre</label>
-                                    <input class="form-control" name="titre" required>
+                                    <label>Auteur principal</label>
+                                    <input type="text" class="form-control" name="auteur">
                                 </div>
 
                             </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Description </label>
+                                    <textarea class="form-control" name="description" rows="4"></textarea>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Nom editeur</label>
+                                    <input type="text" class="form-control" name="editeur">
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Lieu edition</label>
+                                    <input type="text" class="form-control" name="edition">
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>ISBN</label>
+                                    <input type="text" class="form-control" name="isbn">
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Langue </label>
+                                    <select name="langue" id="langue" class="form-control select2-example">
+                                        <option value="">-- Selectionnez --</option>
+                                        <?php
+                                        $sql = "SELECT * FROM t_langue";
+                                        $req = $app->fetchPrepared($sql);
+                                        foreach ($req as $row){
+                                            ?>
+                                            <option value="<?php echo $row['CodeLangue'] ?>"><?php echo $row['Langue'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Fichier <span style="color: red;">(PDF)  *</span></label>
+                                    <input type="file" class="form-control" name="fichier" required>
+                                </div>
+
+                            </div>
+
+
+                            <div style="float: right;">
+
+                                <button type="submit" class="btn btn-primary btn-flat" name="add"><i
+                                            class="fa fa-save"></i> Publier
+                                </button>
+                            </div>
+
+
+
+
 
                         </div>
                         <!-- /.row -->

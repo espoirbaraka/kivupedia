@@ -40,7 +40,11 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
 <script src="ad.js"></script>
+
+
+<script src="dist/select2/js/select2.min.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -138,6 +142,27 @@
             return this.href == url;
         }).parentsUntil(".sidebar-menu > .treeview-menu").addClass('active');
 
+    });
+</script>
+<script>
+    function FetchSousDomaine(id){
+        $('#s_domaine').html('');
+        $.ajax({
+            type:'post',
+            url: 'operation/get_sous_domaine.php',
+            data : { id : id},
+            success : function(data){
+                $('#s_domaine').html(data);
+            }
+
+        })
+    }
+
+</script>
+
+<script>
+    $('.select2-example').select2({
+        placeholder: '-- Selectionnez un élément --'
     });
 </script>
 </body>
