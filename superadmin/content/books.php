@@ -40,9 +40,10 @@
 
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example3" class="table table-bordered table-hover">
+                        <table id="example1" class="table table-bordered table-hover">
                             <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Titre</th>
                                 <th>Description</th>
                                 <th>Auteur</th>
@@ -54,17 +55,24 @@
                             </thead>
                             <tbody>
                             <?php
-                            $sql = "SELECT *, t_domaine.Created_on as dat FROM t_domaine LEFT JOIN t_superadmin ON t_domaine.Created_by=t_superadmin.CodeSuper";
+                            $sql = "SELECT * FROM t_livre LEFT JOIN t_domaine
+                                    ON t_livre.CodeDomaine=t_domaine.CodeDomaine
+                                    LEFT JOIN t_langue
+                                    ON t_livre.CodeLangue=t_langue.CodeLangue";
                             $req = $app->fetchPrepared($sql);
                             foreach($req as $row){
                                 ?>
                                 <tr>
-                                    <td><?php echo $row['Domaine']; ?></td>
-                                    <td><?php echo $row['Visited']; ?></td>
-                                    <td><?php echo $app->dateconv($row['dat']); ?></td>
-                                    <td><?php echo $row['NomComplet']; ?></td>
                                     <td>
-                                        <a href="detail_domaine?domaine=<?php echo $row['CodeDomaine'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
+                                        <embed src="./fichier/<?php echo $row['Fichier_livre']; ?>" width="600px" height="500px" />
+                                    </td>
+                                    <td><?php echo $row['Titre']; ?></td>
+                                    <td><?php echo $row['Description']; ?></td>
+                                    <td><?php echo $row['AuteurPrincipal']; ?></td>
+                                    <td><?php echo $row['NombrePage']; ?></td>
+                                    <td><?php echo $row['Langue']; ?></td>
+                                    <td><?php echo $row['Domaine']; ?></td>
+                                    <td>
                                         <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeDomaine'] ?>"><i class='fa fa-edit'></i> </button>
                                         <button class='btn btn-danger btn-sm delete btn-flat' data-id="<?php echo $row['CodeDomaine'] ?>"><i class='fa fa-trash'></i> </button>
                                     </td>
