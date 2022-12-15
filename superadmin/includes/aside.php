@@ -164,6 +164,8 @@
                   <li><a href="superadmin"><i class="fa fa-circle-o"></i> Superadmin</a></li>
                   <li><a href="admin"><i class="fa fa-circle-o"></i> Admin</a></li>
                   <li><a href="domaine"><i class="fa fa-circle-o"></i> Domaine</a></li>
+                  <li><a href="faculte"><i class="fa fa-circle-o"></i> Faculte</a></li>
+                  <li><a href="annee"><i class="fa fa-circle-o"></i> Année academique</a></li>
 
               </ul>
           </li>

@@ -84,3 +84,24 @@ if ($event == 'CREATE_LIVRE') {
 
 }
 
+if ($event == 'CREATE_FACULTE') {
+    $data = [$_POST['faculte']];
+    $sql = "INSERT INTO t_faculte(Faculte) VALUES(?)";
+    if ($app->prepare($sql, $data, 1)) {
+        $_SESSION['success'] = 'Faculte ajoutée';
+    }else{
+        $_SESSION['error'] = 'Problème d\'insertion';
+    }
+    header("Location: ../faculte");
+}
+
+if ($event == 'CREATE_ANNEE') {
+    $data = [$_POST['annee']];
+    $sql = "INSERT INTO t_annee_academique(Annee) VALUES(?)";
+    if ($app->prepare($sql, $data, 1)) {
+        $_SESSION['success'] = 'Année ajoutée';
+    }else{
+        $_SESSION['error'] = 'Problème d\'insertion';
+    }
+    header("Location: ../annee");
+}

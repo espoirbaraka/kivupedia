@@ -67,3 +67,21 @@ if($event=='DESACTIVATE_LIVRE'){
     }
     header("Location: ../books");
 }
+
+if($event=='UPDATE_FACULTE'){
+    $data=[$_POST['faculte'],$_POST['id']];
+    $sql="UPDATE t_faculte SET Faculte=?  WHERE CodeFaculte=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Faculte ajoutée';
+    }
+    header("Location: ../faculte");
+}
+
+if($event=='UPDATE_ANNEE'){
+    $data=[$_POST['annee'],$_POST['id']];
+    $sql="UPDATE t_annee_academique SET Annee=?  WHERE CodeAnnee=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Année ajoutée';
+    }
+    header("Location: ../annee");
+}
