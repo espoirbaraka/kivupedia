@@ -65,8 +65,8 @@
             </span>
               </a>
               <ul class="treeview-menu">
-                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
+                  <li><a href="newcours"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="cours"><i class="fa fa-circle-o"></i> Liste</a></li>
 
               </ul>
           </li>
