@@ -77,6 +77,7 @@
                                     <td><?php echo $status; echo $active;?></td>
                                     <td><?php echo $row['Domaine']; ?></td>
                                     <td>
+                                        <a href="detail_livre?livre=<?php echo $row['CodeLivre'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
                                         <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeLivre'] ?>"><i class='fa fa-edit'></i> </button>
                                     </td>
                                 </tr>

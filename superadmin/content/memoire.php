@@ -57,8 +57,8 @@
                             $sql = "SELECT * FROM t_memoire
                                     LEFT JOIN t_faculte
                                     ON t_memoire.CodeFaculte=t_faculte.CodeFaculte
-                                    LEFT JOIN t_annee
-                                    ON t_memoire.CodeAnnee=t_annee.CodeAnnee
+                                    LEFT JOIN t_annee_academique
+                                    ON t_memoire.CodeAnnee=t_annee_academique.CodeAnnee
                                     INNER join t_categorie_memoire
                                     ON t_memoire.CodeCategorie=t_categorie_memoire.CodeCategorie";
                             $req = $app->fetchPrepared($sql);
@@ -76,6 +76,7 @@
 
 
                                     <td>
+                                        <a href="detail_memoire?memoire=<?php echo $row['CodeMemoire'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
                                         <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeMemoire'] ?>"><i class='fa fa-edit'></i> </button>
                                     </td>
                                 </tr>
