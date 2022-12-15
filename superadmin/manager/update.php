@@ -68,6 +68,24 @@ if($event=='DESACTIVATE_LIVRE'){
     header("Location: ../books");
 }
 
+if($event=='ACTIVATE_MEMOIRE'){
+    $data=[1,$_POST['id']];
+    $sql="UPDATE t_memoire SET Statut=?  WHERE CodeMemoire=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Memoire activé';
+    }
+    header("Location: ../memoire");
+}
+
+if($event=='DESACTIVATE_MEMOIRE'){
+    $data=[0,$_POST['id']];
+    $sql="UPDATE t_memoire SET Statut=?  WHERE CodeMemoire=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Memoire desactivé';
+    }
+    header("Location: ../memoire");
+}
+
 if($event=='UPDATE_FACULTE'){
     $data=[$_POST['faculte'],$_POST['id']];
     $sql="UPDATE t_faculte SET Faculte=?  WHERE CodeFaculte=?";

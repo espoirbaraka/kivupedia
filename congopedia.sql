@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 15 déc. 2022 à 09:08
+-- Généré le :  jeu. 15 déc. 2022 à 14:22
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -38,6 +38,26 @@ CREATE TABLE `t_abonnement` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `t_annee_academique`
+--
+
+CREATE TABLE `t_annee_academique` (
+  `CodeAnnee` int(11) NOT NULL,
+  `Annee` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `t_annee_academique`
+--
+
+INSERT INTO `t_annee_academique` (`CodeAnnee`, `Annee`) VALUES
+(1, '1990-1991'),
+(2, '1991-1992'),
+(4, '1992-1993');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `t_categorie_compte`
 --
 
@@ -53,6 +73,25 @@ CREATE TABLE `t_categorie_compte` (
 INSERT INTO `t_categorie_compte` (`CodeCategorie`, `Categorie`) VALUES
 (1, 'Admin'),
 (2, 'Membre');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_categorie_memoire`
+--
+
+CREATE TABLE `t_categorie_memoire` (
+  `CodeCategorie` int(11) NOT NULL,
+  `Categorie` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `t_categorie_memoire`
+--
+
+INSERT INTO `t_categorie_memoire` (`CodeCategorie`, `Categorie`) VALUES
+(1, 'TFC'),
+(2, 'Memoire');
 
 -- --------------------------------------------------------
 
@@ -171,6 +210,25 @@ INSERT INTO `t_domaine` (`CodeDomaine`, `Domaine`, `Visited`, `Created_on`, `Cre
 (2, 'Geographie', 0, '2022-01-07 11:30:20', 0),
 (3, 'Informatique', 0, '2022-12-07 17:57:56', 0),
 (4, 'Agronomie', 0, '2022-01-12 14:12:03', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_faculte`
+--
+
+CREATE TABLE `t_faculte` (
+  `CodeFaculte` int(11) NOT NULL,
+  `Faculte` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `t_faculte`
+--
+
+INSERT INTO `t_faculte` (`CodeFaculte`, `Faculte`) VALUES
+(2, 'Informatique de Gestion'),
+(3, 'Réseau et télécommunication');
 
 -- --------------------------------------------------------
 
@@ -304,7 +362,27 @@ CREATE TABLE `t_livre` (
 --
 
 INSERT INTO `t_livre` (`CodeLivre`, `Titre`, `SousTitre`, `Description`, `AuteurPrincipal`, `NombrePage`, `NomEditeur`, `LieuEdition`, `ISBN`, `Fichier_livre`, `Image`, `CodeLangue`, `CodeDomaine`, `CodeSousDomaine`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Created_on`, `Readed`, `Likes`, `Liked`, `Validate`, `Validate_date`, `Invalidate_date`, `Invalidate_by`, `Statut`) VALUES
-(16, 'Cours Typescript', 'Typescript', 'Loream', 'Loream', 97, 'Loream', 'Loream', 'Loream', '1670508393.pdf', '1670508393.PNG', 0, 3, 0, NULL, 1, 1, '2022-12-14 13:39:10', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1);
+(16, 'Cours Typescript', 'Typescript', 'Loream', 'Loream', 97, 'Loream', 'Loream', 'Loream', '1670508393.pdf', '1670508393.PNG', 0, 3, 0, NULL, 1, 1, '2022-12-15 11:01:27', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `t_memoire`
+--
+
+CREATE TABLE `t_memoire` (
+  `CodeMemoire` int(11) NOT NULL,
+  `Sujet` text NOT NULL,
+  `Auteur` varchar(255) NOT NULL,
+  `CodeAnnee` int(11) NOT NULL,
+  `Institution` varchar(255) NOT NULL,
+  `CodeCategorie` int(11) NOT NULL,
+  `CodeFaculte` int(11) NOT NULL,
+  `CodeCompte` int(11) DEFAULT NULL,
+  `CodeAdmin` int(11) DEFAULT NULL,
+  `CodePropriete` int(11) NOT NULL,
+  `Statut` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -379,7 +457,7 @@ CREATE TABLE `t_superadmin` (
 --
 
 INSERT INTO `t_superadmin` (`CodeSuper`, `Email`, `Password`, `Created_on`, `Last_connection`, `NomComplet`, `Photo`, `CodeCategorie`) VALUES
-(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2022-12-14 10:53:41', '2022-12-14 00:00:00', 'Baraka Bigega Espoir', '', 1),
+(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2022-12-15 10:04:14', '2022-12-15 00:00:00', 'Baraka Bigega Espoir', '', 1),
 (3, 'hortencekitobi@gmail.com', '7b2e9f54cdff413fcde01f330af6896c3cd7e6cd', '2022-12-07 17:50:28', '0000-00-00 00:00:00', 'Hortence Kitobi', '', 1),
 (10, 'passybayongwa@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-12-07 17:50:19', '0000-00-00 00:00:00', 'Passy Bayongwa', '', 1);
 
@@ -394,9 +472,21 @@ ALTER TABLE `t_abonnement`
   ADD PRIMARY KEY (`CodeAbonnement`);
 
 --
+-- Index pour la table `t_annee_academique`
+--
+ALTER TABLE `t_annee_academique`
+  ADD PRIMARY KEY (`CodeAnnee`);
+
+--
 -- Index pour la table `t_categorie_compte`
 --
 ALTER TABLE `t_categorie_compte`
+  ADD PRIMARY KEY (`CodeCategorie`);
+
+--
+-- Index pour la table `t_categorie_memoire`
+--
+ALTER TABLE `t_categorie_memoire`
   ADD PRIMARY KEY (`CodeCategorie`);
 
 --
@@ -431,6 +521,12 @@ ALTER TABLE `t_domaine`
   ADD PRIMARY KEY (`CodeDomaine`);
 
 --
+-- Index pour la table `t_faculte`
+--
+ALTER TABLE `t_faculte`
+  ADD PRIMARY KEY (`CodeFaculte`);
+
+--
 -- Index pour la table `t_image`
 --
 ALTER TABLE `t_image`
@@ -459,6 +555,12 @@ ALTER TABLE `t_like`
 --
 ALTER TABLE `t_livre`
   ADD PRIMARY KEY (`CodeLivre`);
+
+--
+-- Index pour la table `t_memoire`
+--
+ALTER TABLE `t_memoire`
+  ADD PRIMARY KEY (`CodeMemoire`);
 
 --
 -- Index pour la table `t_question`
@@ -495,10 +597,22 @@ ALTER TABLE `t_abonnement`
   MODIFY `CodeAbonnement` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `t_annee_academique`
+--
+ALTER TABLE `t_annee_academique`
+  MODIFY `CodeAnnee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT pour la table `t_categorie_compte`
 --
 ALTER TABLE `t_categorie_compte`
   MODIFY `CodeCategorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `t_categorie_memoire`
+--
+ALTER TABLE `t_categorie_memoire`
+  MODIFY `CodeCategorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `t_categorie_ouvrage`
@@ -525,6 +639,12 @@ ALTER TABLE `t_compte`
   MODIFY `CodeCompte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT pour la table `t_faculte`
+--
+ALTER TABLE `t_faculte`
+  MODIFY `CodeFaculte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT pour la table `t_lecture`
 --
 ALTER TABLE `t_lecture`
@@ -535,6 +655,12 @@ ALTER TABLE `t_lecture`
 --
 ALTER TABLE `t_livre`
   MODIFY `CodeLivre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT pour la table `t_memoire`
+--
+ALTER TABLE `t_memoire`
+  MODIFY `CodeMemoire` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `t_sous_domaine`
