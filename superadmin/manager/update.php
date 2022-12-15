@@ -50,6 +50,15 @@ if($event=='UPDATE_LIVRE'){
     header("Location: ../books");
 }
 
+if($event=='UPDATE_MEMOIRE'){
+    $data=[$_POST['sujet'],$_POST['auteur'],$_POST['institution'],$_POST['id']];
+    $sql="UPDATE t_memoire SET Sujet=?, Auteur=?, Institution=?  WHERE CodeMemoire=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Memoire/TFC modifié';
+    }
+    header("Location: ../memoire");
+}
+
 if($event=='ACTIVATE_LIVRE'){
     $data=[1,$_POST['id']];
     $sql="UPDATE t_livre SET Statut=?  WHERE CodeLivre=?";
