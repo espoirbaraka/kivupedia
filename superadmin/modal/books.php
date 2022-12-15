@@ -76,27 +76,27 @@
     </div>
 </div>
 
-<!-- Delete -->
-<div class="modal fade" id="delete">
+<!-- activate -->
+<div class="modal fade" id="activate">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Suppression...</b></h4>
+                <h4 class="modal-title"><b>Activation...</b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="manager/delete.php">
-                    <input type="hidden" class="user" name="id">
-                    <input type="hidden" name="event" value="DELETE_ADMIN">
+                <form class="form-horizontal" method="POST" action="manager/update.php">
+                    <input type="hidden" class="livre" name="id">
+                    <input type="hidden" name="event" value="ACTIVATE_LIVRE">
                     <div class="text-center">
-                        <p>SUPPRIMER</p>
+                        <p>ACTIVER LE LIVRE</p>
                         <h2 style="font-weight: bold;" class="bold fullname"></h2>
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Fermer</button>
-                <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Supprimer</button>
+                <button type="submit" class="btn btn-primary btn-flat" name="delete"><i class="fa fa-trash"></i> Activer</button>
                 </form>
             </div>
         </div>
@@ -105,4 +105,29 @@
 
 
 
-
+<!-- Desactivate -->
+<div class="modal fade" id="desactivate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Desactivation...</b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="manager/update.php">
+                    <input type="hidden" class="livre" name="id">
+                    <input type="hidden" name="event" value="DESACTIVATE_LIVRE">
+                    <div class="text-center">
+                        <p>DESACTIVER LE LIVRE</p>
+                        <h2 style="font-weight: bold;" class="bold fullname"></h2>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Fermer</button>
+                <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Desactiver</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

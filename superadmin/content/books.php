@@ -62,7 +62,7 @@
                             $req = $app->fetchPrepared($sql);
                             foreach($req as $row){
                                 $status = ($row['Statut']) ? '<span class="label label-success">Disponible</span>' : '<span class="label label-danger">Non-disponible</span>';
-                                $active = ($row['Statut']) ? '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>';
+                                $active = (!$row['Statut']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>';
                                 ?>
                                 <tr>
                                     <td>
