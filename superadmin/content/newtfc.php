@@ -65,7 +65,18 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label>Année academique <span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" name="annee" required>
+                                        <select name="annee" id="annee" class="form-control select2-example" required>
+                                            <option value="">-- Selectionnez --</option>
+                                            <?php
+                                            $sql = "SELECT * FROM t_annee_academique";
+                                            $req = $app->fetchPrepared($sql);
+                                            foreach ($req as $row){
+                                                ?>
+                                                <option value="<?php echo $row['CodeAnnee'] ?>"><?php echo $row['Annee'] ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -73,7 +84,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label>Institution <span style="color: red;">*</span></label>
+                                        <label>Institution (Université) <span style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="institution" required>
                                     </div>
 
