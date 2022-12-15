@@ -2,11 +2,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1 style="font-weight: bold;">
-            Ajouter un memoire/TFC
+            Ajouter un article
         </h1>
         <ol class="breadcrumb">
             <li><a href="dashboard"><i class="fa fa-dashboard"></i> Acceuil</a></li>
-            <li class="active">Ajouter un memoire/TFC</li>
+            <li class="active">Ajouter un article</li>
         </ol>
     </section>
 
@@ -134,7 +134,15 @@
                             </div>
 
 
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Fichier <span style="color: red;">*(PDF, max: 10 MB)</span></label>
+                                        <input type="file" class="form-control" name="fichier" required>
+                                    </div>
 
+                                </div>
+                            </div>
 
 
 

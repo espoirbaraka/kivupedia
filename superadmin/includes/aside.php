@@ -43,7 +43,7 @@
           <li class="treeview">
               <a href="#">
                   <i class="fa fa-book"></i>
-                  <span>Memoire/TFC</span>
+                  <span>Article scientifique</span>
                   <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -55,21 +55,6 @@
               </ul>
           </li>
 
-
-          <li class="treeview">
-              <a href="#">
-                  <i class="fa fa-book"></i>
-                  <span>Article scientifiques</span>
-                  <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
-
-              </ul>
-          </li>
 
           <li class="treeview">
               <a href="#">
