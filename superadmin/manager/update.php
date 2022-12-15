@@ -49,3 +49,21 @@ if($event=='UPDATE_LIVRE'){
     }
     header("Location: ../books");
 }
+
+if($event=='ACTIVATE_LIVRE'){
+    $data=[1,$_POST['id']];
+    $sql="UPDATE t_livre SET Statut=?  WHERE CodeLivre=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Livre activé';
+    }
+    header("Location: ../books");
+}
+
+if($event=='DESACTIVATE_LIVRE'){
+    $data=[0,$_POST['id']];
+    $sql="UPDATE t_livre SET Statut=?  WHERE CodeLivre=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Livre desactivé';
+    }
+    header("Location: ../books");
+}

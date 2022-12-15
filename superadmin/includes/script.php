@@ -105,16 +105,8 @@
             getRow(id);
         });
 
-        $(document).on('click', '.medicament', function(e){
+        $(document).on('click', '.status', function(e){
             e.preventDefault();
-            $('#medicament').modal('show');
-            var id = $(this).data('id');
-            getRow(id);
-        });
-
-        $(document).on('click', '.vendre', function(e){
-            e.preventDefault();
-            $('#vendre').modal('show');
             var id = $(this).data('id');
             getRow(id);
         });
