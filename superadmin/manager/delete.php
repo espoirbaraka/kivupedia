@@ -39,3 +39,21 @@ if($event=='DELETE_SOUS_DOMAINE'){
     }
     header("Location: ../detail_domaine?domaine=$dom");
 }
+
+if($event=='DELETE_FACULTE'){
+    $data=[$_POST['id']];
+    $sql="DELETE FROM t_faculte WHERE CodeFaculte=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Faculte supprimée';
+    }
+    header("Location: ../faculte");
+}
+
+if($event=='DELETE_ANNEE'){
+    $data=[$_POST['id']];
+    $sql="DELETE FROM t_annee_academique WHERE CodeAnnee=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Annee supprimée';
+    }
+    header("Location: ../annee");
+}
