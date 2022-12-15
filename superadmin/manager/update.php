@@ -72,7 +72,7 @@ if($event=='UPDATE_FACULTE'){
     $data=[$_POST['faculte'],$_POST['id']];
     $sql="UPDATE t_faculte SET Faculte=?  WHERE CodeFaculte=?";
     if($app->prepare($sql,$data,1)){
-        $_SESSION['success'] = 'Faculte ajoutée';
+        $_SESSION['success'] = 'Faculte modifiée';
     }
     header("Location: ../faculte");
 }
@@ -81,7 +81,7 @@ if($event=='UPDATE_ANNEE'){
     $data=[$_POST['annee'],$_POST['id']];
     $sql="UPDATE t_annee_academique SET Annee=?  WHERE CodeAnnee=?";
     if($app->prepare($sql,$data,1)){
-        $_SESSION['success'] = 'Année ajoutée';
+        $_SESSION['success'] = 'Année modifiée';
     }
     header("Location: ../annee");
 }
