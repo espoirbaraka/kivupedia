@@ -43,41 +43,40 @@
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Titre</th>
-                                <th>Description</th>
-                                <th>Auteur</th>
-                                <th>Page</th>
+                                <th>Sujet</th>
                                 <th>Disponibilité</th>
-                                <th>Domaine</th>
+                                <th>Categorie</th>
+                                <th>Année</th>
+                                <th>Institution</th>
+                                <th>Faculté</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-                            $sql = "SELECT * FROM t_livre LEFT JOIN t_domaine
-                                    ON t_livre.CodeDomaine=t_domaine.CodeDomaine
-                                    LEFT JOIN t_langue
-                                    ON t_livre.CodeLangue=t_langue.CodeLangue";
+                            $sql = "SELECT * FROM t_memoire
+                                    LEFT JOIN t_faculte
+                                    ON t_memoire.CodeFaculte=t_faculte.CodeFaculte
+                                    LEFT JOIN t_annee
+                                    ON t_memoire.CodeAnnee=t_annee.CodeAnnee
+                                    INNER join t_categorie_memoire
+                                    ON t_memoire.CodeCategorie=t_categorie_memoire.CodeCategorie";
                             $req = $app->fetchPrepared($sql);
                             foreach($req as $row){
                                 $status = ($row['Statut']) ? '<span class="label label-success">Disponible</span>' : '<span class="label label-danger">Non-disponible</span>';
-                                $active = (!$row['Statut']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>';
+                                $active = (!$row['Statut']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeMemoire'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeMemoire'].'"><i class="fa fa-check-square-o"></i></a></span>';
                                 ?>
                                 <tr>
-                                    <td>
-                                        <img style="height: 80px; width: 50px;" src="thumbmnail/<?php echo $row['Image']; ?>" />
-
-                                    </td>
-                                    <td><?php echo $row['Titre']; ?>
-                                    </td>
-                                    <td><?php echo $row['Description']; ?></td>
-                                    <td><?php echo $row['AuteurPrincipal']; ?></td>
-                                    <td><?php echo $row['NombrePage']; ?></td>
+                                    <td><?php echo $row['Sujet']; ?></td>
                                     <td><?php echo $status; echo $active;?></td>
-                                    <td><?php echo $row['Domaine']; ?></td>
+                                    <td><?php echo $row['Categorie']; ?></td>
+                                    <td><?php echo $row['Annee']; ?></td>
+                                    <td><?php echo $row['Institution']; ?></td>
+                                    <td><?php echo $row['Faculte']; ?></td>
+
+
                                     <td>
-                                        <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeLivre'] ?>"><i class='fa fa-edit'></i> </button>
+                                        <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeMemoire'] ?>"><i class='fa fa-edit'></i> </button>
                                     </td>
                                 </tr>
                                 <?php
