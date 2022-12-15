@@ -68,7 +68,7 @@
                                         <select name="annee" id="annee" class="form-control select2-example" required>
                                             <option value="">-- Selectionnez --</option>
                                             <?php
-                                            $sql = "SELECT * FROM t_annee_academique";
+                                            $sql = "SELECT * FROM t_annee_academique ORDER BY Annee DESC";
                                             $req = $app->fetchPrepared($sql);
                                             foreach ($req as $row){
                                                 ?>

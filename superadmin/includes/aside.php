@@ -87,51 +87,6 @@
               </ul>
           </li>
 
-          <li class="treeview">
-              <a href="#">
-                  <i class="fa fa-pencil"></i>
-                  <span>Examen</span>
-                  <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
-
-              </ul>
-          </li>
-
-          <li class="treeview">
-              <a href="#">
-                  <i class="fa fa-pencil"></i>
-                  <span>Devoir</span>
-                  <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
-
-              </ul>
-          </li>
-
-          <li class="treeview">
-              <a href="#">
-                  <i class="fa fa-pencil"></i>
-                  <span>Interrogation</span>
-                  <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-              </a>
-              <ul class="treeview-menu">
-                  <li><a href="newbook"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="books"><i class="fa fa-circle-o"></i> Liste</a></li>
-
-              </ul>
-          </li>
-
 
           <li class="header">LECTEURS</li>
           <li><a href="lecteur"><i class="fa fa-user"></i> <span>Nos lecteurs</span></a></li>
