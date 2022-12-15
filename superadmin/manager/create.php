@@ -108,8 +108,8 @@ if ($event == 'CREATE_ANNEE') {
 
 if ($event == 'CREATE_MEMOIRE') {
     $admin = $_SESSION['super'];
-    $data = [$_POST['sujet'],$_POST['auteur'],$_POST['institution'],$_POST['annee'],$_POST['categorie'],$_POST['faculte'],$admin, 1];
-    $sql = "INSERT INTO t_memoire(Sujet,Auteur,Institution,CodeAnnee,CodeCategorie,CodeFaculte,CodeAdmin,CodePropriete) VALUES(?,?,?,?,?,?,?,?)";
+    $data = [$_POST['sujet'],$_POST['auteur'],$_POST['institution'],$_POST['annee'],$_POST['categorie'],$_POST['faculte'],$admin, 1,1];
+    $sql = "INSERT INTO t_memoire(Sujet,Auteur,Institution,CodeAnnee,CodeCategorie,CodeFaculte,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?,?,?)";
     if ($app->prepare($sql, $data, 1)) {
         $_SESSION['success'] = 'Memoire/TFC ajoutée';
     }else{
