@@ -59,6 +59,15 @@ if($event=='UPDATE_MEMOIRE'){
     header("Location: ../memoire");
 }
 
+if($event=='UPDATE_COURS'){
+    $data=[$_POST['cours'],$_POST['institution'],$_POST['id']];
+    $sql="UPDATE t_cours SET Cours=?, Institution=? WHERE CodeCours=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Cours modifié';
+    }
+    header("Location: ../cours");
+}
+
 if($event=='ACTIVATE_LIVRE'){
     $data=[1,$_POST['id']];
     $sql="UPDATE t_livre SET Statut=?  WHERE CodeLivre=?";
@@ -93,6 +102,24 @@ if($event=='DESACTIVATE_MEMOIRE'){
         $_SESSION['success'] = 'Memoire desactivé';
     }
     header("Location: ../memoire");
+}
+
+if($event=='ACTIVATE_COURS'){
+    $data=[1,$_POST['id']];
+    $sql="UPDATE t_cours SET Statut=?  WHERE CodeCours=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Cours activé';
+    }
+    header("Location: ../cours");
+}
+
+if($event=='DESACTIVATE_COURS'){
+    $data=[0,$_POST['id']];
+    $sql="UPDATE t_cours SET Statut=?  WHERE CodeCours=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Cours desactivé';
+    }
+    header("Location: ../cours");
 }
 
 if($event=='UPDATE_FACULTE'){

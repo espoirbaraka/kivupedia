@@ -34,7 +34,7 @@
                 <p>
                 <?php echo $req['NomComplet']; ?>
                     <small>Compte crée le <?php echo $app->dateconv($req['Created_on']); ?></small>
-                    <small>Dernière connexion le <?php echo $app->dateconv($req['Last_connection']); ?></small>
+                    <small>Dernière connexion le <?php echo $app->dateconv_complete($req['Last_connection']); ?></small>
                 </p>
               </li>
               <!-- Menu Body -->
