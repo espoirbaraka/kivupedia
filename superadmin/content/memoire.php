@@ -2,11 +2,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1 style="font-weight: bold;">
-            Memoire/TFC
+            Article scientifique
         </h1>
         <ol class="breadcrumb">
             <li><a href="dashboard"><i class="fa fa-dashboard"></i> Acceuil</a></li>
-            <li class="active">Memoire/TFC</li>
+            <li class="active">Article scientifique</li>
         </ol>
     </section>
 
