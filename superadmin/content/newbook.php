@@ -70,9 +70,9 @@
                                         </div>
 
                                     </div>
+                                </div>
 
-
-
+                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Sous-domaine</label>
@@ -91,11 +91,13 @@
                                         </div>
 
                                     </div>
+                                </div>
 
+                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Description </label>
-                                            <textarea class="form-control" name="description" rows="4"></textarea>
+                                            <textarea class="form-control" name="description"></textarea>
                                         </div>
 
                                     </div>
@@ -108,8 +110,9 @@
                                         </div>
 
                                     </div>
+                                </div>
 
-
+                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Lieu edition</label>
@@ -126,7 +129,9 @@
                                         </div>
 
                                     </div>
+                                </div>
 
+                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Langue </label>
@@ -153,6 +158,28 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Photo de couverture <span style="color: red;">(max: 1 MB), La qualité de votre image peut influencer les lecteurs  *</span></label>
+                                            <input type="file" class="form-control" name="image" required>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
                                     <div style="float: right;">

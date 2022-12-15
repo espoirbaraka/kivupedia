@@ -48,7 +48,7 @@
                                 <th>Description</th>
                                 <th>Auteur</th>
                                 <th>Page</th>
-                                <th>Langue</th>
+                                <th>Disponibilité</th>
                                 <th>Domaine</th>
                                 <th>Action</th>
                             </tr>
@@ -61,20 +61,23 @@
                                     ON t_livre.CodeLangue=t_langue.CodeLangue";
                             $req = $app->fetchPrepared($sql);
                             foreach($req as $row){
+                                $status = ($row['Statut']) ? '<span class="label label-success">Disponible</span>' : '<span class="label label-danger">Non-disponible</span>';
+                                $active = ($row['Statut']) ? '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>';
                                 ?>
                                 <tr>
                                     <td>
-                                        <img src="<?php echo $im; ?>" />
+                                        <img style="height: 80px; width: 50px;" src="thumbmnail/<?php echo $row['Image']; ?>" />
+
                                     </td>
-                                    <td><?php echo $row['Titre']; ?></td>
+                                    <td><?php echo $row['Titre']; ?>
+                                    </td>
                                     <td><?php echo $row['Description']; ?></td>
                                     <td><?php echo $row['AuteurPrincipal']; ?></td>
                                     <td><?php echo $row['NombrePage']; ?></td>
-                                    <td><?php echo $row['Langue']; ?></td>
+                                    <td><?php echo $status; echo $active;?></td>
                                     <td><?php echo $row['Domaine']; ?></td>
                                     <td>
-                                        <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeDomaine'] ?>"><i class='fa fa-edit'></i> </button>
-                                        <button class='btn btn-danger btn-sm delete btn-flat' data-id="<?php echo $row['CodeDomaine'] ?>"><i class='fa fa-trash'></i> </button>
+                                        <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeLivre'] ?>"><i class='fa fa-edit'></i> </button>
                                     </td>
                                 </tr>
                                 <?php

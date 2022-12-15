@@ -1,10 +1,10 @@
 <?php
-include '../class/app.php';
+include '../../class/app.php';
 if(isset($_POST['id'])){
     $id = $_POST['id'];
     $conn = $app->getPDO();
 
-    $sql = "SELECT * FROM tbl_ordonnance WHERE CodeOrdonnance = $id";
+    $sql = "SELECT * FROM t_livre WHERE CodeLivre = $id";
     $req = $app->fetch($sql);
 
 

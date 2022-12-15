@@ -40,3 +40,12 @@ if($event=='UPDATE_SOUS_DOMAINE'){
     }
     header("Location: ../detail_domaine?domaine=$dom");
 }
+
+if($event=='UPDATE_LIVRE'){
+    $data=[$_POST['titre'],$_POST['sous_titre'],$_POST['auteur'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['isbn'],$_POST['id']];
+    $sql="UPDATE t_livre SET Titre=?, SousTitre=?, AuteurPrincipal=?, Description=?, NomEditeur=?, LieuEdition=?, ISBN=?  WHERE CodeLivre=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Livre modifié';
+    }
+    header("Location: ../books");
+}
