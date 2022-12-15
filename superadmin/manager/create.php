@@ -44,11 +44,16 @@ if ($event == 'CREATE_SOUS_DOMAINE') {
 }
 
 if ($event == 'CREATE_LIVRE') {
-    $target_dir = "../fichier/";
-    $temp = explode(".", $_FILES["fichier"]["name"]);
-    $newfilename = round(microtime(true)) . '.' . end($temp);
-    $target_file = $target_dir . basename($newfilename);
+    $file_dir = "../fichier/";
+    $image_dir = "../thumbmnail/";
+    $file = explode(".", $_FILES["fichier"]["name"]);
+    $image = explode(".", $_FILES["image"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($file);
+    $newimagename = round(microtime(true)) . '.' . end($image);
+    $target_file = $file_dir . basename($newfilename);
+    $target_image = $image_dir . basename($newimagename);
     $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageType = strtolower(pathinfo($target_image,PATHINFO_EXTENSION));
 
     if (file_exists($target_file)) {
         $_SESSION['error'] = 'Un fichier avec le meme nom existe. Veuillez renomer votre fichier';
@@ -59,13 +64,13 @@ if ($event == 'CREATE_LIVRE') {
             if($fileType != "pdf") {
                 $_SESSION['error'] = 'Fichier PDF recuse';
             }else{
-               if(move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file)){
+               if((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file)) AND (move_uploaded_file($_FILES["image"]["tmp_name"], $target_image))){
                    $pdf = file_get_contents("../fichier/".$target_file);
                    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
 
                    $user = $_SESSION['super'];
-                   $data = [$_POST['titre'],$_POST['domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$number];
-                   $sql = "INSERT INTO t_livre(Titre,CodeDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,NombrePage) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                   $data = [$_POST['titre'],$_POST['domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$newimagename,$number,1];
+                   $sql = "INSERT INTO t_livre(Titre,CodeDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,Image,NombrePage,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
                    if ($app->prepare($sql, $data, 1)) {
                        $_SESSION['success'] = 'Livre posté';
                    }else{
