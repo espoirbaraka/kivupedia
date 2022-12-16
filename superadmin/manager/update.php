@@ -122,6 +122,24 @@ if($event=='DESACTIVATE_COURS'){
     header("Location: ../cours");
 }
 
+if($event=='ACTIVATE_ITEM'){
+    $data=[1,$_POST['id']];
+    $sql="UPDATE t_item SET Statut=?  WHERE CodeItem=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'ITEM activé';
+    }
+    header("Location: ../item");
+}
+
+if($event=='DESACTIVATE_ITEM'){
+    $data=[0,$_POST['id']];
+    $sql="UPDATE t_item SET Statut=?  WHERE CodeItem=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'ITEM desactivé';
+    }
+    header("Location: ../item");
+}
+
 if($event=='UPDATE_FACULTE'){
     $data=[$_POST['faculte'],$_POST['id']];
     $sql="UPDATE t_faculte SET Faculte=?  WHERE CodeFaculte=?";
@@ -129,6 +147,15 @@ if($event=='UPDATE_FACULTE'){
         $_SESSION['success'] = 'Faculte modifiée';
     }
     header("Location: ../faculte");
+}
+
+if($event=='UPDATE_OPTION'){
+    $data=[$_POST['option'],$_POST['id']];
+    $sql="UPDATE t_option SET Designation=?  WHERE CodeOption=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Option modifiée';
+    }
+    header("Location: ../option");
 }
 
 if($event=='UPDATE_ANNEE'){

@@ -49,6 +49,15 @@ if($event=='DELETE_FACULTE'){
     header("Location: ../faculte");
 }
 
+if($event=='DELETE_OPTION'){
+    $data=[$_POST['id']];
+    $sql="DELETE FROM t_option WHERE CodeOption=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Option supprimée';
+    }
+    header("Location: ../option");
+}
+
 if($event=='DELETE_ANNEE'){
     $data=[$_POST['id']];
     $sql="DELETE FROM t_annee_academique WHERE CodeAnnee=?";

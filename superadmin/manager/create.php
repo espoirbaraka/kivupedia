@@ -95,6 +95,17 @@ if ($event == 'CREATE_FACULTE') {
     header("Location: ../faculte");
 }
 
+if ($event == 'CREATE_OPTION') {
+    $data = [$_POST['option']];
+    $sql = "INSERT INTO t_option(Designation) VALUES(?)";
+    if ($app->prepare($sql, $data, 1)) {
+        $_SESSION['success'] = 'Option ajoutée';
+    }else{
+        $_SESSION['error'] = 'Problème d\'insertion';
+    }
+    header("Location: ../option");
+}
+
 if ($event == 'CREATE_ANNEE') {
     $data = [$_POST['annee']];
     $sql = "INSERT INTO t_annee_academique(Annee) VALUES(?)";
@@ -175,4 +186,40 @@ if ($event == 'CREATE_COURS') {
         }
     }
     header("Location: ../cours");
+}
+
+
+if ($event == 'CREATE_ITEM') {
+    $admin = $_SESSION['super'];
+    $file_dir = "../fichier/";
+    $file = explode(".", $_FILES["fichier"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($file);
+    $target_file = $file_dir . basename($newfilename);
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    if (file_exists($target_file)) {
+        $_SESSION['error'] = 'Un fichier avec le meme nom existe. Veuillez renomer votre fichier';
+    }else {
+        if ($_FILES["fichier"]["size"] > 10485760) {
+            $_SESSION['error'] = 'Le fichier depasse 10 MB';
+        } else {
+            if ($fileType != "pdf") {
+                $_SESSION['error'] = 'Fichier PDF recuse';
+            } else {
+                if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
+                    $pdf = file_get_contents("../fichier/" . $target_file);
+                    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
+
+                    $data = [$_POST['session'], $_POST['annee'], $_POST['option'], $newfilename, $admin, 1, 1];
+                    $sql = "INSERT INTO t_item(CodeSession,CodeAnnee,CodeOption,Fichier,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?)";
+                    if ($app->prepare($sql, $data, 1)) {
+                        $_SESSION['success'] = 'ITEM ajoutée';
+                    } else {
+                        $_SESSION['error'] = 'Problème d\'insertion';
+                    }
+                }
+            }
+        }
+    }
+    header("Location: ../item");
 }
