@@ -42,11 +42,22 @@
                         <form action="manager/create.php" method="POST" enctype="multipart/form-data">
 
                             <div class="row">
-                                <input type="hidden" name="event" value="CREATE_COURS">
+                                <input type="hidden" name="event" value="CREATE_ITEM">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label>Cours <span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" name="cours" required>
+                                        <label>Année academique <span style="color: red;">*</span></label>
+                                        <select name="annee" id="annee" class="form-control select2-example" required>
+                                            <option value="">-- Selectionnez --</option>
+                                            <?php
+                                            $sql = "SELECT * FROM t_annee_academique ORDER BY Annee DESC";
+                                            $req = $app->fetchPrepared($sql);
+                                            foreach ($req as $row){
+                                                ?>
+                                                <option value="<?php echo $row['CodeAnnee'] ?>"><?php echo $row['Annee'] ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -54,8 +65,19 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label>Institution (Université) <span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" name="institution" required>
+                                        <label>Option <span style="color: red;">*</span></label>
+                                        <select name="option" id="option" class="form-control select2-example">
+                                            <option value="">-- Selectionnez --</option>
+                                            <?php
+                                            $sql = "SELECT * FROM t_option";
+                                            $req = $app->fetchPrepared($sql);
+                                            foreach ($req as $row){
+                                                ?>
+                                                <option value="<?php echo $row['CodeOption'] ?>"><?php echo $row['Designation'] ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -64,7 +86,26 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label>Fichier <span style="color: red;">*(PDF, max: 10 MB)</span></label>
+                                        <label>Session <span style="color: red;">*</span></label>
+                                        <select name="session" id="session" class="form-control select2-example">
+                                            <option value="">-- Selectionnez --</option>
+                                            <?php
+                                            $sql = "SELECT * FROM t_session_exetat";
+                                            $req = $app->fetchPrepared($sql);
+                                            foreach ($req as $row){
+                                                ?>
+                                                <option value="<?php echo $row['CodeSession'] ?>"><?php echo $row['Session'] ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Fichier <span style="color: red;">*(PDF,PNG,JPG,JPEG, max: 10 MB)</span></label>
                                         <input type="file" class="form-control" name="fichier" required>
                                     </div>
 
