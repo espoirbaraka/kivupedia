@@ -1,17 +1,17 @@
 <?php
-$id = $_GET['cli'];
-$sql = "SELECT * FROM tbl_client WHERE CodeClient = $id";
+$id = $_GET['livre'];
+$sql = "SELECT * FROM t_livre WHERE CodeLivre = $id";
 $req1 = $app->fetch($sql);
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Profil client
+            Livre
         </h1>
         <ol class="breadcrumb">
             <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Acceuil</a></li>
-            <li class="active">Profil client</li>
+            <li class="active">Livre</li>
         </ol>
     </section>
 
@@ -45,18 +45,18 @@ $req1 = $app->fetch($sql);
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="./img/user.png"
+                        <img class="profile-user-img img-responsive img-circle" src="./img/logo_livre.png"
                              alt="User profile picture">
 
-                        <h3 class="profile-username text-center"><?php echo $req1['PrenomClient'].' '.$req1['NomClient']; ?></h3>
+                        <a class="text-center"><?php echo $req1['Titre']; ?></a>
 
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Email</b> : <a class="pull-right"><?php echo $req1['Email']; ?> </a>
+                                <b>Ajout</b> : <a class="pull-right"><?php echo $app->dateconv($req1['Created_on']); ?> </a>
                             </li>
                             <li class="list-group-item">
-                                <b>Adresse</b> : <a class="pull-right"><?php echo $req1['Adresse']; ?></a>
+                                <b>Nombre de page</b> : <a class="pull-right"><?php echo $req1['NombrePage']; ?> pages</a>
                             </li>
                         </ul>
 
