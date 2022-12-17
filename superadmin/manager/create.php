@@ -203,20 +203,16 @@ if ($event == 'CREATE_ITEM') {
         if ($_FILES["fichier"]["size"] > 10485760) {
             $_SESSION['error'] = 'Le fichier depasse 10 MB';
         } else {
-            if ($fileType != "pdf") {
-                $_SESSION['error'] = 'Fichier PDF recuse';
-            } else {
-                if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
-                    $pdf = file_get_contents("../fichier/" . $target_file);
-                    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
+            if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
+                $pdf = file_get_contents("../fichier/" . $target_file);
+                $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
 
-                    $data = [$_POST['session'], $_POST['annee'], $_POST['option'], $newfilename, $admin, 1, 1];
-                    $sql = "INSERT INTO t_item(CodeSession,CodeAnnee,CodeOption,Fichier,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?)";
-                    if ($app->prepare($sql, $data, 1)) {
-                        $_SESSION['success'] = 'ITEM ajoutée';
-                    } else {
-                        $_SESSION['error'] = 'Problème d\'insertion';
-                    }
+                $data = [$_POST['session'], $_POST['annee'], $_POST['option'], $newfilename, $admin, 1, 1,$fileType];
+                $sql = "INSERT INTO t_item(CodeSession,CodeAnnee,CodeOption,Fichier,CodeAdmin,CodePropriete,Statut,TypeFichier) VALUES(?,?,?,?,?,?,?,?)";
+                if ($app->prepare($sql, $data, 1)) {
+                    $_SESSION['success'] = 'ITEM ajoutée';
+                } else {
+                    $_SESSION['error'] = 'Problème d\'insertion';
                 }
             }
         }
