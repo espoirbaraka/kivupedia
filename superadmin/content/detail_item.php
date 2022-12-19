@@ -59,7 +59,7 @@ $req1 = $app->fetch($sql);
                         <img class="profile-user-img img-responsive img-circle" src="img/logo_livre.png"
                              alt="User profile picture">
 
-                        <a class="btn file btn-primary btn-sm" data-id="<?php echo $req1['CodeCours'] ?>"><i class="fa fa-file"></i></a>
+                        <a class="btn file btn-primary btn-sm" data-id="<?php echo $req1['CodeItem'] ?>"><i class="fa fa-file"></i></a>
 
 
 

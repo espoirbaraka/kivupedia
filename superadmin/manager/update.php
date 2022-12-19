@@ -266,3 +266,72 @@ if ($event == 'UPDATE_FILE_ARTICLE') {
     }
     header("Location: ../detail_memoire?article=$livre");
 }
+
+
+
+if ($event == 'UPDATE_FILE_COURS') {
+    $livre = $_POST['id'];
+    $admin = $_SESSION['super'];
+    $file_dir = "../fichier/";
+    $file = explode(".", $_FILES["fichier"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($file);
+    $target_file = $file_dir . basename($newfilename);
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    if (file_exists($target_file)) {
+        $_SESSION['error'] = 'Un fichier avec le meme nom existe. Veuillez renomer votre fichier';
+    }else {
+        if ($_FILES["fichier"]["size"] > 10485760) {
+            $_SESSION['error'] = 'Le fichier depasse 10 MB';
+        } else {
+            if ($fileType != "pdf") {
+                $_SESSION['error'] = 'Fichier PDF recuse';
+            } else {
+                if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
+                    $data = [$newfilename, $_POST['id']];
+                    $sql = "UPDATE t_cours SET Fichier=? WHERE CodeCours=?";
+                    if ($app->prepare($sql, $data, 1)) {
+                        $_SESSION['success'] = 'Cours modifié';
+                    } else {
+                        $_SESSION['error'] = 'Problème de modification';
+                    }
+                }
+            }
+        }
+    }
+    header("Location: ../detail_cours?cours=$livre");
+}
+
+
+if ($event == 'UPDATE_FILE_ITEM') {
+    $livre = $_POST['id'];
+    $admin = $_SESSION['super'];
+    $file_dir = "../fichier/";
+    $file = explode(".", $_FILES["fichier"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($file);
+    $target_file = $file_dir . basename($newfilename);
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    if (file_exists($target_file)) {
+        $_SESSION['error'] = 'Un fichier avec le meme nom existe. Veuillez renomer votre fichier';
+    }else {
+        if ($_FILES["fichier"]["size"] > 10485760) {
+            $_SESSION['error'] = 'Le fichier depasse 10 MB';
+        } else {
+            if ($fileType != "pdf" AND $fileType != "png" AND $fileType != "jpg" AND $fileType != "jpeg" AND $fileType != "svg") {
+                $_SESSION['error'] = 'Fichier PDF ou image recuse';
+            } else {
+                if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
+                    $data = [$newfilename, $_POST['id']];
+                    $sql = "UPDATE t_item SET Fichier=? WHERE CodeItem=?";
+                    if ($app->prepare($sql, $data, 1)) {
+                        $_SESSION['success'] = 'ITEM modifié';
+                    } else {
+                        $_SESSION['error'] = 'Problème de modification';
+                    }
+                }
+            }
+        }
+    }
+    header("Location: ../detail_item?item=$livre");
+}
