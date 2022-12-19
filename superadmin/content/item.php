@@ -71,7 +71,7 @@
                                     <td><?php echo $row['TypeFichier']; ?></td>
                                     <td><?php echo $status; echo $active;?></td>
                                     <td>
-                                        <a href="detail_livre?livre=<?php echo $row['CodeItem'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
+                                        <a href="detail_item?item=<?php echo $row['CodeItem'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
                                     </td>
                                 </tr>
                                 <?php

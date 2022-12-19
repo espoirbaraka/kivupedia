@@ -174,8 +174,8 @@ if ($event == 'CREATE_COURS') {
                     $pdf = file_get_contents("../fichier/" . $target_file);
                     $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
 
-                    $data = [$_POST['cours'], $_POST['institution'], $newfilename, $admin, 1, 1];
-                    $sql = "INSERT INTO t_cours(Cours,Institution,Fichier,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?)";
+                    $data = [$_POST['cours'],$_POST['auteur'], $_POST['institution'], $newfilename, $admin, 1, 1];
+                    $sql = "INSERT INTO t_cours(Cours,Auteur,Institution,Fichier,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?)";
                     if ($app->prepare($sql, $data, 1)) {
                         $_SESSION['success'] = 'Cours ajoutée';
                     } else {

@@ -116,7 +116,7 @@ $req1 = $app->fetch($sql);
                             <!-- timeline time label -->
                             <li class="time-label">
                   <span class="bg-red">
-                    Ajouté le <?php echo $app->dateconv($req1['Created_on']); ?> par <?php
+                    Ajouté par <?php
                       if(isset($req1['NomComplet'])){
                           echo $req1['NomComplet'].'<span style="color: darkblue;">(Administrateur)</span>';
                       }else{

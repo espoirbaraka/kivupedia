@@ -54,14 +54,22 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label>Institution (Université) <span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" name="institution" required>
+                                        <label>Auteur <span style="color: red;">*</span></label>
+                                        <input type="text" class="form-control" name="auteur" required>
                                     </div>
 
                                 </div>
                             </div>
 
                             <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Institution (Université) <span style="color: red;">*</span></label>
+                                        <input type="text" class="form-control" name="institution" required>
+                                    </div>
+
+                                </div>
+
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label>Fichier <span style="color: red;">*(PDF, max: 10 MB)</span></label>
