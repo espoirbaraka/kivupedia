@@ -43,7 +43,6 @@
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>Image</th>
                                 <th>Titre</th>
                                 <th>Description</th>
                                 <th>Auteur</th>
@@ -65,12 +64,7 @@
                                 $active = (!$row['Statut']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeLivre'].'"><i class="fa fa-check-square-o"></i></a></span>';
                                 ?>
                                 <tr>
-                                    <td>
-                                        <img style="height: 80px; width: 50px;" src="thumbmnail/<?php echo $row['Image']; ?>" />
-
-                                    </td>
-                                    <td><?php echo $row['Titre']; ?>
-                                    </td>
+                                    <td><?php echo $row['Titre']; ?></td>
                                     <td><?php echo $row['Description']; ?></td>
                                     <td><?php echo $row['AuteurPrincipal']; ?></td>
                                     <td><?php echo $row['NombrePage']; ?></td>

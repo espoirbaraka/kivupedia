@@ -69,8 +69,8 @@ if ($event == 'CREATE_LIVRE') {
                    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
 
                    $user = $_SESSION['super'];
-                   $data = [$_POST['titre'],$_POST['domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$newimagename,$number,1];
-                   $sql = "INSERT INTO t_livre(Titre,CodeDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,Image,NombrePage,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                   $data = [$_POST['titre'],$_POST['domaine'],$_POST['s_domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$newimagename,$number,1];
+                   $sql = "INSERT INTO t_livre(Titre,CodeDomaine,CodeSousDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,Image,NombrePage,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                    if ($app->prepare($sql, $data, 1)) {
                        $_SESSION['success'] = 'Livre posté';
                    }else{
