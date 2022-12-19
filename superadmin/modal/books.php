@@ -161,7 +161,7 @@
 </div>
 
 
-<!-- Update picture -->
+<!-- Update file -->
 <div class="modal fade" id="file">
     <div class="modal-dialog">
         <div class="modal-content">

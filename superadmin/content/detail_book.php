@@ -1,6 +1,6 @@
 <?php
 $id = $_GET['livre'];
-$sql = "SELECT *,t_livre.Image as img FROM t_livre 
+$sql = "SELECT *,t_livre.Image as img, t_livre.Created_on as creat FROM t_livre 
          LEFT JOIN t_superadmin
          ON t_livre.CodeAdmin=t_superadmin.CodeSuper
          LEFT JOIN t_compte
@@ -10,7 +10,7 @@ $sql = "SELECT *,t_livre.Image as img FROM t_livre
          LEFT JOIN  t_domaine
          ON t_livre.CodeDomaine=t_domaine.CodeDomaine
          LEFT JOIN t_sous_domaine
-         On t_livre.CodeSousDomaine=t_sous_domaine.CodeSousDomaine
+         On t_livre.CodeSousDomaine=t_sous_domaine.CodeSousDomaine  
          WHERE CodeLivre = $id";
 $req1 = $app->fetch($sql);
 ?>
@@ -90,7 +90,7 @@ $req1 = $app->fetch($sql);
                                 <b>Sous-domaine</b> : <a class="pull-right"><?php echo $req1['Sous_domaine']; ?> </a>
                             </li>
                             <li class="list-group-item">
-                                <b>Ajout</b> : <a class="pull-right"> le <?php echo $app->dateconv($req1['Created_on']); ?> </a>
+                                <b>Ajout</b> : <a class="pull-right"> le <?php echo $app->dateconv($req1['creat']); ?> </a>
                             </li>
                             <li class="list-group-item">
                                 <b>Nombre de page</b> : <a class="pull-right"><?php echo $req1['NombrePage']; ?> pages</a>
