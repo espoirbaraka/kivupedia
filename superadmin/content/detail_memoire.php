@@ -1,28 +1,26 @@
 <?php
-$id = $_GET['livre'];
-$sql = "SELECT *,t_livre.Image as img FROM t_livre 
+$id = $_GET['article'];
+$sql = "SELECT * FROM t_memoire
+         LEFT JOIN t_categorie_memoire
+         ON t_memoire.CodeCategorie=t_categorie_memoire.CodeCategorie
+         LEFT JOIN t_faculte
+         ON t_memoire.CodeFaculte=t_faculte.CodeFaculte       
          LEFT JOIN t_superadmin
-         ON t_livre.CodeAdmin=t_superadmin.CodeSuper
+         ON t_memoire.CodeAdmin=t_superadmin.CodeSuper
          LEFT JOIN t_compte
-         ON t_livre.CodeCompte=t_compte.CodeCompte
-         LEFT JOIN t_langue
-         ON t_livre.CodeLivre=t_livre.CodeLivre
-         LEFT JOIN  t_domaine
-         ON t_livre.CodeDomaine=t_domaine.CodeDomaine
-         LEFT JOIN t_sous_domaine
-         On t_livre.CodeSousDomaine=t_sous_domaine.CodeSousDomaine
-         WHERE CodeLivre = $id";
+         ON t_memoire.CodeCompte=t_compte.CodeCompte
+         WHERE CodeMemoire = $id";
 $req1 = $app->fetch($sql);
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Livre
+            <?php echo $req1['Categorie'] ?>
         </h1>
         <ol class="breadcrumb">
             <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Acceuil</a></li>
-            <li class="active">Livre</li>
+            <li class="active"><?php echo $req1['Categorie'] ?></li>
         </ol>
     </section>
 
@@ -56,11 +54,10 @@ $req1 = $app->fetch($sql);
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive" src="thumbmnail/<?php echo $req1['img']; ?>"
+                        <img class="profile-user-img img-responsive img-circle" src="img/logo_livre.png"
                              alt="User profile picture">
 
-                        <a class="btn img btn-primary btn-sm" data-id="<?php echo $req1['CodeLivre'] ?>"><i class="fa fa-image"></i></a>
-                        <a class="btn file btn-primary btn-sm" style="float: right;" data-id="<?php echo $req1['CodeLivre'] ?>"><i class="fa fa-file"></i></a>
+                        <a class="btn img btn-primary btn-sm" data-id="<?php echo $req1['CodeMemoire'] ?>"><i class="fa fa-file"></i></a>
 
 
 
@@ -72,28 +69,7 @@ $req1 = $app->fetch($sql);
                                 <b>Mention J'aime</b> : <a class="pull-right"><?php echo $req1['Liked']; ?> </a>
                             </li>
                             <li class="list-group-item">
-                                <b>Nom editeur</b> : <a class="pull-right"><?php echo $req1['NomEditeur']; ?> </a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Lieu edition</b> : <a class="pull-right"><?php echo $req1['LieuEdition']; ?> </a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>ISBN</b> : <a class="pull-right"><?php echo $req1['ISBN']; ?> </a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Langue</b> : <a class="pull-right"><?php echo $req1['Langue']; ?> </a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Domaine</b> : <a class="pull-right"><?php echo $req1['Domaine']; ?> </a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Sous-domaine</b> : <a class="pull-right"><?php echo $req1['Sous_domaine']; ?> </a>
-                            </li>
-                            <li class="list-group-item">
                                 <b>Ajout</b> : <a class="pull-right"> le <?php echo $app->dateconv($req1['Created_on']); ?> </a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Nombre de page</b> : <a class="pull-right"><?php echo $req1['NombrePage']; ?> pages</a>
                             </li>
                         </ul>
 
@@ -131,7 +107,7 @@ $req1 = $app->fetch($sql);
                                 <i class="fa fa-book bg-blue"></i>
 
                                 <div class="timeline-item">
-                                   <h3 class="timeline-header"><a href="#">Titre de l'ouvrage</a></h3>
+                                    <h3 class="timeline-header"><a href="#">Titre de l'ouvrage</a></h3>
 
                                     <div class="timeline-body">
                                         <?php echo $req1['Titre']; ?>
