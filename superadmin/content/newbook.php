@@ -94,10 +94,11 @@
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Description </label>
-                                            <textarea class="form-control" name="description"></textarea>
+                                            <label>ISBN</label>
+                                            <input type="text" class="form-control" name="isbn">
                                         </div>
 
                                     </div>
@@ -121,17 +122,6 @@
 
                                     </div>
 
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>ISBN</label>
-                                            <input type="text" class="form-control" name="isbn">
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Langue </label>
@@ -151,6 +141,11 @@
 
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+
+
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Fichier <span style="color: red;">(PDF, max: 10 MB)  *</span></label>
@@ -158,13 +153,24 @@
                                         </div>
 
                                     </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Photo de couverture <span style="color: red;">(max: 1 MB), Veillez sur la qualité de l'image  *</span></label>
+                                            <input type="file" class="form-control" name="image" required>
+                                        </div>
+
+                                    </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Photo de couverture <span style="color: red;">(max: 1 MB), La qualité de votre image peut influencer les lecteurs  *</span></label>
-                                            <input type="file" class="form-control" name="image" required>
+                                            <label>Description </label>
+                                            <!--                                            <textarea class="form-control" name="description"></textarea>-->
+                                            <textarea class="textarea" name="description" style="width: 100%; height: 130px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                         </div>
 
                                     </div>
