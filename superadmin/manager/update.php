@@ -182,12 +182,12 @@ if ($event == 'UPDATE_PHOTO') {
         if ($_FILES["fichier"]["size"] > 10485760) {
             $_SESSION['error'] = 'L\'image depasse 10 MB';
         } else {
-            if ($fileType != "png" AND $fileType != "jpg" AND $fileType != "jpg" AND $fileType != "jpg") {
+            if ($fileType != "png" AND $fileType != "jpg" AND $fileType != "svg" AND $fileType != "jpeg" AND $fileType != "PNG" AND $fileType != "JPG" AND $fileType != "SVG" AND $fileType != "JPEG") {
                 $_SESSION['error'] = 'Image recuse';
             } else {
                 if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
                     $data = [$newfilename, $_POST['id']];
-                    $sql = "UPDATE t_livre SET Fichier_livre=? WHERE CodeLivre=?";
+                    $sql = "UPDATE t_livre SET Image=? WHERE CodeLivre=?";
                     if ($app->prepare($sql, $data, 1)) {
                         $_SESSION['success'] = 'Photo modifiée';
                     } else {
