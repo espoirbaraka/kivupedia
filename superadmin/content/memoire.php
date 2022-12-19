@@ -76,7 +76,7 @@
 
 
                                     <td>
-                                        <a href="detail_memoire?memoire=<?php echo $row['CodeMemoire'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
+                                        <a href="detail_memoire?article=<?php echo $row['CodeMemoire'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
                                         <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeMemoire'] ?>"><i class='fa fa-edit'></i> </button>
                                     </td>
                                 </tr>

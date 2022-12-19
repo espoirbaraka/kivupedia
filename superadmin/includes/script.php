@@ -113,6 +113,13 @@
             getRow(id);
         });
 
+        $(document).on('click', '.file', function(e){
+            e.preventDefault();
+            $('#file').modal('show');
+            var id = $(this).data('id');
+            getRow(id);
+        });
+
 
 
 
