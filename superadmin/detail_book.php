@@ -12,6 +12,10 @@ include("content/detail_book.php");
 include("includes/footer.php");
 
 include("includes/script.php");
+
+include("getrow/books.php");
+
+include("modal/books.php");
 ?>
 
 

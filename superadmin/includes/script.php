@@ -91,12 +91,6 @@
             getRow(id);
         });
 
-        $(document).on('click', '.acheter', function(e){
-            e.preventDefault();
-            $('#acheter').modal('show');
-            var id = $(this).data('id');
-            getRow(id);
-        });
 
         $(document).on('click', '.valider', function(e){
             e.preventDefault();
@@ -112,6 +106,12 @@
         });
 
 
+        $(document).on('click', '.img', function(e){
+            e.preventDefault();
+            $('#img').modal('show');
+            var id = $(this).data('id');
+            getRow(id);
+        });
 
 
 
