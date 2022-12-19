@@ -1,28 +1,28 @@
 <?php
-$id = $_GET['article'];
-$sql = "SELECT *,t_memoire.Created_on as creat FROM t_memoire
-         LEFT JOIN t_categorie_memoire
-         ON t_memoire.CodeCategorie=t_categorie_memoire.CodeCategorie
-         LEFT JOIN t_faculte
-         ON t_memoire.CodeFaculte=t_faculte.CodeFaculte       
+$id = $_GET['item'];
+$sql = "SELECT *,t_item.Created_on as creat FROM t_item   
          LEFT JOIN t_superadmin
-         ON t_memoire.CodeAdmin=t_superadmin.CodeSuper
+         ON t_item.CodeAdmin=t_superadmin.CodeSuper
          LEFT JOIN t_compte
-         ON t_memoire.CodeCompte=t_compte.CodeCompte
-         LEFT JOIN t_annee_academique
-        ON t_memoire.CodeAnnee=t_annee_academique.CodeAnnee
-         WHERE CodeMemoire = $id";
+         ON t_item.CodeCompte=t_compte.CodeCompte    
+        LEFT JOIN t_session_exetat
+        ON t_item.CodeSession=t_session_exetat.CodeSession
+        LEFT JOIN t_option
+        ON t_item.CodeOption=t_option.CodeOption
+        LEFT JOIN t_annee_academique
+        ON t_item.CodeAnnee=t_annee_academique.CodeAnnee                         
+         WHERE CodeItem = $id";
 $req1 = $app->fetch($sql);
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <?php echo $req1['Categorie'] ?>
+            ITEM
         </h1>
         <ol class="breadcrumb">
             <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Acceuil</a></li>
-            <li class="active"><?php echo $req1['Categorie'] ?></li>
+            <li class="active">ITEM</li>
         </ol>
     </section>
 
@@ -59,7 +59,7 @@ $req1 = $app->fetch($sql);
                         <img class="profile-user-img img-responsive img-circle" src="img/logo_livre.png"
                              alt="User profile picture">
 
-                        <a class="btn file btn-primary btn-sm" data-id="<?php echo $req1['CodeMemoire'] ?>"><i class="fa fa-file"></i></a>
+                        <a class="btn file btn-primary btn-sm" data-id="<?php echo $req1['CodeCours'] ?>"><i class="fa fa-file"></i></a>
 
 
 
@@ -106,14 +106,17 @@ $req1 = $app->fetch($sql);
                             <!-- /.timeline-label -->
                             <!-- timeline item -->
                             <li>
-                                <i class="fa fa-book bg-blue"></i>
+                                <i class="fa fa-book bg-aqua"></i>
 
                                 <div class="timeline-item">
-                                    <h3 class="timeline-header"><a href="#">Sujet</a></h3>
 
-                                    <div class="timeline-body">
-                                        <?php echo $req1['Sujet']; ?>
-                                    </div>
+                                    <h3 class="timeline-header no-border"><a href="#">Session de l'exetat : </a> <?php
+                                        if($req1['Session'] != ''){
+                                            echo $req1['Session'];
+                                        }else{
+                                            echo "<span style='color: red;'>Session inconnue</span>";
+                                        }
+                                        ?></h3>
                                 </div>
                             </li>
 
@@ -122,59 +125,30 @@ $req1 = $app->fetch($sql);
 
                                 <div class="timeline-item">
 
-                                    <h3 class="timeline-header no-border"><a href="#">Annee academique : </a> <?php echo $req1['Annee']; ?></h3>
-                                </div>
-                            </li>
-
-
-                            <!-- END timeline item -->
-                            <!-- timeline item -->
-                            <li>
-                                <i class="fa fa-user bg-aqua"></i>
-
-                                <div class="timeline-item">
-
-                                    <h3 class="timeline-header no-border"><a href="#">Auteur : </a> <?php
-                                        if($req1['Auteur'] != ''){
-                                            echo $req1['Auteur'];
+                                    <h3 class="timeline-header no-border"><a href="#">Annee : </a> <?php
+                                        if($req1['Annee'] != ''){
+                                            echo $req1['Annee'];
                                         }else{
-                                            echo "<span style='color: red;'>Auteur inconnu</span>";
-                                        }
-                                        ?></h3>
-                                </div>
-                            </li>
-
-
-                            <li>
-                                <i class="fa fa-home bg-aqua"></i>
-
-                                <div class="timeline-item">
-
-                                    <h3 class="timeline-header no-border"><a href="#">Institution : </a> <?php
-                                        if($req1['Institution'] != ''){
-                                            echo $req1['Institution'];
-                                        }else{
-                                            echo "<span style='color: red;'>Institution inconnue</span>";
+                                            echo "<span style='color: red;'>Annee inconnue</span>";
                                         }
                                         ?></h3>
                                 </div>
                             </li>
 
                             <li>
-                                <i class="fa fa-pencil bg-aqua"></i>
+                                <i class="fa fa-book bg-aqua"></i>
 
                                 <div class="timeline-item">
 
-                                    <h3 class="timeline-header no-border"><a href="#">Faculte : </a> <?php
-                                        if($req1['Faculte'] != ''){
-                                            echo $req1['Faculte'];
+                                    <h3 class="timeline-header no-border"><a href="#">Option : </a> <?php
+                                        if($req1['Designation'] != ''){
+                                            echo $req1['Designation'];
                                         }else{
-                                            echo "<span style='color: red;'>Faculte inconnue</span>";
+                                            echo "<span style='color: red;'>Option inconnue</span>";
                                         }
                                         ?></h3>
                                 </div>
                             </li>
-
 
 
                             <li>
