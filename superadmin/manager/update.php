@@ -166,3 +166,36 @@ if($event=='UPDATE_ANNEE'){
     }
     header("Location: ../annee");
 }
+
+if ($event == 'UPDATE_PHOTO') {
+    $livre = $_POST['id'];
+    $admin = $_SESSION['super'];
+    $file_dir = "../thumbmnail/";
+    $file = explode(".", $_FILES["fichier"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($file);
+    $target_file = $file_dir . basename($newfilename);
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    if (file_exists($target_file)) {
+        $_SESSION['error'] = 'Un fichier avec le meme nom existe. Veuillez renomer votre fichier';
+    }else {
+        if ($_FILES["fichier"]["size"] > 10485760) {
+            $_SESSION['error'] = 'L\'image depasse 10 MB';
+        } else {
+            if ($fileType != "png" AND $fileType != "jpg" AND $fileType != "jpg" AND $fileType != "jpg") {
+                $_SESSION['error'] = 'Image recuse';
+            } else {
+                if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
+                    $data = [$newfilename, $_POST['id']];
+                    $sql = "UPDATE t_livre SET Fichier_livre=? WHERE CodeLivre=?";
+                    if ($app->prepare($sql, $data, 1)) {
+                        $_SESSION['success'] = 'Photo modifiée';
+                    } else {
+                        $_SESSION['error'] = 'Problème de modification';
+                    }
+                }
+            }
+        }
+    }
+    header("Location: ../detail_book?livre=$livre");
+}
