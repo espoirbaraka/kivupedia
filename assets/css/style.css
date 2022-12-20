@@ -69,6 +69,9 @@ body {
     overflow-x: hidden;
 	background: #333;
 }
+.navv:hover{
+    border: 2px solid #F3F3F3;
+}
 .error,
 .error p {
 	color: red;
