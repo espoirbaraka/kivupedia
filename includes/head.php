@@ -6,7 +6,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta name="description" content="Congopedia, la bibliothèque numerique">
     <meta name="keywords" content="Congopedia"><title>Congopedia::La bibliothèque mumerique</title>
-    <link rel="icon" type="image/png" href="assets/uploads/favicon.png">
+    <link rel="icon" type="image/png" href="image/cp.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="assets/css/superfish.css">
