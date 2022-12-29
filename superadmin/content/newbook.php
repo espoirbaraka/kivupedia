@@ -86,8 +86,8 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <label>Auteur principal</label>
-                                            <input type="text" class="form-control" name="auteur">
+                                            <label>Auteur principal <span style="color: red;">*</span></label>
+                                            <input type="text" class="form-control" name="auteur" required>
                                         </div>
 
                                     </div>
