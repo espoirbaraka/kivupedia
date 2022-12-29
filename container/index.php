@@ -1,3 +1,30 @@
+<?php
+if(isset($_GET['page']) && !empty($_GET['page'])){
+    $currentPage = (int) strip_tags($_GET['page']);
+}else{
+    $currentPage = 1;
+}
+
+$sql1= "SELECT COUNT(*) AS nbre FROM t_livre WHERE Statut=1";
+$nbre=$app->fetch($sql1);
+$nbArticles = $nbre['nbre'];
+$parPage = 10;
+
+$pages = ceil($nbArticles / $parPage);
+
+$premier = ($currentPage * $parPage) - $parPage;
+
+
+$sql = "SELECT * FROM t_livre LEFT JOIN t_domaine
+                                    ON t_livre.CodeDomaine=t_domaine.CodeDomaine
+                                    LEFT JOIN t_sous_domaine
+                                    ON t_livre.CodeSousDomaine=t_sous_domaine.CodeSousDomaine
+                                    LEFT JOIN t_langue
+                                    ON t_livre.CodeLangue=t_langue.CodeLangue
+                                    WHERE Statut=1
+                                    ORDER BY Readed DESC LIMIT $premier,$parPage";
+$req = $app->fetchPrepared($sql);
+?>
 <div class="home-search">
     <div class="container">
         <div class="row">
@@ -28,22 +55,24 @@
     <div class="container">
         <div class="row">
             <?php
-            $sql = "SELECT * FROM t_livre LEFT JOIN t_domaine
-                                    ON t_livre.CodeDomaine=t_domaine.CodeDomaine
-                                    LEFT JOIN t_langue
-                                    ON t_livre.CodeLangue=t_langue.CodeLangue";
-            $req = $app->fetchPrepared($sql);
             foreach ($req as $row){
                 ?>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 prop-4-col">
                     <div class="single-room">
-                        <div class="photo-col3" style="background-image:url(superadmin/thumbmnail/<?php echo $row['Image']; ?>);"></div>
+                        <div class="photo-col3" style="background-image:url(superadmin/thumbmnail/<?php echo $row['Image']; ?>); margin: 5px 5px 5px 0px;"></div>
                         <div class="single-room-text">
-                            <h2><a href="../book/collaboration-and-co-teaching-strategies-for-english-learners.html"><?php echo $row['Titre']; ?></a></h2>
-                            <p>Author: <?php echo $row['AuteurPrincipal']; ?></p>
-                            <p class="detail"><a href="../book/collaboration-and-co-teaching-strategies-for-english-learners.html">Voir plus</a></p>
-                            <p class="detail"><a href="https://goo.gl/nXC3ie" target="_blank">Buy Now</a></p>
+                            <h2 style="font-weight: bold;"><a href=""><?php echo $row['Titre']; ?></a></h2>
+                            <p>Auteur: <span style="font-weight: bold;"><?php echo $row['AuteurPrincipal']; ?></span></p>
+                            <p>Domaine: <span style="font-weight: bold; color: red;">
+                                    <?php
+                                    echo $row['Domaine'];
+                                    if(isset($row['Sous_domaine'])){
+                                        echo " (".$row['Sous_domaine'].")";
+                                    }
+                                    ?>
+                                </span> </p>
+                            <p class="detail"><a href="../book/collaboration-and-co-teaching-strategies-for-english-learners.html">Lire</a></p>
                         </div>
                     </div>
                 </div>
