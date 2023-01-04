@@ -67,10 +67,21 @@ if ($event == 'CREATE_LIVRE') {
                if((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file)) AND (move_uploaded_file($_FILES["image"]["tmp_name"], $target_image))){
                    $pdf = file_get_contents("../fichier/".$target_file);
                    $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
-
                    $user = $_SESSION['super'];
-                   $data = [$_POST['titre'],$_POST['domaine'],$_POST['s_domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$newimagename,$number,1];
-                   $sql = "INSERT INTO t_livre(Titre,CodeDomaine,CodeSousDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,Image,NombrePage,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                   $book_slug = $app->slugify($_POST['titre']);
+                   $verify_slug = "SELECT * FROM t_livre WHERE book_slug='$book_slug'";
+                   $result_verif = $app->fetch($verify_slug);
+
+
+//                   if(rowCount($result_verif) > 0){
+//                       $slug = $book_slug;
+//                   }else{
+//                       $slug = $book_slug.'_0';
+//                   }
+
+                   $data = [$_POST['titre'],$slug,$_POST['domaine'],$_POST['s_domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$newimagename,$number,1];
+                   $sql = "INSERT INTO t_livre(Titre,book_slug,CodeDomaine,CodeSousDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,Image,NombrePage,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                    if ($app->prepare($sql, $data, 1)) {
                        $_SESSION['success'] = 'Livre posté';
                    }else{

@@ -14,15 +14,14 @@
         <div class="row">
             <div class="col-md-12 address">
                 <p>
-                    Address: ABC Steet, NewYork.<br>
-                    Email: info@congopedia.net<br>
-                    Phone: 123-456-7878<br>
-                    Fax: 123-456-7890<br>
+                    Email: <a href="mailto:info@congopedia.com"
+                              class="__cf_email__">info@congopedia.com</a><br>
+                    Téléphone: <a href="tel:+243 977 553 723">+243 977 553 723</a>
                 </p>
             </div>
             <div class="col-md-12 copyright">
                 <p>
-                    Copyright © 2020. All Rights Reserved. </p>
+                    Copyright © 2022. Tout droit reservé </p>
             </div>
         </div>
     </div>

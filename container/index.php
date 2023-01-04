@@ -1,14 +1,14 @@
 <?php
-if(isset($_GET['page']) && !empty($_GET['page'])){
-    $currentPage = (int) strip_tags($_GET['page']);
-}else{
+if (isset($_GET['page']) && !empty($_GET['page'])) {
+    $currentPage = (int)strip_tags($_GET['page']);
+} else {
     $currentPage = 1;
 }
 
-$sql1= "SELECT COUNT(*) AS nbre FROM t_livre WHERE Statut=1";
-$nbre=$app->fetch($sql1);
+$sql1 = "SELECT COUNT(*) AS nbre FROM t_livre WHERE Statut=1";
+$nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
-$parPage = 10;
+$parPage = 20;
 
 $pages = ceil($nbArticles / $parPage);
 
@@ -31,18 +31,28 @@ $req = $app->fetchPrepared($sql);
             <div class="col-md-6 left">
 
                 <div class="seach">
-                    <form action="" method="post">
-                        <input type="text" autocomplete="off" name="search_string" class="form-control"
+                    <form action="search.php?word=" method="get">
+                        <input type="text" autocomplete="off" name="word" class="form-control"
                                placeholder="Recherchez un ouvrage">
                     </form>
                 </div>
 
             </div>
             <div class="col-md-6 right">
-                <form action="#" method="post">
-                    <select name="category_slug" class="form-control" onchange="this.form.submit()">
+                <form action="book_domaine?domaine=" method="get">
+                    <select name="domaine" class="form-control" onchange="this.form.submit()">
                         <option value="">Recherchez par domaine</option>
-                        <option value="health-and-fitness">Health and Fitness</option>
+                        <?php
+                        $sql4 = "SELECT * FROM t_domaine";
+                        $req1 = $app->fetchPrepared($sql4);
+                        foreach ($req1 as $row){
+                            $dom = $row['Domaine'];
+                            ?>
+                            <option value="<?php echo $app->slugify($dom)  ?>"><?php echo $row['Domaine'] ?></option>
+                            <?php
+                        }
+                        ?>
+
                     </select>
                 </form>
 
@@ -55,36 +65,51 @@ $req = $app->fetchPrepared($sql);
     <div class="container">
         <div class="row">
             <?php
-            foreach ($req as $row){
+            foreach ($req as $row) {
                 ?>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 prop-4-col">
                     <div class="single-room">
-                        <div class="photo-col3" style="background-image:url(superadmin/thumbmnail/<?php echo $row['Image']; ?>); margin: 5px 5px 5px 0px;"></div>
+                        <div class="photo-col3"
+                             style="background-image:url(superadmin/thumbmnail/<?php echo $row['Image']; ?>); margin: 5px 5px 5px 0px;"></div>
                         <div class="single-room-text">
                             <h2 style="font-weight: bold;"><a href=""><?php echo $row['Titre']; ?></a></h2>
-                            <p>Auteur: <span style="font-weight: bold;"><?php echo $row['AuteurPrincipal']; ?></span></p>
+                            <p>Auteur: <span style="font-weight: bold;"><?php echo $row['AuteurPrincipal']; ?></span>
+                            </p>
                             <p>Domaine: <span style="font-weight: bold; color: red;">
                                     <?php
                                     echo $row['Domaine'];
-                                    if(isset($row['Sous_domaine'])){
-                                        echo " (".$row['Sous_domaine'].")";
+                                    if (isset($row['Sous_domaine'])) {
+                                        echo " (" . $row['Sous_domaine'] . ")";
                                     }
                                     ?>
-                                </span> </p>
-                            <p class="detail"><a href="../book/collaboration-and-co-teaching-strategies-for-english-learners.html">Lire</a></p>
+                                </span></p>
+                            <p class="detail"><a
+                                        href="detail_book?id=<?php echo $row['CodeLivre'] ?>">Lire</a>
+                            </p>
+                            <p class="detail"><a
+                                        href="detail_book?book=<?php echo $app->slugify($row['Titre']) ?>">Voir les details</a>
+                            </p>
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
             }
             ?>
 
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="pagination"><span class="disabled">&#171; previous</span><span class="current">1</span><a
-                        href="index/2.html">2</a><a href="index/2.html">next &#187;</a></div>
+                <div class="pagination">
+                    <a href="index?page=<?= $currentPage - 1 ?>"><span class="<?= ($currentPage == 1) ? "disabled" : "" ?>">&#171; précédent</span></a>
+
+                    <?php for($page = 1; $page <= $pages; $page++): ?>
+                        <a href="index?page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a>
+                    <?php endfor ?>
+
+                    <a href="index?page=<?= $currentPage + 1 ?>"><span class="<?= ($currentPage == $pages) ? "disabled" : "" ?>">suivant &#187;</span></a>
+
+                </div>
             </div>
         </div>
     </div>

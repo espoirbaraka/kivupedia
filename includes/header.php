@@ -14,7 +14,7 @@
 
                     <nav>
                         <ul class="sf-menu" id="menu">
-                            <li><a href="index" class="navv">Acceuil</a></li>
+                            <li><a href="index.php" class="navv">Acceuil</a></li>
                             <li><a href="books" class="navv">Ouvrages</a></li>
                             <li><a href="article" class="navv">TFC/Memoire</a></li>
                             <li><a href="courses" class="navv">Cours</a></li>
