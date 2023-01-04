@@ -31,18 +31,28 @@ $req = $app->fetchPrepared($sql);
             <div class="col-md-6 left">
 
                 <div class="seach">
-                    <form action="" method="post">
-                        <input type="text" autocomplete="off" name="search_string" class="form-control"
+                    <form action="search.php?word=" method="get">
+                        <input type="text" autocomplete="off" name="word" class="form-control"
                                placeholder="Recherchez un ouvrage">
                     </form>
                 </div>
 
             </div>
             <div class="col-md-6 right">
-                <form action="#" method="post">
-                    <select name="category_slug" class="form-control" onchange="this.form.submit()">
+                <form action="book_domaine?domaine=" method="get">
+                    <select name="domaine" class="form-control" onchange="this.form.submit()">
                         <option value="">Recherchez par domaine</option>
-                        <option value="health-and-fitness">Health and Fitness</option>
+                        <?php
+                        $sql4 = "SELECT * FROM t_domaine";
+                        $req1 = $app->fetchPrepared($sql4);
+                        foreach ($req1 as $row){
+                            $dom = $row['Domaine'];
+                            ?>
+                            <option value="<?php echo $app->slugify($dom)  ?>"><?php echo $row['Domaine'] ?></option>
+                            <?php
+                        }
+                        ?>
+
                     </select>
                 </form>
 
@@ -75,7 +85,10 @@ $req = $app->fetchPrepared($sql);
                                     ?>
                                 </span></p>
                             <p class="detail"><a
-                                        href="../book/collaboration-and-co-teaching-strategies-for-english-learners.html">Lire</a>
+                                        href="detail_book?id=<?php echo $row['CodeLivre'] ?>">Lire</a>
+                            </p>
+                            <p class="detail"><a
+                                        href="detail_book?book=<?php echo $app->slugify($row['Titre']) ?>">Voir les details</a>
                             </p>
                         </div>
                     </div>
