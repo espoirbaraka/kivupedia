@@ -70,18 +70,11 @@ if ($event == 'CREATE_LIVRE') {
                    $user = $_SESSION['super'];
 
                    $book_slug = $app->slugify($_POST['titre']);
-                   $verify_slug = "SELECT * FROM t_livre WHERE book_slug='$book_slug'";
-                   $result_verif = $app->fetch($verify_slug);
+                   $today_slug = $app->slugify(date('Y:m:d H:i:s'));
+                   $slug = $book_slug.'-'.$today_slug;
 
-
-//                   if(rowCount($result_verif) > 0){
-//                       $slug = $book_slug;
-//                   }else{
-//                       $slug = $book_slug.'_0';
-//                   }
-
-                   $data = [$_POST['titre'],$slug,$_POST['domaine'],$_POST['s_domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$newimagename,$number,1];
-                   $sql = "INSERT INTO t_livre(Titre,book_slug,CodeDomaine,CodeSousDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,Image,NombrePage,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                   $data = [$_POST['titre'],$slug,$_POST['domaine'],$_POST['description'],$_POST['editeur'],$_POST['edition'],$_POST['langue'],1,$user,1,$newfilename,$newimagename,$number,1];
+                   $sql = "INSERT INTO t_livre(Titre,book_slug,CodeDomaine,Description,NomEditeur,LieuEdition,CodeLangue,Validate,CodeAdmin,CodePropriete,Fichier_livre,Image,NombrePage,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                    if ($app->prepare($sql, $data, 1)) {
                        $_SESSION['success'] = 'Livre posté';
                    }else{
