@@ -5,7 +5,7 @@ include("includes/head.php");
 
 include("includes/header.php");
 
-include("container/index.php");
+include("container/home.php");
 
 include("includes/footer.php");
 ?>
