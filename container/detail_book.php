@@ -15,6 +15,13 @@ $req = $app->fetch($sql);
 
 <div class="single-channel">
     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index"><i class="fa fa-home"></i> Acceuil</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="index"><i class="fa fa-arrow-left"></i> <a href="<?php echo $_SERVER["HTTP_REFERER"]; ?>">Retour</a></a></li>
+            </ol>
+        </nav>
+
         <div class="row">
             <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="row">
@@ -91,14 +98,14 @@ $req = $app->fetch($sql);
 
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Lien de lecture</div>
-                                        <div class="book-table-cell"><a href="read?book=<?php echo $req['book_slug'] ?>"
+                                        <div class="book-table-cell"><a href="read_book?book=<?php echo $req['book_slug'] ?>"
                                                                         target="_blank">https://congopedia.net/read?book=<?php echo $req['book_slug'] ?></a>
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="gap-small"></div>
-                                <a class="btn btn-primary" href="detail_book?id=<?php echo $row['CodeLivre'] ?>"><i class="fa fa-book"></i> Lire</a>
+                                <a class="btn btn-primary" href="read_book?book=<?php echo $req['book_slug'] ?>"><i class="fa fa-book"></i> Lire</a>
 
 
                                 <div class="gap-small"></div>
