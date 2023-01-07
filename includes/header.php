@@ -15,7 +15,6 @@
                     <nav>
                         <ul class="sf-menu" id="menu">
                             <li><a href="home" class="navv">Acceuil</a></li>
-                            <li><a href="books" class="navv">Ouvrages</a></li>
                             <li><a href="article" class="navv">TFC/Memoire</a></li>
                             <li><a href="courses" class="navv">Cours</a></li>
                             <li><a href="item" class="navv">ITEM</a></li>
