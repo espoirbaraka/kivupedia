@@ -16,7 +16,7 @@ if (!Date.now) {
   var readyList = [];
   var readyFired = false;
   var readyEventHandlersInstalled = false;
-  
+
   // call this when the document is ready
   // this function protects itself against being called more than once
   function ready() {
@@ -39,13 +39,13 @@ if (!Date.now) {
       readyList = [];
     }
   }
-  
+
   function readyStateChange() {
     if ( document.readyState === "complete" ) {
       ready();
     }
   }
-  
+
   // This is the one public interface
   // docReady(fn, context);
   // the context argument is optional - if present, it will be passed
@@ -117,10 +117,10 @@ if (!document.querySelectorAll) {
 // Document.querySelector method
 // Needed for: IE7-
 if (!document.querySelector) {
-	document.querySelector = function(selectors) {
-		var elements = document.querySelectorAll(selectors);
-		return (elements.length) ? elements[0] : null;
-	};
+  document.querySelector = function(selectors) {
+    var elements = document.querySelectorAll(selectors);
+    return (elements.length) ? elements[0] : null;
+  };
 }
 
 if (!Array.isArray) {
@@ -147,7 +147,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
 
 (function() {
   var st,
-    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+      indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   if (window.__sharethis__ == null) {
     window.__sharethis__ = {
@@ -1529,22 +1529,22 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
     constructor(r, g, b) {
       this.set(r, g, b);
     }
-    
+
     toString() {
       return `rgb(${Math.round(this.r)}, ${Math.round(this.g)}, ${Math.round(this.b)})`;
     }
-  
+
     set(r, g, b) {
       this.r = this.clamp(r);
       this.g = this.clamp(g);
       this.b = this.clamp(b);
     }
-  
+
     hueRotate(angle = 0) {
       angle = angle / 180 * Math.PI;
       const sin = Math.sin(angle);
       const cos = Math.cos(angle);
-  
+
       this.multiply([
         0.213 + cos * 0.787 - sin * 0.213,
         0.715 - cos * 0.715 - sin * 0.715,
@@ -1557,7 +1557,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         0.072 + cos * 0.928 + sin * 0.072,
       ]);
     }
-  
+
     grayscale(value = 1) {
       this.multiply([
         0.2126 + 0.7874 * (1 - value),
@@ -1571,7 +1571,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         0.0722 + 0.9278 * (1 - value),
       ]);
     }
-  
+
     sepia(value = 1) {
       this.multiply([
         0.393 + 0.607 * (1 - value),
@@ -1585,7 +1585,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         0.131 + 0.869 * (1 - value),
       ]);
     }
-  
+
     saturate(value = 1) {
       this.multiply([
         0.213 + 0.787 * value,
@@ -1599,7 +1599,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         0.072 + 0.928 * value,
       ]);
     }
-  
+
     multiply(matrix) {
       const newR = this.clamp(this.r * matrix[0] + this.g * matrix[1] + this.b * matrix[2]);
       const newG = this.clamp(this.r * matrix[3] + this.g * matrix[4] + this.b * matrix[5]);
@@ -1608,26 +1608,26 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
       this.g = newG;
       this.b = newB;
     }
-  
+
     brightness(value = 1) {
       this.linear(value);
     }
     contrast(value = 1) {
       this.linear(value, -(0.5 * value) + 0.5);
     }
-  
+
     linear(slope = 1, intercept = 0) {
       this.r = this.clamp(this.r * slope + intercept * 255);
       this.g = this.clamp(this.g * slope + intercept * 255);
       this.b = this.clamp(this.b * slope + intercept * 255);
     }
-  
+
     invert(value = 1) {
       this.r = this.clamp((value + this.r / 255 * (1 - 2 * value)) * 255);
       this.g = this.clamp((value + this.g / 255 * (1 - 2 * value)) * 255);
       this.b = this.clamp((value + this.b / 255 * (1 - 2 * value)) * 255);
     }
-  
+
     hsl() {
       // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
       const r = this.r / 255;
@@ -1636,7 +1636,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
       const max = Math.max(r, g, b);
       const min = Math.min(r, g, b);
       let h, s, l = (max + min) / 2;
-  
+
       if (max === min) {
         h = s = 0;
       } else {
@@ -1646,25 +1646,25 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
           case r:
             h = (g - b) / d + (g < b ? 6 : 0);
             break;
-  
+
           case g:
             h = (b - r) / d + 2;
             break;
-  
+
           case b:
             h = (r - g) / d + 4;
             break;
         }
         h /= 6;
       }
-  
+
       return {
         h: h * 100,
         s: s * 100,
         l: l * 100,
       };
     }
-  
+
     clamp(value) {
       if (value > 255) {
         value = 255;
@@ -1674,14 +1674,14 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
       return value;
     }
   }
-  
+
   st.Solver = class Solver {
     constructor(target, baseColor) {
       this.target = target;
       this.targetHSL = target.hsl();
       this.reusedColor = new st.CustomColor(0, 0, 0);
     }
-  
+
     solve() {
       const result = this.solveNarrow(this.solveWide());
       return {
@@ -1690,12 +1690,12 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         filter: this.css(result.values),
       };
     }
-  
+
     solveWide() {
       const A = 5;
       const c = 15;
       const a = [60, 180, 18000, 600, 1.2, 1.2];
-  
+
       let best = { loss: Infinity };
       for (let i = 0; best.loss > 25 && i < 3; i++) {
         const initial = [50, 20, 3750, 50, 100, 100];
@@ -1706,7 +1706,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
       }
       return best;
     }
-  
+
     solveNarrow(wide) {
       const A = wide.loss;
       const c = 2;
@@ -1714,17 +1714,17 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
       const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1];
       return this.spsa(A, a, c, wide.values, 500);
     }
-  
+
     spsa(A, a, c, values, iters) {
       const alpha = 1;
       const gamma = 0.16666666666666666;
-  
+
       let best = null;
       let bestLoss = Infinity;
       const deltas = new Array(6);
       const highArgs = new Array(6);
       const lowArgs = new Array(6);
-  
+
       for (let k = 0; k < iters; k++) {
         const ck = c / Math.pow(k + 1, gamma);
         for (let i = 0; i < 6; i++) {
@@ -1732,14 +1732,14 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
           highArgs[i] = values[i] + ck * deltas[i];
           lowArgs[i] = values[i] - ck * deltas[i];
         }
-  
+
         const lossDiff = this.loss(highArgs) - this.loss(lowArgs);
         for (let i = 0; i < 6; i++) {
           const g = lossDiff / (2 * ck) * deltas[i];
           const ak = a[i] / Math.pow(A + k + 1, alpha);
           values[i] = fix(values[i] - ak * g, i);
         }
-  
+
         const loss = this.loss(values);
         if (loss < bestLoss) {
           best = values.slice(0);
@@ -1747,7 +1747,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         }
       }
       return { values: best, loss: bestLoss };
-  
+
       function fix(value, idx) {
         let max = 100;
         if (idx === 2 /* saturate */) {
@@ -1755,7 +1755,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         } else if (idx === 4 /* brightness */ || idx === 5 /* contrast */) {
           max = 200;
         }
-  
+
         if (idx === 3 /* hue-rotate */) {
           if (value > max) {
             value %= max;
@@ -1770,30 +1770,30 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
         return value;
       }
     }
-  
+
     loss(filters) {
       // Argument is array of percentages.
       const color = this.reusedColor;
       color.set(0, 0, 0);
-  
+
       color.invert(filters[0] / 100);
       color.sepia(filters[1] / 100);
       color.saturate(filters[2] / 100);
       color.hueRotate(filters[3] * 3.6);
       color.brightness(filters[4] / 100);
       color.contrast(filters[5] / 100);
-  
+
       const colorHSL = color.hsl();
       return (
-        Math.abs(color.r - this.target.r) +
-        Math.abs(color.g - this.target.g) +
-        Math.abs(color.b - this.target.b) +
-        Math.abs(colorHSL.h - this.targetHSL.h) +
-        Math.abs(colorHSL.s - this.targetHSL.s) +
-        Math.abs(colorHSL.l - this.targetHSL.l)
+          Math.abs(color.r - this.target.r) +
+          Math.abs(color.g - this.target.g) +
+          Math.abs(color.b - this.target.b) +
+          Math.abs(colorHSL.h - this.targetHSL.h) +
+          Math.abs(colorHSL.s - this.targetHSL.s) +
+          Math.abs(colorHSL.l - this.targetHSL.l)
       );
     }
-  
+
     css(filters) {
       function fmt(idx, multiplier = 1) {
         if (idx == 0) {
@@ -1804,7 +1804,7 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
       return `filter: invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`;
     }
   }
-  
+
 })();
 
 (function() {
@@ -2902,7 +2902,7 @@ st.embeds = st.getEmbeds();
 
 (function() {
   var i, len, ref, ref1, ref2, ref3, ref4, script, scripts, src, st,
-    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+      indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   st = window.__sharethis__;
 
@@ -2993,402 +2993,402 @@ var tpcCookiesEnableCheckingDone = false;
 var tpcCookiesEnabledStatus = true;
 
 if (typeof(__stdos__.data) == "undefined") {
-    __stdos__.data = {
-        bInit: false,
-        pageInfo: {},
-        resetPageData: function() {
-            __stdos__.data.pageInfo.hostname = "";
-            __stdos__.data.pageInfo.location = "";
-            __stdos__.data.pageInfo.product = "DOS2"
-            __stdos__.data.pageInfo.url = "";
-            __stdos__.data.pageInfo.source = ""
+  __stdos__.data = {
+    bInit: false,
+    pageInfo: {},
+    resetPageData: function() {
+      __stdos__.data.pageInfo.hostname = "";
+      __stdos__.data.pageInfo.location = "";
+      __stdos__.data.pageInfo.product = "DOS2"
+      __stdos__.data.pageInfo.url = "";
+      __stdos__.data.pageInfo.source = ""
 
-        },
-        init: function() {
-            if (!__stdos__.data.bInit) {
-                __stdos__.data.bInit = true;
-                __stdos__.data.resetPageData();
-                var b = document.location.href;
-                var a = "",
-                    c = "";
-                __stdos__.data.set("fcmp", typeof(window.__cmp) == 'function', "pageInfo");
-                __stdos__.data.set("fcmpv2", typeof(window.__tcfapi) == 'function', "pageInfo");
-                __stdos__.data.set("has_segmentio", typeof(window.analytics && window.analytics.identify) == 'function', "pageInfo");
-                __stdos__.data.set("url", b, "pageInfo");
-                __stdos__.data.set("title", document.title, "pageInfo");
-                a = (new Date()).getTime().toString();
-                c = Number(Math.random().toPrecision(5).toString().substr(2)).toString();
-                __stdos__.data.validateRefDomain();
-                __stdos__.data.set("hostname", document.location.hostname, "pageInfo");
-                __stdos__.data.set("location", document.location.pathname, "pageInfo")
-            }
-        },
-        validateRefDomain: function() {
-            var a = __stdos__.data.get("refDomain", "pageInfo");
-            if (!a) {
-                this.setRefDomain(window.document.referrer)
-            }
-        },
-        setRefDomain: function(a) {
-            if (a.length == 0) {
-                return
-            }
-            var b = a.replace("http://", "").replace("https://", "").split("/");
-            if (b.length > 0) {
-                a = (typeof(b[0]) != "undefined") ? b[0] : a;
-                var refQuery = (typeof(b[1]) != "undefined") ? b[1] : "";
-                __stdos__.data.set("refQuery", refQuery, "pageInfo");
-                __stdos__.data.set("refDomain", a, "pageInfo")
-            }
-        },
-        set: function(a, c, b) {
-            if (typeof(c) == "number" || typeof(c) == "boolean") {
-                __stdos__.data[b][a] = c
-            } else {
-                if (typeof(c) == "undefined" || c == null) {} else {
-                    __stdos__.data[b][a] = encodeURIComponent(decodeURIComponent(unescape(c.replace(/<[^<>]*>/gi, " ")).replace(/%/gi, "%25")));
-                    if (a == "url" || a == "location" || a == "image") {
-                        try {
-                            __stdos__.data[b][a] = encodeURIComponent(decodeURIComponent(decodeURI(c.replace(/<[^<>]*>/gi, " ")).replace(/%/gi, "%25")))
-                        } catch (d) {
-                            __stdos__.data[b][a] = encodeURIComponent(decodeURIComponent(unescape(c.replace(/<[^<>]*>/gi, " ")).replace(/%/gi, "%25")))
-                        }
-                    }
-                }
-            }
-        },
-        get: function(a, b) {
+    },
+    init: function() {
+      if (!__stdos__.data.bInit) {
+        __stdos__.data.bInit = true;
+        __stdos__.data.resetPageData();
+        var b = document.location.href;
+        var a = "",
+            c = "";
+        __stdos__.data.set("fcmp", typeof(window.__cmp) == 'function', "pageInfo");
+        __stdos__.data.set("fcmpv2", typeof(window.__tcfapi) == 'function', "pageInfo");
+        __stdos__.data.set("has_segmentio", typeof(window.analytics && window.analytics.identify) == 'function', "pageInfo");
+        __stdos__.data.set("url", b, "pageInfo");
+        __stdos__.data.set("title", document.title, "pageInfo");
+        a = (new Date()).getTime().toString();
+        c = Number(Math.random().toPrecision(5).toString().substr(2)).toString();
+        __stdos__.data.validateRefDomain();
+        __stdos__.data.set("hostname", document.location.hostname, "pageInfo");
+        __stdos__.data.set("location", document.location.pathname, "pageInfo")
+      }
+    },
+    validateRefDomain: function() {
+      var a = __stdos__.data.get("refDomain", "pageInfo");
+      if (!a) {
+        this.setRefDomain(window.document.referrer)
+      }
+    },
+    setRefDomain: function(a) {
+      if (a.length == 0) {
+        return
+      }
+      var b = a.replace("http://", "").replace("https://", "").split("/");
+      if (b.length > 0) {
+        a = (typeof(b[0]) != "undefined") ? b[0] : a;
+        var refQuery = (typeof(b[1]) != "undefined") ? b[1] : "";
+        __stdos__.data.set("refQuery", refQuery, "pageInfo");
+        __stdos__.data.set("refDomain", a, "pageInfo")
+      }
+    },
+    set: function(a, c, b) {
+      if (typeof(c) == "number" || typeof(c) == "boolean") {
+        __stdos__.data[b][a] = c
+      } else {
+        if (typeof(c) == "undefined" || c == null) {} else {
+          __stdos__.data[b][a] = encodeURIComponent(decodeURIComponent(unescape(c.replace(/<[^<>]*>/gi, " ")).replace(/%/gi, "%25")));
+          if (a == "url" || a == "location" || a == "image") {
             try {
-                if (__stdos__.data[b] && __stdos__.data[b][a]) {
-                    return decodeURIComponent(__stdos__.data[b][a])
-                } else {
-                    return false
-                }
-            } catch (c) {
-                return false
+              __stdos__.data[b][a] = encodeURIComponent(decodeURIComponent(decodeURI(c.replace(/<[^<>]*>/gi, " ")).replace(/%/gi, "%25")))
+            } catch (d) {
+              __stdos__.data[b][a] = encodeURIComponent(decodeURIComponent(unescape(c.replace(/<[^<>]*>/gi, " ")).replace(/%/gi, "%25")))
             }
-        },
-        unset: function(a, b) {
-            if (__stdos__.data[b] && typeof(__stdos__.data[b][a]) != "undefined") {
-                delete __stdos__.data[b][a]
-            }
-        },
-        bindEvent: function(element, eventName, eventHandler) {
-            if (element.addEventListener) {
-                element.addEventListener(eventName, eventHandler, false);
-            } else if (element.attachEvent) {
-                element.attachEvent('on' + eventName, eventHandler);
-            }
-        },
-        debug: function(endpoint, event) {
-          __stdos__.data.init();
-          var a = __stdos__.data.pageInfo;
-          var c = "";
-          var b;
-          for (b in a) {
-              c += b + "=" + a[b] + "&"
-          }
-          c = c.substring(0, c.length - 1);
-
-          var loggerUrl = "https://l.sharethis.com/";
-          loggerUrl += endpoint;
-          loggerUrl += "?event=" + event;
-          loggerUrl += "&" + c;
-
-          var e = new Image(1, 1);
-          e.src = loggerUrl;
-          e.onload = function() {
-              return
-          };
-        },
-        parseCookie: function(name, cookie) {
-            cookie = "; " + cookie
-            var parts = cookie.split("; "+name+"=");
-            if(parts.length === 2) {
-                return parts.pop().split(';').shift();
-            }else {
-                return null;
-            }
-        },
-        writeCookie: function(name, value, max_age)  {
-          if (!max_age) {
-            max_age = 33696000
-          }
-          var host = (window && window.location && window.location.hostname) || '';
-          var parts = host.split('.');
-          var domain = "";
-          if (parts.length > 1) {
-            domain = "domain=." + parts.slice(-2).join('.');
-          }
-          var samesite_secure = "";
-          try {
-            document.cookie = "st_samesite=1;SameSite=None;Secure";
-            if (__stdos__.data.parseCookie("st_samesite", document.cookie)) {
-              samesite_secure = "SameSite=None;Secure"
-              document.cookie = "st_samesite=1;max-age=0;SameSite=None;Secure";
-            }
-          } catch (e) {}
-          document.cookie = name + "=" + value + ";" + domain + ";path=/;max-age=" + max_age + ";" + samesite_secure;
-        },
-        setConsent: function(consent) {
-            for(var consent_key in consent) {
-                 __stdos__.data.set(consent_key,consent[consent_key],"pageInfo");
-                 window.__sharethis__[consent_key] = consent[consent_key];
-            }
-        },
-        getEUConsent: function(c) {
-
-          function once(fn, context) { 
-            var result;
-            return function() { 
-              if(fn) {
-                result = fn.apply(context || this, arguments);
-                fn = null;
-              }
-              return result;
-            };
-          }
-
-          var done = once(c);
-
-          // set usprivacy first if we have it
-          var usprivacy = __stdos__.data.parseCookie("usprivacy", document.cookie);
-          if (usprivacy) __stdos__.data.setConsent({
-            usprivacy: usprivacy
-          });
-
-          // keep track of how long it takes to get consent
-          var start = Date.now();
-          
-          var useCookie = once(function() {
-
-            // check for first party cookies
-            var euconsent_v2 = __stdos__.data.parseCookie("euconsent-v2", document.cookie);
-            if (euconsent_v2 !== null) {
-
-              // use the first party cookie if it exists
-              __stdos__.data.setConsent({
-                gdpr_consent: euconsent_v2,
-                gdpr_domain: document.location.hostname,
-                gdpr_method: "cookie"
-              });
-            }
-            done();
-          });
-
-          if (typeof window.__tcfapi == "function") {
-
-            // fallback to cookie in case the tcf api is too slow or unavailable
-            var timeout = setTimeout(useCookie, 5000);
-
-            // first we try to get the data from the cmp
-            // wrap in a try catch since we don't control the tcfapi code on page
-            try {
-              window.__tcfapi("getTCData", 2, function (data) {
-                if (data && data.tcString) {
-                  var gdpr_domain = (data.isServiceSpecific)
-                    ? document.location.hostname : ".consensu.org";
-                  __stdos__.data.setConsent({
-                    consent_duration: Date.now() - start,
-                    gdpr_consent: data.tcString,
-                    gdpr_domain: gdpr_domain,
-                    gdpr_method: "api"
-                  });
-                  clearTimeout(timeout);
-                  done();
-                } else {
-
-                  // fallback to cookie if there is no data
-                  useCookie();
-                }
-              });
-            } catch (e) {
-
-              // fallback to cookie if there is an error
-              useCookie();
-            }
-          } else {
-
-            // fallback to cookie if the tcfapi doesn't exist
-            useCookie();
           }
         }
-    };
-    __stdos__.data.resetPageData()
+      }
+    },
+    get: function(a, b) {
+      try {
+        if (__stdos__.data[b] && __stdos__.data[b][a]) {
+          return decodeURIComponent(__stdos__.data[b][a])
+        } else {
+          return false
+        }
+      } catch (c) {
+        return false
+      }
+    },
+    unset: function(a, b) {
+      if (__stdos__.data[b] && typeof(__stdos__.data[b][a]) != "undefined") {
+        delete __stdos__.data[b][a]
+      }
+    },
+    bindEvent: function(element, eventName, eventHandler) {
+      if (element.addEventListener) {
+        element.addEventListener(eventName, eventHandler, false);
+      } else if (element.attachEvent) {
+        element.attachEvent('on' + eventName, eventHandler);
+      }
+    },
+    debug: function(endpoint, event) {
+      __stdos__.data.init();
+      var a = __stdos__.data.pageInfo;
+      var c = "";
+      var b;
+      for (b in a) {
+        c += b + "=" + a[b] + "&"
+      }
+      c = c.substring(0, c.length - 1);
+
+      var loggerUrl = "https://l.sharethis.com/";
+      loggerUrl += endpoint;
+      loggerUrl += "?event=" + event;
+      loggerUrl += "&" + c;
+
+      var e = new Image(1, 1);
+      e.src = loggerUrl;
+      e.onload = function() {
+        return
+      };
+    },
+    parseCookie: function(name, cookie) {
+      cookie = "; " + cookie
+      var parts = cookie.split("; "+name+"=");
+      if(parts.length === 2) {
+        return parts.pop().split(';').shift();
+      }else {
+        return null;
+      }
+    },
+    writeCookie: function(name, value, max_age)  {
+      if (!max_age) {
+        max_age = 33696000
+      }
+      var host = (window && window.location && window.location.hostname) || '';
+      var parts = host.split('.');
+      var domain = "";
+      if (parts.length > 1) {
+        domain = "domain=." + parts.slice(-2).join('.');
+      }
+      var samesite_secure = "";
+      try {
+        document.cookie = "st_samesite=1;SameSite=None;Secure";
+        if (__stdos__.data.parseCookie("st_samesite", document.cookie)) {
+          samesite_secure = "SameSite=None;Secure"
+          document.cookie = "st_samesite=1;max-age=0;SameSite=None;Secure";
+        }
+      } catch (e) {}
+      document.cookie = name + "=" + value + ";" + domain + ";path=/;max-age=" + max_age + ";" + samesite_secure;
+    },
+    setConsent: function(consent) {
+      for(var consent_key in consent) {
+        __stdos__.data.set(consent_key,consent[consent_key],"pageInfo");
+        window.__sharethis__[consent_key] = consent[consent_key];
+      }
+    },
+    getEUConsent: function(c) {
+
+      function once(fn, context) {
+        var result;
+        return function() {
+          if(fn) {
+            result = fn.apply(context || this, arguments);
+            fn = null;
+          }
+          return result;
+        };
+      }
+
+      var done = once(c);
+
+      // set usprivacy first if we have it
+      var usprivacy = __stdos__.data.parseCookie("usprivacy", document.cookie);
+      if (usprivacy) __stdos__.data.setConsent({
+        usprivacy: usprivacy
+      });
+
+      // keep track of how long it takes to get consent
+      var start = Date.now();
+
+      var useCookie = once(function() {
+
+        // check for first party cookies
+        var euconsent_v2 = __stdos__.data.parseCookie("euconsent-v2", document.cookie);
+        if (euconsent_v2 !== null) {
+
+          // use the first party cookie if it exists
+          __stdos__.data.setConsent({
+            gdpr_consent: euconsent_v2,
+            gdpr_domain: document.location.hostname,
+            gdpr_method: "cookie"
+          });
+        }
+        done();
+      });
+
+      if (typeof window.__tcfapi == "function") {
+
+        // fallback to cookie in case the tcf api is too slow or unavailable
+        var timeout = setTimeout(useCookie, 5000);
+
+        // first we try to get the data from the cmp
+        // wrap in a try catch since we don't control the tcfapi code on page
+        try {
+          window.__tcfapi("getTCData", 2, function (data) {
+            if (data && data.tcString) {
+              var gdpr_domain = (data.isServiceSpecific)
+                  ? document.location.hostname : ".consensu.org";
+              __stdos__.data.setConsent({
+                consent_duration: Date.now() - start,
+                gdpr_consent: data.tcString,
+                gdpr_domain: gdpr_domain,
+                gdpr_method: "api"
+              });
+              clearTimeout(timeout);
+              done();
+            } else {
+
+              // fallback to cookie if there is no data
+              useCookie();
+            }
+          });
+        } catch (e) {
+
+          // fallback to cookie if there is an error
+          useCookie();
+        }
+      } else {
+
+        // fallback to cookie if the tcfapi doesn't exist
+        useCookie();
+      }
+    }
+  };
+  __stdos__.data.resetPageData()
 }
 __stdos__.logger = {
   loggerUrl: "https://l.sharethis.com/",
-    version: "st_sop.js",
-    lang: "en",
-    constructParamString: function() {
-        var a = __stdos__.data.pageInfo;
-        var c = "";
-        var b;
-        for (b in a) {
-          if (a[b] == null || a[b] === "") continue;
-          c += b + "=" + a[b] + "&"
+  version: "st_sop.js",
+  lang: "en",
+  constructParamString: function() {
+    var a = __stdos__.data.pageInfo;
+    var c = "";
+    var b;
+    for (b in a) {
+      if (a[b] == null || a[b] === "") continue;
+      c += b + "=" + a[b] + "&"
+    }
+    return c.substring(0, c.length - 1)
+  },
+  log: function(a, h, j) {
+    __stdos__.data.set("ts" + new Date().getTime(), "", "pageInfo")
+    h = __stdos__.logger.loggerUrl
+
+    __stdos__.data.getEUConsent(function(consent){
+      if (!window.__sharethis__.consent_queue) {
+        window.__sharethis__.consent_queue = {}
+      }
+      window.__sharethis__.consent_queue.initialized = true;
+      if (window.__sharethis__.consent_queue.functions) {
+        for (var i = 0; i < window.__sharethis__.consent_queue.functions.length; i++) {
+          window.__sharethis__.consent_queue.functions[i]();
         }
-        return c.substring(0, c.length - 1)
-    },
-    log: function(a, h, j) {
-        __stdos__.data.set("ts" + new Date().getTime(), "", "pageInfo")
-        h = __stdos__.logger.loggerUrl
+        window.__sharethis__.consent_queue.functions = null;
+      }
+      var g = [
+        h,
+        a,
+        "?event=" + a,
+        "&" + __stdos__.logger.constructParamString(),
+        "&version=" + __stdos__.logger.version,
+        "&lang=" + __stdos__.logger.lang
+      ].join('');
+      var fpestid = __stdos__.data.parseCookie("fpestid", document.cookie);
+      if (fpestid) {
+        g += "&fpestid=" + fpestid;
+      }
+      var description = window.__sharethis__.getDescription();
+      if (description) {
+        g += "&description=" + encodeURIComponent(description);
+      }
+      var gdpr_consent = __stdos__.data.get("gdpr_consent", "pageInfo");
+      __stdos__.data.setConsent({
+        pview_had_consent: (gdpr_consent) ? true : false
+      });
+      try {
+        var c = new XMLHttpRequest();
+        c.open("GET", g, true);
+        c.withCredentials = true;
+        c.onreadystatechange = function() {
+          if (this.readyState == this.DONE) {
+            try {
+              var res = JSON.parse(c.responseText);
+              if (typeof(res) !== "undefined") {
+                __stdos__.data.set("stid", res.stid, "pageInfo");
+                if(res.fpestid) {
+                  __stdos__.data.writeCookie("fpestid", res.fpestid, res.fpestid_maxage);
+                }
+                if(res.status === "true") {
+                  var product = __stdos__.data.get("product", "pageInfo")
 
-        __stdos__.data.getEUConsent(function(consent){
-          if (!window.__sharethis__.consent_queue) {
-            window.__sharethis__.consent_queue = {} 
-          }
-          window.__sharethis__.consent_queue.initialized = true;
-          if (window.__sharethis__.consent_queue.functions) {
-            for (var i = 0; i < window.__sharethis__.consent_queue.functions.length; i++) {
-              window.__sharethis__.consent_queue.functions[i]();
-            }
-            window.__sharethis__.consent_queue.functions = null;
-          }
-          var g = [
-            h,
-            a,
-            "?event=" + a,
-            "&" + __stdos__.logger.constructParamString(),
-            "&version=" + __stdos__.logger.version,
-            "&lang=" + __stdos__.logger.lang
-          ].join('');
-          var fpestid = __stdos__.data.parseCookie("fpestid", document.cookie);
-          if (fpestid) {
-            g += "&fpestid=" + fpestid;
-          }
-          var description = window.__sharethis__.getDescription();
-          if (description) {
-            g += "&description=" + encodeURIComponent(description);
-          }
-          var gdpr_consent = __stdos__.data.get("gdpr_consent", "pageInfo");
-          __stdos__.data.setConsent({
-            pview_had_consent: (gdpr_consent) ? true : false
-          });
-          try {
-              var c = new XMLHttpRequest();
-              c.open("GET", g, true);
-              c.withCredentials = true;
-              c.onreadystatechange = function() {
-                  if (this.readyState == this.DONE) {
-                      try {
-                        var res = JSON.parse(c.responseText);
-                        if (typeof(res) !== "undefined") {
-                          __stdos__.data.set("stid", res.stid, "pageInfo");
-                          if(res.fpestid) {
-                            __stdos__.data.writeCookie("fpestid", res.fpestid, res.fpestid_maxage);
-                          }
-                          if(res.status === "true") {
-                            var product = __stdos__.data.get("product", "pageInfo")
-
-                            if ((product === "ecommerce") ||
-                               (product === "privy-share-buttons") ||
-                               (product === "ga")) {
-                              return;
-                            }
-                            window.__sharethis__.loadPixel();
-                            
-                            var st_debug = false;
-
-                            try {
-
-                              if (window && window.location && window.location.href && window.location.href.endsWith("st_debug=true")) {
-                                st_debug = true
-                              }
-
-                              // get the browser family
-                              let user_agent = navigator.userAgent;
-                              let browser_family = "";
-                              if (user_agent.match(/chrome|chromium|crios/i)) {
-                                browser_family = "chrome";
-                              } else if (user_agent.match(/firefox|fxios/i)) {
-                                browser_family = "firefox";
-                              }  else if (user_agent.match(/safari/i)) {
-                                browser_family = "safari";
-                              }
-
-                              // run lotame's panorama id code if indicated by the content rule
-                              // and we're on firefox or safari
-                              if(res.lotame === "true" && browser_family.match(/firefox|safari/i)) {
-                                !function() {
-
-                                  if (st_debug) {
-                                    console.log("lotame firing 1");
-                                  }
-
-                                  // Callback that will be triggered after each call to sync()
-                                  // and let you have access to the profile and/or panorama ids
-                                  var syncCallback = function (profile) {
-
-                                      if (st_debug) {
-                                        console.log("lotame firing 2");
-                                      }
-                              
-                                      // sync the panorama id
-                                      var panorama_id = profile.getPanoramaId();
-                                      if (st_debug) {
-                                        console.log(panorama_id);
-                                        console.log(res.stid);
-                                      }
-                                      if (panorama_id && res.stid) {
-                                        var url = "https://sync.sharethis.com/panorama"
-                                        url += "?uid=" + encodeURIComponent(panorama_id)
-                                        url += "&stid=" + encodeURIComponent(res.stid)
-                                        st.send(url)
-                                      }
-  
-                                  };
-                              
-                                  var lotame_client_id = '16621';
-                                  var lotame_tag_input = {
-                                      config: {
-                                          onProfileReady: syncCallback
-                                      }
-                                  };
-                              
-                                  // Lotame initialization
-                                  var lotame_config = lotame_tag_input.config || {};
-                                  var namespace = window['lotame_sync_' + lotame_client_id] = {};
-                                  namespace.config = lotame_config;
-                                  namespace.data = {};
-                                  namespace.cmd = namespace.cmd || [];
-                                } ();
-  
-                                window.lotame_sync_16621.cmd.push(function() {
-                                  window.lotame_sync_16621.sync();
-                                });
-  
-                                window.__sharethis__.js("https://platform-api.sharethis.com/panorama.js")
-                              }
-                            } catch (e) {
-                              if (st_debug) {
-                                console.log(e)
-                              }
-                            }
-
-                          }
-
-                          if(res.dmd === "true") {
-                            window.__sharethis__.js("https://platform-api.sharethis.com/dmd.js")
-                          }
-                        }
-                        j ? j() : null
-                      } catch(e) {
-                      }
+                  if ((product === "ecommerce") ||
+                      (product === "privy-share-buttons") ||
+                      (product === "ga")) {
+                    return;
                   }
-              };
-              c.send()
-          } catch (d) {
-              var e = new Image(1, 1);
-              e.src = g;
-              e.onload = function() {
-                  return
-              };
-              j ? j() : null
-          }
+                  window.__sharethis__.loadPixel();
 
-        })
-   }
+                  var st_debug = false;
+
+                  try {
+
+                    if (window && window.location && window.location.href && window.location.href.endsWith("st_debug=true")) {
+                      st_debug = true
+                    }
+
+                    // get the browser family
+                    let user_agent = navigator.userAgent;
+                    let browser_family = "";
+                    if (user_agent.match(/chrome|chromium|crios/i)) {
+                      browser_family = "chrome";
+                    } else if (user_agent.match(/firefox|fxios/i)) {
+                      browser_family = "firefox";
+                    }  else if (user_agent.match(/safari/i)) {
+                      browser_family = "safari";
+                    }
+
+                    // run lotame's panorama id code if indicated by the content rule
+                    // and we're on firefox or safari
+                    if(res.lotame === "true" && browser_family.match(/firefox|safari/i)) {
+                      !function() {
+
+                        if (st_debug) {
+                          console.log("lotame firing 1");
+                        }
+
+                        // Callback that will be triggered after each call to sync()
+                        // and let you have access to the profile and/or panorama ids
+                        var syncCallback = function (profile) {
+
+                          if (st_debug) {
+                            console.log("lotame firing 2");
+                          }
+
+                          // sync the panorama id
+                          var panorama_id = profile.getPanoramaId();
+                          if (st_debug) {
+                            console.log(panorama_id);
+                            console.log(res.stid);
+                          }
+                          if (panorama_id && res.stid) {
+                            var url = "https://sync.sharethis.com/panorama"
+                            url += "?uid=" + encodeURIComponent(panorama_id)
+                            url += "&stid=" + encodeURIComponent(res.stid)
+                            st.send(url)
+                          }
+
+                        };
+
+                        var lotame_client_id = '16621';
+                        var lotame_tag_input = {
+                          config: {
+                            onProfileReady: syncCallback
+                          }
+                        };
+
+                        // Lotame initialization
+                        var lotame_config = lotame_tag_input.config || {};
+                        var namespace = window['lotame_sync_' + lotame_client_id] = {};
+                        namespace.config = lotame_config;
+                        namespace.data = {};
+                        namespace.cmd = namespace.cmd || [];
+                      } ();
+
+                      window.lotame_sync_16621.cmd.push(function() {
+                        window.lotame_sync_16621.sync();
+                      });
+
+                      window.__sharethis__.js("https://platform-api.sharethis.com/panorama.js")
+                    }
+                  } catch (e) {
+                    if (st_debug) {
+                      console.log(e)
+                    }
+                  }
+
+                }
+
+                if(res.dmd === "true") {
+                  window.__sharethis__.js("https://platform-api.sharethis.com/dmd.js")
+                }
+              }
+              j ? j() : null
+            } catch(e) {
+            }
+          }
+        };
+        c.send()
+      } catch (d) {
+        var e = new Image(1, 1);
+        e.src = g;
+        e.onload = function() {
+          return
+        };
+        j ? j() : null
+      }
+
+    })
+  }
 };
 
 (function(){
@@ -3396,22 +3396,22 @@ __stdos__.logger = {
   var st_pview_logged = typeof stlib !== 'undefined' && stlib !== null && stlib.onscriptload;
 
   if (!st_pview_logged && !__stdos__.onscriptload && document.URL.indexOf("edge.sharethis.com") == -1) {
-      __stdos__.data.init();
-      __stdos__.data.set("cms", _st.cms, "pageInfo");
-      __stdos__.data.set("publisher", _st.property, "pageInfo")
-      __stdos__.data.set("product", _st.product, "pageInfo")
-      __stdos__.data.set("source", _st.source, "pageInfo")
-      if (_st.embeds && st.embeds.length > 0 && !_st.is_ie) {
-        __stdos__.data.set("embeds_csv", _st.embeds.join(','), "pageInfo")
-        /*
-        setTimeout(function(){
-          //_st.js("https://platform-api.sharethis.com/rhombus.js")
-        }, 3000)
-        */
-      }
-      __stdos__.data.set("sop", true, "pageInfo")
-      __stdos__.onscriptload = true;
-      __stdos__.logger.log("pview");
+    __stdos__.data.init();
+    __stdos__.data.set("cms", _st.cms, "pageInfo");
+    __stdos__.data.set("publisher", _st.property, "pageInfo")
+    __stdos__.data.set("product", _st.product, "pageInfo")
+    __stdos__.data.set("source", _st.source, "pageInfo")
+    if (_st.embeds && st.embeds.length > 0 && !_st.is_ie) {
+      __stdos__.data.set("embeds_csv", _st.embeds.join(','), "pageInfo")
+      /*
+      setTimeout(function(){
+        //_st.js("https://platform-api.sharethis.com/rhombus.js")
+      }, 3000)
+      */
+    }
+    __stdos__.data.set("sop", true, "pageInfo")
+    __stdos__.onscriptload = true;
+    __stdos__.logger.log("pview");
   }
 })();
 
@@ -3757,8 +3757,8 @@ __stdos__.logger = {
     }
 
     /*
-    config = { 
-      background_color: '#000000' 
+    config = {
+      background_color: '#000000'
       color: '#9900ef'
       display: 'always'
       enabled: true
@@ -4804,7 +4804,7 @@ __stdos__.logger = {
 
 (function() {
   var load, st,
-    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+      indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   st = window.__sharethis__;
 
