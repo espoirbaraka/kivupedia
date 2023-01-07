@@ -4,6 +4,12 @@ $book = $_GET['book'];
 $sql = "SELECT * FROM t_livre
                 WHERE book_slug = '$book'";
 $req = $app->fetch($sql);
+$readed = $req['Readed'];
+$newreaded = $readed + 1;
+
+$data = [$newreaded, $req['CodeLivre']];
+$sql2 = "UPDATE t_livre SET Readed=? WHERE CodeLivre=?";
+$app->prepare($sql2, $data, 1);
 ?>
 
 
