@@ -25,108 +25,137 @@ $sql = "SELECT * FROM t_memoire LEFT JOIN t_annee_academique
          ORDER BY Created_on DESC LIMIT $premier,$parPage";
 $req = $app->fetchPrepared($sql);
 ?>
-<div class="slide-single slide-single-page">
-    <div class="overlay"></div>
-    <div class="text text-page">
-        <div class="this-item">
-            <h2>Articles scientifiques </h2>
-        </div>
-    </div>
-</div>
-
-<div class="videos">
+<div class="single-channel">
     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="home"><i class="fa fa-home"></i> Acceuil</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-arrow-left"></i> <a href="<?php echo $_SERVER["HTTP_REFERER"]; ?>">Retour</a></li>
+            </ol>
+        </nav>
+
         <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
 
-            <div class="col-md-9">
-                <div class="row">
+                <?php
+                $sql3 = "SELECT * FROM t_faculte";
+                $req = $app->fetchPrepared($sql3);
+                foreach ($req as $row){
+                    ?>
+                    <div class="col-md-3 text-center">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="dropdown" style="padding: 0px;">
 
-                    <?php
-                    foreach ($req as $row){
-                        ?>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prop-3-col">
-                            <div class="single-room">
-                                <div class="photo-col3"
-                                     style="background-image:url(superadmin/thumbmnail/<?php echo $row['Image']; ?>); margin: 5px 5px 5px 0px;"></div>
-                                <div class="single-room-text">
-                                    <h2 style="font-weight: bold;"><a href=""><?php echo $row['Titre']; ?></a></h2>
-                                    <p>Auteur: <span style="font-weight: bold;"><?php echo $row['AuteurPrincipal']; ?></span>
-                                    </p>
-                                    <p>Domaine: <span style="font-weight: bold; color: red;">
-                                    <?php
-                                    echo $row['Domaine'];
-                                    if (isset($row['Sous_domaine'])) {
-                                        echo " (" . $row['Sous_domaine'] . ")";
-                                    }
-                                    ?>
-                                </span></p>
-                                    <p class="detail"><a
-                                            href="read_book?book=<?php echo $row['book_slug'] ?>">Lire</a>
-                                    </p>
-                                    <p class="detail"><a
-                                            href="detail_book?book=<?php echo $row['book_slug'] ?>">Voir les details</a>
-                                    </p>
+                                    <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                        <i class="fa fa-align-right"></i>
+                                    </a>
+                                    <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="mode_paiement.php?section=" class="btn btn-default btn-sm">
+                                            <li class="fa fa-window"></li> Ouvrir
+                                        </a><br>
+
+                                    </div>
                                 </div>
+
+
+
                             </div>
                         </div>
-                        <?php
-                    }
+                        <h6><?php echo $row['Faculte'] ?></h6>
+                    </div>
+                <?php
+                }
+                ?>
+
+
+
+
+                <?php
+                $sql3 = "SELECT * FROM t_faculte";
+                $req = $app->fetchPrepared($sql3);
+                foreach ($req as $row){
                     ?>
+                    <div class="col-md-3 text-center">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="dropdown" style="padding: 0px;">
 
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="pagination">
-                            <a href="book_by_domaine?word=<?php echo $word; ?>&page=<?= $currentPage - 1 ?>"><span class="<?= ($currentPage == 1) ? "disabled" : "" ?>">&#171; précédent</span></a>
+                                    <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                        <i class="fa fa-align-right"></i>
+                                    </a>
+                                    <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="mode_paiement.php?section=" class="btn btn-default btn-sm">
+                                            <li class="fa fa-window"></li> Ouvrir
+                                        </a><br>
 
-                            <?php for($page = 1; $page <= $pages; $page++): ?>
-                                <a href="book_by_domaine?word=<?php echo $word; ?>&page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a>
-                            <?php endfor ?>
+                                    </div>
+                                </div>
 
-                            <a href="book_by_domaine?word=<?php echo $word; ?>&page=<?= $currentPage + 1 ?>"><span class="<?= ($currentPage == $pages) ? "disabled" : "" ?>">suivant &#187;</span></a>
 
+
+                            </div>
                         </div>
+                        <h6><?php echo $row['Faculte'] ?></h6>
                     </div>
-                </div>
+                    <?php
+                }
+                ?>
+
+
+
+                <?php
+                $sql3 = "SELECT * FROM t_faculte";
+                $req = $app->fetchPrepared($sql3);
+                foreach ($req as $row){
+                    ?>
+                    <div class="col-md-3 text-center">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="dropdown" style="padding: 0px;">
+
+                                    <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                        <i class="fa fa-align-right"></i>
+                                    </a>
+                                    <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="mode_paiement.php?section=" class="btn btn-default btn-sm">
+                                            <li class="fa fa-window"></li> Ouvrir
+                                        </a><br>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <h6><?php echo $row['Faculte'] ?></h6>
+                    </div>
+                    <?php
+                }
+                ?>
+
+
+
+
+
+
             </div>
-
-            <div class="col-md-3 col-sm-12 col-xs-12">
-                <div class="channel-categories">
-                    <h2>Facultés</h2>
-                    <ul>
-                        <?php
-                        $sql3 = "SELECT * FROM t_faculte";
-                        $req = $app->fetchPrepared($sql3);
-                        foreach ($req as $row){
-                            ?>
-                            <li><a href="article_by_faculty?faculty=<?php echo $row['faculty_slug'] ?>"><?php echo $row['Faculte'] ?></a></li>
-                            <?php
-                        }
-                        ?>
-
-
-                    </ul>
-                </div>
-
-                <div style="background-color: #ddd;">
-                    <nav aria-label="breadcrumb" style="text-align: center">
-                        Publicités
-                    </nav>
-                    <div class="sidebar-adv" style="padding: 11px 3px 3px 3px;">
-                        <a href="#"><img src="image/cp.png" alt="advertisement"></a>
-
-                    </div>
-                    <div class="sidebar-adv" style="padding: 3px;">
-                        <img src="image/isig.jpg" alt="advertisement">
-
-                    </div>
-                </div>
-
-
-
-            </div>
-
         </div>
-
     </div>
 </div>
