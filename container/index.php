@@ -39,16 +39,16 @@ $req = $app->fetchPrepared($sql);
 
             </div>
             <div class="col-md-6 right">
-                <form action="book_domaine?domaine=" method="get">
-                    <select name="domaine" class="form-control" onchange="this.form.submit()">
+                <form action="book_by_domaine?domain=" method="get">
+                    <select name="domain" class="form-control" onchange="this.form.submit()">
                         <option value="">Recherchez par domaine</option>
                         <?php
                         $sql4 = "SELECT * FROM t_domaine";
                         $req1 = $app->fetchPrepared($sql4);
                         foreach ($req1 as $row){
-                            $dom = $row['Domaine'];
+                            $dom = $row['domain_slug'];
                             ?>
-                            <option value="<?php echo $app->slugify($dom)  ?>"><?php echo $row['Domaine'] ?></option>
+                            <option value="<?php echo $dom;  ?>"><?php echo $row['Domaine'] ?></option>
                             <?php
                         }
                         ?>

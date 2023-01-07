@@ -23,8 +23,12 @@ if ($event == 'CREATE_ADMIN') {
  }
 
 if ($event == 'CREATE_DOMAINE') {
-    $data = [$_POST['domaine'], $_SESSION['super']];
-    $sql = "INSERT INTO t_domaine(Domaine,Created_by) VALUES(?,?)";
+    $domain_slug = $app->slugify($_POST['domaine']);
+    $today_slug = $app->slugify(date('Y:m:d H:i:s'));
+    $slug = $domain_slug.'-'.$today_slug;
+
+    $data = [$_POST['domaine'], $slug, $_SESSION['super']];
+    $sql = "INSERT INTO t_domaine(Domaine,domain_slug,Created_by) VALUES(?,?,?)";
     if ($app->prepare($sql, $data, 1)) {
         $_SESSION['success'] = 'Domaine ajouté';
     }

@@ -1,6 +1,5 @@
 <?php
-$word = $_GET['word'];
-$search = '%'.$word.'%';
+$domain = $_GET['domain'];
 
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int)strip_tags($_GET['page']);
@@ -8,10 +7,13 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = 1;
 }
 
-$sql1 = "SELECT COUNT(*) AS nbre FROM t_livre WHERE Statut=1 AND Titre LIKE '%$word%'";
+$sql1 = "SELECT COUNT(*) AS nbre FROM t_livre INNER JOIN t_domaine ON t_livre.CodeDomaine=t_domaine.CodeDomaine WHERE Statut=1 AND domain_slug='$domain'";
 $nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
 $parPage = 15;
+
+$sql2 = "SELECT * FROM t_domaine WHERE domain_slug='$domain'";
+$dom = $app->fetch($sql2);
 
 $pages = ceil($nbArticles / $parPage);
 
@@ -24,7 +26,7 @@ $sql = "SELECT * FROM t_livre LEFT JOIN t_domaine
                                     ON t_livre.CodeSousDomaine=t_sous_domaine.CodeSousDomaine
                                     LEFT JOIN t_langue
                                     ON t_livre.CodeLangue=t_langue.CodeLangue
-                                    WHERE Statut=1 AND Titre LIKE '%$word%'
+                                    WHERE Statut=1 AND domain_slug= '$domain'
                                     ORDER BY Readed DESC LIMIT $premier,$parPage";
 $req = $app->fetchPrepared($sql);
 ?>
@@ -32,7 +34,7 @@ $req = $app->fetchPrepared($sql);
     <div class="overlay"></div>
     <div class="text text-page">
         <div class="this-item">
-            <h2><?php echo $nbArticles; ?> Resultats sur : <?php echo $word; ?> ...</h2>
+            <h2><?php echo $nbArticles; ?> Ouvrages du domaine <?php echo $dom['Domaine']; ?> </h2>
         </div>
     </div>
 </div>
@@ -64,15 +66,15 @@ $req = $app->fetchPrepared($sql);
                                     ?>
                                 </span></p>
                                     <p class="detail"><a
-                                                href="read_book?book=<?php echo $row['book_slug'] ?>">Lire</a>
+                                            href="read_book?book=<?php echo $row['book_slug'] ?>">Lire</a>
                                     </p>
                                     <p class="detail"><a
-                                                href="detail_book?book=<?php echo $row['book_slug'] ?>">Voir les details</a>
+                                            href="detail_book?book=<?php echo $row['book_slug'] ?>">Voir les details</a>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    <?php
+                        <?php
                     }
                     ?>
 
