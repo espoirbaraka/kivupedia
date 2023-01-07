@@ -39,7 +39,7 @@ $req = $app->fetch($sql);
                                 <div class="book-table">
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Titre</div>
-                                        <div class="book-table-cell"><?php echo $req['Titre'] ?>
+                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php echo $req['Titre'] ?></span>
                                         </div>
                                     </div>
                                     <div class="book-table-row">
@@ -48,12 +48,17 @@ $req = $app->fetch($sql);
                                         </div>
                                     </div>
                                     <div class="book-table-row">
+                                        <div class="book-table-cell">Description</div>
+                                        <div class="book-table-cell"><?php if($req['Description']!=''){echo $req['Description'];}else{echo "<span style='color: red;'>-</span>";}  ?>
+                                        </div>
+                                    </div>
+                                    <div class="book-table-row">
                                         <div class="book-table-cell">Auteur(s)</div>
-                                        <div class="book-table-cell"><?php if($req['AuteurPrincipal']!=''){echo $req['AuteurPrincipal'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
+                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php if($req['AuteurPrincipal']!=''){echo $req['AuteurPrincipal'];}else{echo "<span style='color: red;'>-</span>";}  ?></span></div>
                                     </div>
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Domaine</div>
-                                        <div class="book-table-cell"><?php if($req['Domaine']!=''){echo $req['Domaine'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
+                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php if($req['Domaine']!=''){echo $req['Domaine'];}else{echo "<span style='color: red;'>-</span>";}  ?></span></div>
                                     </div>
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Sous-domaine</div>
@@ -92,7 +97,7 @@ $req = $app->fetch($sql);
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Nombre des lectures</div>
                                         <div class="book-table-cell">
-                                            <?php if($req['Readed']!=''){echo $req['Readed'];}else{echo "<span style='color: red;'>-</span>";}  ?>
+                                            <span style="font-weight: bold;"><?php if($req['Readed']!=''){echo $req['Readed'].' fois';}else{echo "<span style='color: red;'>-</span>";}  ?></span>
                                         </div>
                                     </div>
 
