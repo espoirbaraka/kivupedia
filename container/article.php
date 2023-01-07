@@ -92,14 +92,14 @@ $req = $app->fetchPrepared($sql);
 
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="channel-categories">
-                    <h2>Domaine</h2>
+                    <h2>Facultés</h2>
                     <ul>
                         <?php
-                        $sql3 = "SELECT * FROM t_domaine";
+                        $sql3 = "SELECT * FROM t_faculte";
                         $req = $app->fetchPrepared($sql3);
                         foreach ($req as $row){
                             ?>
-                            <li><a href="book_by_domaine?domain=<?php echo $row['domain_slug'] ?>"><?php echo $row['Domaine'] ?></a></li>
+                            <li><a href="article_by_faculty?faculty=<?php echo $row['faculty_slug'] ?>"><?php echo $row['Faculte'] ?></a></li>
                             <?php
                         }
                         ?>
