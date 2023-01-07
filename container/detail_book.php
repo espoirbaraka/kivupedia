@@ -141,14 +141,20 @@ $req = $app->fetch($sql);
                     </ul>
                 </div>
 
-                <div class="sidebar-adv">
-                    <a href="#"><img src="image/cp.png" alt="advertisement"></a>
+                <div style="background-color: #ddd;">
+                    <nav aria-label="breadcrumb" style="text-align: center">
+                        Publicités
+                    </nav>
+                    <div class="sidebar-adv" style="padding: 3px;">
+                        <a href="#"><img src="image/cp.png" alt="advertisement"></a>
 
-                </div>
-                <div class="sidebar-adv">
-                    <img src="image/isig.jpg" alt="advertisement">
+                    </div>
+                    <div class="sidebar-adv" style="padding: 3px;">
+                        <img src="image/isig.jpg" alt="advertisement">
 
+                    </div>
                 </div>
+
 
 
             </div>

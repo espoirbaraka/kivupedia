@@ -85,7 +85,7 @@ $req = $app->fetchPrepared($sql);
                                     ?>
                                 </span></p>
                             <p class="detail"><a
-                                        href="detail_book?id=<?php echo $row['book_slug'] ?>">Lire</a>
+                                        href="read_book?book=<?php echo $row['book_slug'] ?>">Lire</a>
                             </p>
                             <p class="detail"><a
                                         href="detail_book?book=<?php echo $row['book_slug'] ?>">Voir les details</a>
