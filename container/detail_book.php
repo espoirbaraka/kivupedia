@@ -7,7 +7,7 @@ $sql = "SELECT * FROM t_livre LEFT JOIN t_domaine
                                     ON t_livre.CodeSousDomaine=t_sous_domaine.CodeSousDomaine
                                     LEFT JOIN t_langue
                                     ON t_livre.CodeLangue=t_langue.CodeLangue
-                                    WHERE Titre = '$book'";
+                                    WHERE book_slug = '$book'";
 $req = $app->fetch($sql);
 ?>
 
@@ -23,7 +23,6 @@ $req = $app->fetch($sql);
                                 <img src="superadmin/thumbmnail/<?php echo $req['Image']; ?>" alt="" style="img-responsive; margin: 5px 5px 5px 0px;">
                             </div>
                         </div>
-                        <a class="btn btn-primary" href="detail_book?id=<?php echo $row['CodeLivre'] ?>">Lire</a>
 
                     </div>
                     <div class="col-md-8">
@@ -84,12 +83,15 @@ $req = $app->fetch($sql);
                                         <div class="book-table-cell">Health and Fitness</div>
                                     </div>
                                 </div>
+                                <div class="gap-small"></div>
+                                <a class="btn btn-primary" href="detail_book?id=<?php echo $row['CodeLivre'] ?>"><i class="fa fa-book"></i> Lire</a>
+
 
                                 <div class="gap-small"></div>
-                                <h2>Share This Book</h2>
+                                <h2>Partager ce livre</h2>
                                 <div class="sharethis-inline-share-buttons"></div>
                                 <div class="gap-small"></div>
-                                <h2>Comments</h2>
+                                <h2>Commentaires</h2>
                                 <!-- Facebook Comment Main Code (got from facebook website) -->
                                 <div class="fb-comments"
                                      data-href="https://phpscriptpoint.com/cc/ebook/book/wanderlust-a-modern-yogi-s-guide-to-discovering-your-best-self"

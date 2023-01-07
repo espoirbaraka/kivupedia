@@ -85,10 +85,10 @@ $req = $app->fetchPrepared($sql);
                                     ?>
                                 </span></p>
                             <p class="detail"><a
-                                        href="detail_book?id=<?php echo $row['CodeLivre'] ?>">Lire</a>
+                                        href="detail_book?id=<?php echo $row['book_slug'] ?>">Lire</a>
                             </p>
                             <p class="detail"><a
-                                        href="detail_book?book=<?php echo $app->slugify($row['Titre']) ?>">Voir les details</a>
+                                        href="detail_book?book=<?php echo $row['book_slug'] ?>">Voir les details</a>
                             </p>
                         </div>
                     </div>
