@@ -132,7 +132,7 @@ $req = $app->fetch($sql);
                         $req = $app->fetchPrepared($sql3);
                         foreach ($req as $row){
                             ?>
-                            <li><a href="search_by_domaine?domaine=<?php echo $row['CodeDomaine'] ?>"><?php echo $row['Domaine'] ?></a></li>
+                            <li><a href="book_by_domaine?domain=<?php echo $row['domain_slug'] ?>"><?php echo $row['Domaine'] ?></a></li>
                             <?php
                         }
                         ?>
@@ -145,7 +145,7 @@ $req = $app->fetch($sql);
                     <nav aria-label="breadcrumb" style="text-align: center">
                         Publicités
                     </nav>
-                    <div class="sidebar-adv" style="padding: 3px;">
+                    <div class="sidebar-adv" style="padding: 11px 3px 3px 3px;">
                         <a href="#"><img src="image/cp.png" alt="advertisement"></a>
 
                     </div>
