@@ -82,13 +82,13 @@ $req = $app->fetchPrepared($sql);
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pagination">
-                            <a href="search?word=<?php echo $word; ?>&page=<?= $currentPage - 1 ?>"><span class="<?= ($currentPage == 1) ? "disabled" : "" ?>">&#171; précédent</span></a>
+                            <a href="book_by_domaine?word=<?php echo $word; ?>&page=<?= $currentPage - 1 ?>"><span class="<?= ($currentPage == 1) ? "disabled" : "" ?>">&#171; précédent</span></a>
 
                             <?php for($page = 1; $page <= $pages; $page++): ?>
-                                <a href="search?word=<?php echo $word; ?>&page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a>
+                                <a href="book_by_domaine?word=<?php echo $word; ?>&page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a>
                             <?php endfor ?>
 
-                            <a href="search?word=<?php echo $word; ?>&page=<?= $currentPage + 1 ?>"><span class="<?= ($currentPage == $pages) ? "disabled" : "" ?>">suivant &#187;</span></a>
+                            <a href="book_by_domaine?word=<?php echo $word; ?>&page=<?= $currentPage + 1 ?>"><span class="<?= ($currentPage == $pages) ? "disabled" : "" ?>">suivant &#187;</span></a>
 
                         </div>
                     </div>
