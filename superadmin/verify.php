@@ -6,7 +6,7 @@ if(isset($_POST['login'])){
 	$email= $_POST['email'];
 	$password = sha1($_POST['password']);
 	try{
-		$stmt = $conn->prepare("SELECT * FROM t_superadmin WHERE Email = ? AND Password = ?");
+		$stmt = $conn->prepare("SELECT * FROM t_superadmin WHERE Email = ? AND Password = ? AND CodeCategorie=1");
 		$stmt->execute(array($email,$password));
 		$nbre = $stmt->rowCount();
 		if($nbre == 1){
@@ -30,6 +30,6 @@ else{
 }
 
 //$pdo->close();
-header('location: index.php');
+header('location: index');
 
 ?>
