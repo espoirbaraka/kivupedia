@@ -36,42 +36,37 @@ $req = $app->fetchPrepared($sql);
 
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <?php
+                    $sql3 = "SELECT * FROM t_faculte";
+                    $req = $app->fetchPrepared($sql3);
+                    foreach ($req as $row){
+                        ?>
 
-                <?php
-                $sql3 = "SELECT * FROM t_faculte";
-                $req = $app->fetchPrepared($sql3);
-                foreach ($req as $row){
-                    ?>
-                    <div class="col-md-3 text-center">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="dropdown" style="padding: 0px;">
+                        <div class="col-md-3 text-center">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="dropdown" style="padding: 0px;">
 
-                                    <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
-                                        <i class="fa fa-align-right"></i>
-                                    </a>
-                                    <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                        <a href="mode_paiement.php?section" class="avatar avatar-lg">
                                             <span class="">
                                                 <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
                                             </span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="mode_paiement.php?section=" class="btn btn-default btn-sm">
-                                            <li class="fa fa-window"></li> Ouvrir
-                                        </a><br>
+                                        </a>
 
                                     </div>
+
+
+
                                 </div>
-
-
-
                             </div>
+                            <h6><?php echo $row['Faculte'] ?></h6>
                         </div>
-                        <h6><?php echo $row['Faculte'] ?></h6>
-                    </div>
-                <?php
-                }
-                ?>
+                        <?php
+                    }
+                    ?>
+                </div>
+
 
 
 
