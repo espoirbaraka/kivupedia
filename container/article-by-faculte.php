@@ -59,9 +59,9 @@ $facul = $app->fetch($sql2);
                     <div class="col-md-6 left">
 
                         <div class="seach">
-                            <form action="search-faculte?word=" method="get">
+                            <form action="search-article?word=" method="get">
                                 <input type="text" autocomplete="off" name="word" class="form-control"
-                                       placeholder="Recherchez une faculté">
+                                       placeholder="Recherchez un article">
                             </form>
                         </div>
 
