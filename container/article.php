@@ -25,6 +25,17 @@ $sql = "SELECT * FROM t_memoire LEFT JOIN t_annee_academique
          ORDER BY Created_on DESC LIMIT $premier,$parPage";
 $req = $app->fetchPrepared($sql);
 ?>
+<div class="slide-single slide-single-page">
+    <div class="overlay"></div>
+    <div class="text text-page">
+        <div class="this-item">
+            <h2>Articles scientifiques </h2>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="single-channel">
     <div class="container">
         <nav aria-label="breadcrumb">
@@ -33,6 +44,26 @@ $req = $app->fetchPrepared($sql);
                 <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-arrow-left"></i> <a href="<?php echo $_SERVER["HTTP_REFERER"]; ?>">Retour</a></li>
             </ol>
         </nav>
+
+
+        <div class="home-search">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 left">
+
+                        <div class="seach">
+                            <form action="search.php?word=" method="get">
+                                <input type="text" autocomplete="off" name="word" class="form-control"
+                                       placeholder="Recherchez une faculté">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -46,13 +77,295 @@ $req = $app->fetchPrepared($sql);
                         <div class="col-md-3 text-center">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="dropdown" style="padding: 0px;">
+                                    <div class="dropdown" style="padding: 5px;">
 
+                                        <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                            <i class="fa fa-align-right"></i>
+                                        </a>
                                         <a href="mode_paiement.php?section" class="avatar avatar-lg">
                                             <span class="">
                                                 <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
                                             </span>
                                         </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="mode_paiement.php?section=<?php echo $row['codeSection']; ?>&periode=<?php echo $id ?>" class="btn btn-default btn-sm">
+                                                <li class="fa fa-window"></li> Ouvrir
+                                            </a><br>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <h6><?php echo $row['Faculte'] ?></h6>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <?php
+                    $sql3 = "SELECT * FROM t_faculte";
+                    $req = $app->fetchPrepared($sql3);
+                    foreach ($req as $row){
+                        ?>
+
+                        <div class="col-md-3 text-center">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="dropdown" style="padding: 5px;">
+
+                                        <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                            <i class="fa fa-align-right"></i>
+                                        </a>
+                                        <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="mode_paiement.php?section=<?php echo $row['codeSection']; ?>&periode=<?php echo $id ?>" class="btn btn-default btn-sm">
+                                                <li class="fa fa-window"></li> Ouvrir
+                                            </a><br>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <h6><?php echo $row['Faculte'] ?></h6>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <?php
+                    $sql3 = "SELECT * FROM t_faculte";
+                    $req = $app->fetchPrepared($sql3);
+                    foreach ($req as $row){
+                        ?>
+
+                        <div class="col-md-3 text-center">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="dropdown" style="padding: 5px;">
+
+                                        <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                            <i class="fa fa-align-right"></i>
+                                        </a>
+                                        <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="mode_paiement.php?section=<?php echo $row['codeSection']; ?>&periode=<?php echo $id ?>" class="btn btn-default btn-sm">
+                                                <li class="fa fa-window"></li> Ouvrir
+                                            </a><br>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <h6><?php echo $row['Faculte'] ?></h6>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <?php
+                    $sql3 = "SELECT * FROM t_faculte";
+                    $req = $app->fetchPrepared($sql3);
+                    foreach ($req as $row){
+                        ?>
+
+                        <div class="col-md-3 text-center">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="dropdown" style="padding: 5px;">
+
+                                        <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                            <i class="fa fa-align-right"></i>
+                                        </a>
+                                        <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="mode_paiement.php?section=<?php echo $row['codeSection']; ?>&periode=<?php echo $id ?>" class="btn btn-default btn-sm">
+                                                <li class="fa fa-window"></li> Ouvrir
+                                            </a><br>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <h6><?php echo $row['Faculte'] ?></h6>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <?php
+                    $sql3 = "SELECT * FROM t_faculte";
+                    $req = $app->fetchPrepared($sql3);
+                    foreach ($req as $row){
+                        ?>
+
+                        <div class="col-md-3 text-center">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="dropdown" style="padding: 5px;">
+
+                                        <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                            <i class="fa fa-align-right"></i>
+                                        </a>
+                                        <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="mode_paiement.php?section=<?php echo $row['codeSection']; ?>&periode=<?php echo $id ?>" class="btn btn-default btn-sm">
+                                                <li class="fa fa-window"></li> Ouvrir
+                                            </a><br>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <h6><?php echo $row['Faculte'] ?></h6>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <?php
+                    $sql3 = "SELECT * FROM t_faculte";
+                    $req = $app->fetchPrepared($sql3);
+                    foreach ($req as $row){
+                        ?>
+
+                        <div class="col-md-3 text-center">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="dropdown" style="padding: 5px;">
+
+                                        <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
+                                            <i class="fa fa-align-right"></i>
+                                        </a>
+                                        <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                            <span class="">
+                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="mode_paiement.php?section=<?php echo $row['codeSection']; ?>&periode=<?php echo $id ?>" class="btn btn-default btn-sm">
+                                                <li class="fa fa-window"></li> Ouvrir
+                                            </a><br>
+
+                                        </div>
 
                                     </div>
 
