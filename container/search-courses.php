@@ -1,11 +1,14 @@
 <?php
+$word = $_GET['word'];
+$search = '%'.$word.'%';
+
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int)strip_tags($_GET['page']);
 } else {
     $currentPage = 1;
 }
 
-$sql1 = "SELECT COUNT(*) AS nbre FROM t_faculte";
+$sql1 = "SELECT COUNT(*) AS nbre FROM t_cours WHERE Statut=1 AND Cours LIKE '%$word%'";
 $nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
 $parPage = 20;
@@ -14,15 +17,14 @@ $pages = ceil($nbArticles / $parPage);
 
 $premier = ($currentPage * $parPage) - $parPage;
 
-
-$sql3 = "SELECT * FROM t_faculte ORDER BY Faculte LIMIT $premier,$parPage";
+$sql3 = "SELECT * FROM t_cours WHERE Statut=1 AND Cours LIKE '%$word%' ORDER BY t_cours.Created_On DESC LIMIT $premier,$parPage";
 $req = $app->fetchPrepared($sql3);
 ?>
 <div class="slide-single slide-single-page">
     <div class="overlay"></div>
     <div class="text text-page">
         <div class="this-item">
-            <h2>TFC / Memoire / These </h2>
+            <h2><?php echo $nbArticles; ?> cours trouvés avec : <?php echo $word; ?> ... </h2>
         </div>
     </div>
 </div>
@@ -45,9 +47,9 @@ $req = $app->fetchPrepared($sql3);
                     <div class="col-md-6 left">
 
                         <div class="seach">
-                            <form action="search-faculte?word=" method="get">
+                            <form action="search-courses?word=" method="get">
                                 <input type="text" autocomplete="off" name="word" class="form-control"
-                                       placeholder="Recherchez une faculté">
+                                       placeholder="Recherchez un cours">
                             </form>
                         </div>
 
@@ -70,20 +72,11 @@ $req = $app->fetchPrepared($sql3);
                                 <div class="card-body">
                                     <div class="dropdown" style="padding: 5px;">
 
-                                        <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
-                                            <i class="fa fa-align-right"></i>
-                                        </a>
-                                        <a href="article-by-faculte?slug=<?php echo $row['faculte_slug']; ?>" class="avatar avatar-lg">
+                                        <a href="detail_course?course=<?php echo $row['cours_slug']; ?>" class="avatar avatar-lg">
                                             <span class="">
-                                                <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
+                                                <i class="fa fa-file-pdf-o fa-5x" style="color: #ce4152;"></i>
                                             </span>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="article-by-faculte?slug=<?php echo $row['faculte_slug']; ?>" class="btn btn-default btn-sm">
-                                                <li class="fa fa-window"></li> Ouvrir
-                                            </a><br>
-
-                                        </div>
 
                                     </div>
 
@@ -91,7 +84,7 @@ $req = $app->fetchPrepared($sql3);
 
                                 </div>
                             </div>
-                            <h6><?php echo $row['Faculte'] ?></h6>
+                            <h6><?php echo $row['Cours'] ?> : <?php echo $row['Institution'] ?></h6>
                         </div>
                         <?php
                     }
