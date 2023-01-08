@@ -11,7 +11,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 $sql1 = "SELECT COUNT(*) AS nbre FROM t_faculte WHERE Faculte LIKE '%$word%'";
 $nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
-$parPage = 15;
+$parPage = 20;
 
 $pages = ceil($nbArticles / $parPage);
 
@@ -87,13 +87,13 @@ $req = $app->fetchPrepared($sql3);
                                         <a href="#" class="btn btn-floating" style="float: right;" data-toggle="dropdown">
                                             <i class="fa fa-align-right"></i>
                                         </a>
-                                        <a href="mode_paiement.php?section" class="avatar avatar-lg">
+                                        <a href="article-by-faculte?slug=<?php echo $row['faculte_slug']; ?>" class="avatar avatar-lg">
                                             <span class="">
                                                 <i class="fa fa-folder fa-5x" style="color: #FFC542;"></i>
                                             </span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="mode_paiement.php?section=<?php echo $row['codeSection']; ?>&periode=<?php echo $id ?>" class="btn btn-default btn-sm">
+                                            <a href="article-by-faculte?slug=<?php echo $row['faculte_slug']; ?>" class="btn btn-default btn-sm">
                                                 <li class="fa fa-window"></li> Ouvrir
                                             </a><br>
 

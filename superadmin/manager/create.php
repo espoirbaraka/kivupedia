@@ -189,8 +189,12 @@ if ($event == 'CREATE_COURS') {
                     $pdf = file_get_contents("../fichier/" . $target_file);
                     $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
 
-                    $data = [$_POST['cours'],$_POST['auteur'], $_POST['institution'], $newfilename, $admin, 1, 1];
-                    $sql = "INSERT INTO t_cours(Cours,Auteur,Institution,Fichier,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?)";
+                    $cours_slug = $app->slugify($_POST['cours']);
+                    $today_slug = $app->slugify(date('Y:m:d H:i:s'));
+                    $slug = $cours_slug.'-'.$today_slug;
+
+                    $data = [$_POST['cours'],$slug,$_POST['auteur'], $_POST['institution'], $newfilename, $admin, 1, 1];
+                    $sql = "INSERT INTO t_cours(Cours,cours_slug,Auteur,Institution,Fichier,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?,?)";
                     if ($app->prepare($sql, $data, 1)) {
                         $_SESSION['success'] = 'Cours ajoutée';
                     } else {
