@@ -149,8 +149,12 @@ if ($event == 'CREATE_MEMOIRE') {
                     $pdf = file_get_contents("../fichier/" . $target_file);
                     $number = preg_match_all("/\/Page\W/", $pdf, $dummy);
 
-                    $data = [$_POST['sujet'], $_POST['auteur'], $newfilename, $_POST['institution'], $_POST['annee'], $_POST['categorie'], $_POST['faculte'], $admin, 1, 1];
-                    $sql = "INSERT INTO t_memoire(Sujet,Auteur,Fichier,Institution,CodeAnnee,CodeCategorie,CodeFaculte,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?,?,?,?)";
+                    $article_slug = $app->slugify($_POST['sujet']);
+                    $today_slug = $app->slugify(date('Y:m:d H:i:s'));
+                    $slug = $article_slug.'-'.$today_slug;
+
+                    $data = [$_POST['sujet'],$slug, $_POST['auteur'], $newfilename, $_POST['institution'], $_POST['annee'], $_POST['categorie'], $_POST['faculte'], $admin, 1, 1];
+                    $sql = "INSERT INTO t_memoire(Sujet,article_slug,Auteur,Fichier,Institution,CodeAnnee,CodeCategorie,CodeFaculte,CodeAdmin,CodePropriete,Statut) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
                     if ($app->prepare($sql, $data, 1)) {
                         $_SESSION['success'] = 'Memoire/TFC ajoutée';
                     } else {
