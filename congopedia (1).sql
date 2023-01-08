@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 08 jan. 2023 à 14:10
+-- Généré le :  Dim 08 jan. 2023 à 14:18
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -218,7 +218,7 @@ CREATE TABLE `t_cours` (
 INSERT INTO `t_cours` (`CodeCours`, `Cours`, `cours_slug`, `Auteur`, `Readed`, `Liked`, `Fichier`, `Institution`, `Created_On`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`) VALUES
 (1, 'Labo info', 'labo-info-20230108-134430', '', 1, 0, '1671453462.pdf', 'ISIG-GOMA', '2023-01-08 13:07:38', 0, 1, 1, 1),
 (2, 'Labo info', 'labo-info-20230108-134430', 'Prof KALA', 0, 0, '1671452062.pdf', 'ISIG-GOMA', '2023-01-08 12:44:30', 0, 1, 1, 1),
-(3, 'E-commerce', 'e-commerce-20230108-134430', 'CT Serge kikobya', 4, 0, '1673181856.pdf', 'ISIG-GOMA', '2023-01-08 13:08:21', 0, 1, 1, 1);
+(3, 'E-commerce', 'e-commerce-20230108-134430', 'CT Serge kikobya', 5, 0, '1673181856.pdf', 'ISIG-GOMA', '2023-01-08 12:17:41', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -323,8 +323,8 @@ CREATE TABLE `t_item` (
 --
 
 INSERT INTO `t_item` (`CodeItem`, `Fichier`, `TypeFichier`, `CodeSession`, `Created_On`, `CodeOption`, `CodeAnnee`, `CodeAdmin`, `CodeCompte`, `CodePropriete`, `Statut`, `Readed`, `Liked`) VALUES
-(1, '1671276875.pdf', 'pdf', 1, '2022-12-17 11:40:19', 2, 5, 1, NULL, 1, 1, 0, 0),
-(2, '1671453444.pdf', 'pdf', 1, '2022-12-19 12:37:23', 2, 5, 1, NULL, 1, 1, 0, 0);
+(1, '1671276875.pdf', 'pdf', 1, '2023-01-08 13:06:12', 3, 5, 1, NULL, 1, 1, 0, 0),
+(2, '1671453444.pdf', 'pdf', 5, '2023-01-08 13:14:39', 3, 5, 1, NULL, 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -826,6 +826,7 @@ INSERT INTO `t_memoire` (`CodeMemoire`, `Sujet`, `article_slug`, `Auteur`, `Fich
 CREATE TABLE `t_option` (
   `CodeOption` int(11) NOT NULL,
   `Designation` varchar(250) NOT NULL,
+  `option_slug` text NOT NULL,
   `Created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -833,8 +834,9 @@ CREATE TABLE `t_option` (
 -- Déchargement des données de la table `t_option`
 --
 
-INSERT INTO `t_option` (`CodeOption`, `Designation`, `Created_on`) VALUES
-(2, 'Pedagorie générale', '2022-12-16 16:16:15');
+INSERT INTO `t_option` (`CodeOption`, `Designation`, `option_slug`, `Created_on`) VALUES
+(3, 'Pedagorie générale', 'pedagorie-generale-20230108-135456', '2023-01-08 12:54:56'),
+(4, 'Commerciale Informatique', 'commerciale-informatique-20230108-135511', '2023-01-08 12:55:11');
 
 -- --------------------------------------------------------
 
@@ -1161,7 +1163,7 @@ ALTER TABLE `t_memoire`
 -- AUTO_INCREMENT pour la table `t_option`
 --
 ALTER TABLE `t_option`
-  MODIFY `CodeOption` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CodeOption` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `t_session_exetat`
