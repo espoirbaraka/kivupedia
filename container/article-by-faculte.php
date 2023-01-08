@@ -86,7 +86,7 @@ $facul = $app->fetch($sql2);
 
 
                                         
-                                        <a href="" class="avatar avatar-lg">
+                                        <a href="detail_article?article=<?php echo $row['article_slug']; ?>" class="avatar avatar-lg">
                                             <span class="">
                                                 <i class="fa fa-file-pdf-o fa-5x"></i>
                                             </span>

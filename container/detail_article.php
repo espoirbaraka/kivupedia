@@ -27,7 +27,7 @@ $req = $app->fetch($sql);
                     <div class="col-md-4">
                         <div class="channel-text">
                             <div class="channel-video">
-                                <img src="superadmin/thumbmnail/<?php echo $req['Image']; ?>" alt="" style="img-responsive; margin: 5px 5px 5px 0px;">
+
                             </div>
                         </div>
 
@@ -37,56 +37,39 @@ $req = $app->fetch($sql);
                             <div class="channel-text">
                                 <div class="book-table">
                                     <div class="book-table-row">
-                                        <div class="book-table-cell">Titre</div>
-                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php echo $req['Titre'] ?></span>
+                                        <div class="book-table-cell">Sujet</div>
+                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php echo $req['Sujet'] ?></span>
                                         </div>
                                     </div>
                                     <div class="book-table-row">
-                                        <div class="book-table-cell">Sous-titre</div>
-                                        <div class="book-table-cell"><?php if($req['SousTitre']!=''){echo $req['SousTitre'];}else{echo "<span style='color: red;'>-</span>";}  ?>
-                                        </div>
-                                    </div>
-                                    <div class="book-table-row">
-                                        <div class="book-table-cell">Description</div>
-                                        <div class="book-table-cell"><?php if($req['Description']!=''){echo $req['Description'];}else{echo "<span style='color: red;'>-</span>";}  ?>
+                                        <div class="book-table-cell">Categorie</div>
+                                        <div class="book-table-cell">
+                                            <?php if($req['Categorie']=='TFC'){
+                                                echo "<span class='label label-primary'>TFC</span>";
+                                            }elseif($req['Categorie']=='Memoire'){
+                                                echo "<span class='label label-success'>Memoire</span>";
+                                            }elseif($req['Categorie']=='These'){
+                                                echo "<span class='label label-warning'>These</span>";
+                                            }  ?>
                                         </div>
                                     </div>
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Auteur(s)</div>
-                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php if($req['AuteurPrincipal']!=''){echo $req['AuteurPrincipal'];}else{echo "<span style='color: red;'>-</span>";}  ?></span></div>
+                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php if($req['Auteur']!=''){echo $req['Auteur'];}else{echo "<span style='color: red;'>-</span>";}  ?></span></div>
                                     </div>
                                     <div class="book-table-row">
-                                        <div class="book-table-cell">Domaine</div>
-                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php if($req['Domaine']!=''){echo $req['Domaine'];}else{echo "<span style='color: red;'>-</span>";}  ?></span></div>
+                                        <div class="book-table-cell">Faculté</div>
+                                        <div class="book-table-cell"><span style="font-weight: bold;"><?php if($req['Faculte']!=''){echo $req['Faculte'];}else{echo "<span style='color: red;'>-</span>";}  ?></span></div>
                                     </div>
                                     <div class="book-table-row">
-                                        <div class="book-table-cell">Sous-domaine</div>
-                                        <div class="book-table-cell"><?php if($req['Sous_domaine']!=''){echo $req['Sous_domaine'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
+                                        <div class="book-table-cell">Institution</div>
+                                        <div class="book-table-cell"><?php if($req['Institution']!=''){echo $req['Institution'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
                                     </div>
                                     <div class="book-table-row">
-                                        <div class="book-table-cell">Langue</div>
-                                        <div class="book-table-cell"><?php if($req['Langue']!=''){echo $req['Langue'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
+                                        <div class="book-table-cell">Année de publication</div>
+                                        <div class="book-table-cell"><?php if($req['Annee']!=''){echo $req['Annee'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
                                     </div>
-                                    <div class="book-table-row">
-                                        <div class="book-table-cell">Nombre des pages</div>
-                                        <div class="book-table-cell"><?php if($req['NombrePage']!=''){echo $req['NombrePage'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
-                                    </div>
-                                    <div class="book-table-row">
-                                        <div class="book-table-cell">Editeur</div>
-                                        <div class="book-table-cell"><?php if($req['NomEditeur']!=''){echo $req['NomEditeur'];}else{echo "<span style='color: red;'>-</span>";}  ?></div>
-                                    </div>
-                                    <div class="book-table-row">
-                                        <div class="book-table-cell">Lieu d'édition</div>
-                                        <div class="book-table-cell">
-                                            <?php if($req['LieuEdition']!=''){echo $req['LieuEdition'];}else{echo "<span style='color: red;'>-</span>";}  ?>
-                                        </div>
-                                    </div>
-                                    <div class="book-table-row">
-                                        <div class="book-table-cell">ISBN</div>
-                                        <div class="book-table-cell">
-                                            <?php if($req['ISBN']!=''){echo $req['ISBN'];}else{echo "<span style='color: red;'>-</span>";}  ?>
-                                        </div>
-                                    </div>
+
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Nombre des <span class="error">"j'aime"</span></div>
                                         <div class="book-table-cell">
@@ -102,18 +85,18 @@ $req = $app->fetch($sql);
 
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Lien de lecture</div>
-                                        <div class="book-table-cell"><a href="read_book?book=<?php echo $req['book_slug'] ?>"
-                                                                        target="_blank">https://congopedia.net/read?book=<?php echo $req['book_slug'] ?></a>
+                                        <div class="book-table-cell"><a href="read_article?article=<?php echo $req['article_slug'] ?>"
+                                                                        >https://congopedia.net/read_article?article=<?php echo $req['article_slug'] ?></a>
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="gap-small"></div>
-                                <a class="btn btn-primary" href="read_book?book=<?php echo $req['book_slug'] ?>"><i class="fa fa-book"></i> Lire</a>
+                                <a class="btn btn-primary" href="read_article?article=<?php echo $req['article_slug'] ?>"><i class="fa fa-book"></i> Lire</a>
 
 
                                 <div class="gap-small"></div>
-                                <h2>Partager ce livre</h2>
+                                <h2>Partager cet article</h2>
                                 <div class="sharethis-inline-share-buttons"></div>
                                 <div class="gap-small"></div>
                                 <h2>Commentaires</h2>
@@ -129,14 +112,14 @@ $req = $app->fetch($sql);
             </div>
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="channel-categories">
-                    <h2>Domaine</h2>
+                    <h2>Facultés</h2>
                     <ul>
                         <?php
-                        $sql3 = "SELECT * FROM t_domaine";
+                        $sql3 = "SELECT * FROM t_faculte";
                         $req = $app->fetchPrepared($sql3);
                         foreach ($req as $row){
                             ?>
-                            <li><a href="book_by_domaine?domain=<?php echo $row['domain_slug'] ?>"><?php echo $row['Domaine'] ?></a></li>
+                            <li><a href="article-by-faculte?slug=<?php echo $row['faculte_slug'] ?>"><?php echo $row['Faculte'] ?></a></li>
                             <?php
                         }
                         ?>

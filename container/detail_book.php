@@ -104,7 +104,7 @@ $req = $app->fetch($sql);
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Lien de lecture</div>
                                         <div class="book-table-cell"><a href="read_book?book=<?php echo $req['book_slug'] ?>"
-                                                                        target="_blank">https://congopedia.net/read?book=<?php echo $req['book_slug'] ?></a>
+                                                                        >https://congopedia.net/read_book?book=<?php echo $req['book_slug'] ?></a>
                                         </div>
                                     </div>
 
