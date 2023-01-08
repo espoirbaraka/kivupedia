@@ -18,9 +18,11 @@
                             <li><a href="article" class="navv">TFC/Memoire</a></li>
                             <li><a href="courses" class="navv">Cours</a></li>
                             <li><a href="item" class="navv">ITEM</a></li>
-<!--                            <li><a href="question" class="navv">Question de la semaine</a></li>-->
                             <li><a href="about-us" class="navv">A propos</a></li>
+
+<!--                            <button class="btn btn-lg" style=" background-color: #ea5b0e; margin-left: 40px; margin-top: 25px;"> Se connecter</button>-->
                         </ul>
+
                     </nav>
 
                 </div>
