@@ -107,8 +107,13 @@ if ($event == 'CREATE_FACULTE') {
 }
 
 if ($event == 'CREATE_OPTION') {
-    $data = [$_POST['option']];
-    $sql = "INSERT INTO t_option(Designation) VALUES(?)";
+
+    $option_slug = $app->slugify($_POST['option']);
+    $today_slug = $app->slugify(date('Y:m:d H:i:s'));
+    $slug = $option_slug.'-'.$today_slug;
+
+    $data = [$_POST['option'],$slug];
+    $sql = "INSERT INTO t_option(Designation,option_slug) VALUES(?,?)";
     if ($app->prepare($sql, $data, 1)) {
         $_SESSION['success'] = 'Option ajoutée';
     }else{
