@@ -14,9 +14,9 @@
         <div class="row">
             <div class="col-md-12 address">
                 <p>
-                    Email: <a href="mailto:info@congopedia.com"
-                              class="__cf_email__">info@congopedia.com</a><br>
-                    Téléphone: <a href="tel:+243 977 553 723">+243 977 553 723</a>
+                    Email: <a href="mailto:hortancekitobi11@gmail.com"
+                              class="__cf_email__">hortancekitobi11@gmail.com</a><br>
+                    Téléphone: <a href="tel:+243 840 346 332">+243 840 346 332</a>
                 </p>
             </div>
             <div class="col-md-12 copyright">
