@@ -6,15 +6,15 @@ if(isset($_POST['login'])){
 	$email= $_POST['email'];
 	$password = sha1($_POST['password']);
 	try{
-		$stmt = $conn->prepare("SELECT * FROM t_superadmin WHERE Email = ? AND Password = ?");
+		$stmt = $conn->prepare("SELECT * FROM t_superadmin WHERE Email = ? AND Password = ?  AND CodeCategorie=2");
 		$stmt->execute(array($email,$password));
 		$nbre = $stmt->rowCount();
 		if($nbre == 1){
 			$row = $stmt->fetch();
-			$_SESSION['super'] = $row['CodeSuper'];
+			$_SESSION['admin'] = $row['CodeSuper'];
 			$today = date('Y-m-d H:i:s');
 			$stmt = $conn->prepare("UPDATE t_superadmin SET Last_connection = ? WHERE CodeSuper=?");
-			$stmt->execute(array($today,$_SESSION['super']));
+			$stmt->execute(array($today,$_SESSION['admin']));
 		}
 		else{
 			$_SESSION['error'] = 'Utilisateur inexistant';
@@ -30,6 +30,6 @@ else{
 }
 
 //$pdo->close();
-header('location: index.php');
+header('location: index');
 
 ?>

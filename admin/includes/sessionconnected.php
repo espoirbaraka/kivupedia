@@ -2,14 +2,14 @@
 include '../class/app.php';
 session_start();
 
-if(!isset($_SESSION['super']) || trim($_SESSION['super']) == ''){
+if(!isset($_SESSION['admin']) || trim($_SESSION['admin']) == ''){
     header('location: ./index');
     exit();
 }
 
 $conn = $app->getPDO();
 
-$id = $_SESSION['super'];
+$id = $_SESSION['admin'];
 $sql = "SELECT * FROM t_superadmin
          WHERE CodeSuper=$id";
 $req = $app->fetch($sql);
