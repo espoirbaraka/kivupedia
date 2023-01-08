@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 07 jan. 2023 à 20:04
+-- Généré le :  Dim 08 jan. 2023 à 14:10
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -198,6 +198,7 @@ INSERT INTO `t_compte` (`CodeCompte`, `NomPersonne`, `PostnomPersonne`, `PrenomP
 CREATE TABLE `t_cours` (
   `CodeCours` int(11) NOT NULL,
   `Cours` text NOT NULL,
+  `cours_slug` text NOT NULL,
   `Auteur` varchar(254) NOT NULL,
   `Readed` int(11) NOT NULL,
   `Liked` int(11) NOT NULL,
@@ -214,9 +215,10 @@ CREATE TABLE `t_cours` (
 -- Déchargement des données de la table `t_cours`
 --
 
-INSERT INTO `t_cours` (`CodeCours`, `Cours`, `Auteur`, `Readed`, `Liked`, `Fichier`, `Institution`, `Created_On`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`) VALUES
-(1, 'Labo info', '', 0, 0, '1671453462.pdf', 'ISIG-GOMA', '2022-12-19 12:37:41', 0, 1, 1, 1),
-(2, 'Labo info', 'Prof KALA', 0, 0, '1671452062.pdf', 'ISIG-GOMA', '2022-12-19 12:14:21', 0, 1, 1, 1);
+INSERT INTO `t_cours` (`CodeCours`, `Cours`, `cours_slug`, `Auteur`, `Readed`, `Liked`, `Fichier`, `Institution`, `Created_On`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`) VALUES
+(1, 'Labo info', 'labo-info-20230108-134430', '', 1, 0, '1671453462.pdf', 'ISIG-GOMA', '2023-01-08 13:07:38', 0, 1, 1, 1),
+(2, 'Labo info', 'labo-info-20230108-134430', 'Prof KALA', 0, 0, '1671452062.pdf', 'ISIG-GOMA', '2023-01-08 12:44:30', 0, 1, 1, 1),
+(3, 'E-commerce', 'e-commerce-20230108-134430', 'CT Serge kikobya', 4, 0, '1673181856.pdf', 'ISIG-GOMA', '2023-01-08 13:08:21', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -252,16 +254,17 @@ INSERT INTO `t_domaine` (`CodeDomaine`, `Domaine`, `domain_slug`, `Visited`, `Cr
 
 CREATE TABLE `t_faculte` (
   `CodeFaculte` int(11) NOT NULL,
-  `Faculte` varchar(250) NOT NULL
+  `Faculte` varchar(250) NOT NULL,
+  `faculte_slug` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `t_faculte`
 --
 
-INSERT INTO `t_faculte` (`CodeFaculte`, `Faculte`) VALUES
-(2, 'Informatique de Gestion'),
-(3, 'Réseau et télécommunication');
+INSERT INTO `t_faculte` (`CodeFaculte`, `Faculte`, `faculte_slug`) VALUES
+(2, 'Informatique de Gestion', 'informatique-de-gestion-20230108-125706'),
+(3, 'Réseau et télécommunication', 'reseau-et-telecommunication-20230108-125706');
 
 -- --------------------------------------------------------
 
@@ -440,7 +443,7 @@ INSERT INTO `t_livre` (`CodeLivre`, `Titre`, `book_slug`, `SousTitre`, `Descript
 (27, 'Guide clinique et thérapeutique', 'guide-clinique-et-therapeutique-20230106-150030', 'Guide clinique', 'Guides par médecins sans frontières:\r\nGuides pour Les programmes curatifs des hôpitaux  et des dispensaries à l\'usage des prescripteurs', 'Médecins sans frontières', 369, 'Médecins sans frontières', 'France', '', 'GUIDE CLINIQUE THERAPEUTIQUE.pdf', 'IMG_20220203_000957_193.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 43, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (28, 'Guide pratique de l\'interne en médecine', 'guide-pratique-de-linterne-en-medecine-20230106-150030', 'Guide pratique', 'Guide réalisé à partir de travail de thèse', 'Anne Sophie', 56, 'Université Claude Bernard LYON1', 'Lyon France', '', 'guide-pratique-interne-de-medecine-generale-2015-2016.pdf', 'IMG_20220203_004944_950.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 41, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (29, 'Guide du diplôme d\'études spécialisées de MEDECINE GENERALE Promotion 2015', 'guide-du-diplome-detudes-specialisees-de-medecine-generale-promotion-2015-20230106-150030', 'Guide du diplôme spécialisé', 'Six stages cliniques à l\'hopital et en ambulatoire', 'Mme Fréderique VIDAL', 106, 'Université Nice SOPHIA', 'Lyon France', '', 'Guide_du_DES_de_Medecine_Generale_Rentree_2015-2.pdf', 'IMG_20220203_010721_957.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 35, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
-(30, 'Cours de biochimie structurale', 'cours-de-biochimie-structurale-20230106-150030', 'Biochimie structurale', 'La biochimie ou chimie du vivant est une science des bases chimiques de la vie', 'Université Ferhat', 97, 'Université FERHAT ABBAS', 'Algers', '', 'Biochimie_structurale.pdf', 'IMG_20220203_011817_243.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 48, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
+(30, 'Cours de biochimie structurale', 'cours-de-biochimie-structurale-20230106-150030', 'Biochimie structurale', 'La biochimie ou chimie du vivant est une science des bases chimiques de la vie', 'Université Ferhat', 97, 'Université FERHAT ABBAS', 'Algers', '', 'Biochimie_structurale.pdf', 'IMG_20220203_011817_243.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-08 13:08:49', 49, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (31, 'Biologie Céllulaire', 'biologie-cellulaire-20230106-150030', 'Exercices et méthodes', 'Un outil pédagogique pour aider Les étudiants des prémières années d\'études supérieures à appréhender les concepts fondamentaux de la biologie', 'Marc Thiry', 28, 'Editeur de savours Dunod', 'Dunod,2014', '', 'BIOLOGIE CELLULAIRE.pdf', 'IMG_20220203_012749_006.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 34, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (32, 'La biologie de A à Z', 'la-biologie-de-a-a-z-20230106-150030', 'Exposition scientifique', '', 'Pascal Boulanger', 27, 'Université Paris Sud 1', 'France', '', 'Biologie-A-Z.pdf', 'IMG_20220203_014140_433.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 46, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (33, 'Microbiologie du sol', 'microbiologie-du-sol-20230106-150030', 'Cours de microbiologie du sol', 'Microbiologie du sol', 'CI MOUREAUX', 164, 'Ortsom', 'ORSTOM', '', 'MICROBIOLOGIE DU SOL.pdf', 'IMG_20220203_015247_309.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 33, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
@@ -790,6 +793,7 @@ INSERT INTO `t_livre` (`CodeLivre`, `Titre`, `book_slug`, `SousTitre`, `Descript
 CREATE TABLE `t_memoire` (
   `CodeMemoire` int(11) NOT NULL,
   `Sujet` text NOT NULL,
+  `article_slug` text NOT NULL,
   `Auteur` varchar(255) NOT NULL,
   `Fichier` text NOT NULL,
   `CodeAnnee` int(11) NOT NULL,
@@ -809,8 +813,9 @@ CREATE TABLE `t_memoire` (
 -- Déchargement des données de la table `t_memoire`
 --
 
-INSERT INTO `t_memoire` (`CodeMemoire`, `Sujet`, `Auteur`, `Fichier`, `CodeAnnee`, `Institution`, `CodeCategorie`, `CodeFaculte`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`, `Created_on`, `Readed`, `Liked`) VALUES
-(2, 'Conception d’un système de monitoring de l’énergie solaire au sein d’une institution privée Cas de l’ISIG-GOMA', 'Baraka Bigega Espoir, Abio Bamongoyo', '1671451213.pdf', 5, 'ISIG-GOMA', 2, 2, NULL, 1, 1, 0, '2022-12-19 12:00:12', 0, 0);
+INSERT INTO `t_memoire` (`CodeMemoire`, `Sujet`, `article_slug`, `Auteur`, `Fichier`, `CodeAnnee`, `Institution`, `CodeCategorie`, `CodeFaculte`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`, `Created_on`, `Readed`, `Liked`) VALUES
+(2, 'Conception d’un système de monitoring de l’énergie solaire au sein d’une institution privée Cas de l’ISIG-GOMA', 'conception-dun-systeme-de-monitoring-de-lenergie-solaire-au-sein-dune-institution-privee-cas-de-lisig-goma-20230108-130646', 'Baraka Bigega Espoir, Abio Bamongoyo', '1671451213.pdf', 5, 'ISIG-GOMA', 2, 2, NULL, 1, 1, 1, '2023-01-08 12:29:59', 4, 0),
+(3, 'DEVELOPPEMENT D’UNE API D’ECHANGE DE S DONNEES ENTRE LES SITES WEB MARCHANDS P ARTENAIRES D’UNE ENTREPRISE COMME RCIA L E, CAS DE MALEKANI SARLU', 'developpement-dune-api-dechange-de-s-donnees-entre-les-sites-web-marchands-p-artenaires-dune-entreprise-comme-rcia-l-e-cas-de-malekani-sarlu-20230108-130646', 'Kavira Malekani Shekinah', '1673179537.pdf', 5, 'ISIG-GOMA', 2, 2, NULL, 1, 1, 1, '2023-01-08 12:30:09', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -910,7 +915,7 @@ CREATE TABLE `t_superadmin` (
 --
 
 INSERT INTO `t_superadmin` (`CodeSuper`, `Email`, `Password`, `Created_on`, `Last_connection`, `NomComplet`, `Photo`, `CodeCategorie`) VALUES
-(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-07 14:51:26', '2023-01-07 15:51:26', 'Baraka Bigega Espoir', '', 1),
+(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-08 11:57:13', '2023-01-08 12:57:13', 'Baraka Bigega Espoir', '', 1),
 (3, 'hortencekitobi@gmail.com', '7b2e9f54cdff413fcde01f330af6896c3cd7e6cd', '2022-12-07 17:50:28', '0000-00-00 00:00:00', 'Hortence Kitobi', '', 1),
 (10, 'passybayongwa@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-12-07 17:50:19', '0000-00-00 00:00:00', 'Passy Bayongwa', '', 1),
 (12, 'siwamumberecarin1998@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-12-19 15:16:04', '0000-00-00 00:00:00', 'Baraka', '', 2);
@@ -1114,7 +1119,7 @@ ALTER TABLE `t_compte`
 -- AUTO_INCREMENT pour la table `t_cours`
 --
 ALTER TABLE `t_cours`
-  MODIFY `CodeCours` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CodeCours` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `t_domaine`
@@ -1150,7 +1155,7 @@ ALTER TABLE `t_livre`
 -- AUTO_INCREMENT pour la table `t_memoire`
 --
 ALTER TABLE `t_memoire`
-  MODIFY `CodeMemoire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CodeMemoire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `t_option`
