@@ -1,11 +1,14 @@
 <?php
+$word = $_GET['word'];
+$search = '%'.$word.'%';
+
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int)strip_tags($_GET['page']);
 } else {
     $currentPage = 1;
 }
 
-$sql1 = "SELECT COUNT(*) AS nbre FROM t_faculte";
+$sql1 = "SELECT COUNT(*) AS nbre FROM t_faculte WHERE Faculte LIKE '%$word%'";
 $nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
 $parPage = 15;
@@ -26,14 +29,14 @@ $premier = ($currentPage * $parPage) - $parPage;
 //$req = $app->fetchPrepared($sql);
 
 
-$sql3 = "SELECT * FROM t_faculte ORDER BY Faculte LIMIT $premier,$parPage";
+$sql3 = "SELECT * FROM t_faculte WHERE Faculte LIKE '%$word%' ORDER BY Faculte LIMIT $premier,$parPage";
 $req = $app->fetchPrepared($sql3);
 ?>
 <div class="slide-single slide-single-page">
     <div class="overlay"></div>
     <div class="text text-page">
         <div class="this-item">
-            <h2>Articles scientifiques </h2>
+            <h2><?php echo $nbArticles; ?> Facultés trouvées avec : <?php echo $word; ?> ... </h2>
         </div>
     </div>
 </div>

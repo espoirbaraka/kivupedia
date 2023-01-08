@@ -31,7 +31,7 @@ $req = $app->fetchPrepared($sql);
             <div class="col-md-6 left">
 
                 <div class="seach">
-                    <form action="search.php?word=" method="get">
+                    <form action="search?word=" method="get">
                         <input type="text" autocomplete="off" name="word" class="form-control"
                                placeholder="Recherchez un ouvrage">
                     </form>
