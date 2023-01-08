@@ -6,10 +6,11 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = 1;
 }
 
-$sql1 = "SELECT COUNT(*) AS nbre FROM t_faculte";
+$sql1 = "SELECT COUNT(*) AS nbre FROM t_memoire LEFT JOIN t_faculte
+         ON t_memoire.CodeFaculte=t_faculte.CodeFaculte WHERE Statut=1 AND faculte_slug='$faculte'";
 $nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
-$parPage = 15;
+$parPage = 10;
 
 $pages = ceil($nbArticles / $parPage);
 
@@ -83,11 +84,14 @@ $facul = $app->fetch($sql2);
                                 <div class="card-body">
                                     <div class="dropdown" style="padding: 5px;">
 
+
+                                        
                                         <a href="" class="avatar avatar-lg">
                                             <span class="">
                                                 <i class="fa fa-file-pdf-o fa-5x"></i>
                                             </span>
                                         </a>
+
 
 
                                     </div>
@@ -124,13 +128,13 @@ $facul = $app->fetch($sql2);
 
             <div class="col-md-12">
                 <div class="pagination">
-                    <a href="article?page=<?= $currentPage - 1 ?>"><span class="<?= ($currentPage == 1) ? "disabled" : "" ?>">&#171; précédent</span></a>
+                    <a href="article-by-faculte?slug=<?= $faculte ?>&page=<?= $currentPage - 1 ?>"><span class="<?= ($currentPage == 1) ? "disabled" : "" ?>">&#171; précédent</span></a>
 
                     <?php for($page = 1; $page <= $pages; $page++): ?>
-                        <a href="article?page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a>
+                        <a href="article-by-faculte?slug=<?= $faculte ?>&page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a>
                     <?php endfor ?>
 
-                    <a href="article?page=<?= $currentPage + 1 ?>"><span class="<?= ($currentPage == $pages) ? "disabled" : "" ?>">suivant &#187;</span></a>
+                    <a href="article-by-faculte?slug=<?= $faculte ?>&page=<?= $currentPage + 1 ?>"><span class="<?= ($currentPage == $pages) ? "disabled" : "" ?>">suivant &#187;</span></a>
 
                 </div>
             </div>
