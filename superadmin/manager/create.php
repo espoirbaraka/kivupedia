@@ -93,8 +93,11 @@ if ($event == 'CREATE_LIVRE') {
 }
 
 if ($event == 'CREATE_FACULTE') {
-    $data = [$_POST['faculte']];
-    $sql = "INSERT INTO t_faculte(Faculte) VALUES(?)";
+    $faculte_slug = $app->slugify($_POST['faculte']);
+    $today_slug = $app->slugify(date('Y:m:d H:i:s'));
+    $slug = $faculte_slug.'-'.$today_slug;
+    $data = [$_POST['faculte'],$slug];
+    $sql = "INSERT INTO t_faculte(Faculte,faculte_slug) VALUES(?,?)";
     if ($app->prepare($sql, $data, 1)) {
         $_SESSION['success'] = 'Faculte ajoutée';
     }else{
