@@ -10,7 +10,7 @@ $sql1 = "SELECT COUNT(*) AS nbre FROM t_memoire LEFT JOIN t_faculte
          ON t_memoire.CodeFaculte=t_faculte.CodeFaculte WHERE Statut=1 AND faculte_slug='$faculte'";
 $nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
-$parPage = 10;
+$parPage = 20;
 
 $pages = ceil($nbArticles / $parPage);
 
