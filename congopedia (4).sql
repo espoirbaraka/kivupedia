@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 08 jan. 2023 à 16:54
+-- Généré le :  lun. 09 jan. 2023 à 12:06
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -216,7 +216,7 @@ CREATE TABLE `t_cours` (
 --
 
 INSERT INTO `t_cours` (`CodeCours`, `Cours`, `cours_slug`, `Auteur`, `Readed`, `Liked`, `Fichier`, `Institution`, `Created_On`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`) VALUES
-(1, 'Labo info', 'labo-info-20230108-134430', '', 1, 0, '1671453462.pdf', 'ISIG-GOMA', '2023-01-08 13:07:38', 0, 1, 1, 1),
+(1, 'Labo info', 'labo-info-20230108-134430', '', 2, 0, '1671453462.pdf', 'ISIG-GOMA', '2023-01-08 16:49:58', 0, 1, 1, 1),
 (2, 'Labo info', 'labo-info-20230108-134430', 'Prof KALA', 0, 0, '1671452062.pdf', 'ISIG-GOMA', '2023-01-08 12:44:30', 0, 1, 1, 1),
 (3, 'E-commerce', 'e-commerce-20230108-134430', 'CT Serge kikobya', 5, 0, '1673181856.pdf', 'ISIG-GOMA', '2023-01-08 12:17:41', 0, 1, 1, 1);
 
@@ -324,7 +324,8 @@ CREATE TABLE `t_item` (
 
 INSERT INTO `t_item` (`CodeItem`, `Fichier`, `TypeFichier`, `CodeSession`, `Created_On`, `CodeOption`, `CodeAnnee`, `CodeAdmin`, `CodeCompte`, `CodePropriete`, `Statut`, `Readed`, `Liked`) VALUES
 (1, '1671276875.pdf', 'pdf', 1, '2023-01-08 13:06:12', 3, 5, 1, NULL, 1, 1, 0, 0),
-(2, '1671453444.pdf', 'pdf', 5, '2023-01-08 13:14:39', 3, 5, 1, NULL, 1, 1, 0, 0);
+(2, '1671453444.pdf', 'pdf', 5, '2023-01-09 10:31:06', 3, 5, 1, NULL, 1, 1, 3, 0),
+(3, '1673260259.PNG', 'png', 2, '2023-01-09 10:31:21', 3, 5, 1, NULL, 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -443,7 +444,7 @@ INSERT INTO `t_livre` (`CodeLivre`, `Titre`, `book_slug`, `SousTitre`, `Descript
 (27, 'Guide clinique et thérapeutique', 'guide-clinique-et-therapeutique-20230106-150030', 'Guide clinique', 'Guides par médecins sans frontières:\r\nGuides pour Les programmes curatifs des hôpitaux  et des dispensaries à l\'usage des prescripteurs', 'Médecins sans frontières', 369, 'Médecins sans frontières', 'France', '', 'GUIDE CLINIQUE THERAPEUTIQUE.pdf', 'IMG_20220203_000957_193.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 43, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (28, 'Guide pratique de l\'interne en médecine', 'guide-pratique-de-linterne-en-medecine-20230106-150030', 'Guide pratique', 'Guide réalisé à partir de travail de thèse', 'Anne Sophie', 56, 'Université Claude Bernard LYON1', 'Lyon France', '', 'guide-pratique-interne-de-medecine-generale-2015-2016.pdf', 'IMG_20220203_004944_950.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 41, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (29, 'Guide du diplôme d\'études spécialisées de MEDECINE GENERALE Promotion 2015', 'guide-du-diplome-detudes-specialisees-de-medecine-generale-promotion-2015-20230106-150030', 'Guide du diplôme spécialisé', 'Six stages cliniques à l\'hopital et en ambulatoire', 'Mme Fréderique VIDAL', 106, 'Université Nice SOPHIA', 'Lyon France', '', 'Guide_du_DES_de_Medecine_Generale_Rentree_2015-2.pdf', 'IMG_20220203_010721_957.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 35, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
-(30, 'Cours de biochimie structurale', 'cours-de-biochimie-structurale-20230106-150030', 'Biochimie structurale', 'La biochimie ou chimie du vivant est une science des bases chimiques de la vie', 'Université Ferhat', 97, 'Université FERHAT ABBAS', 'Algers', '', 'Biochimie_structurale.pdf', 'IMG_20220203_011817_243.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-08 13:08:49', 49, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
+(30, 'Cours de biochimie structurale', 'cours-de-biochimie-structurale-20230106-150030', 'Biochimie structurale', 'La biochimie ou chimie du vivant est une science des bases chimiques de la vie', 'Université Ferhat', 97, 'Université FERHAT ABBAS', 'Algers', '', 'Biochimie_structurale.pdf', 'IMG_20220203_011817_243.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-08 16:58:35', 50, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (31, 'Biologie Céllulaire', 'biologie-cellulaire-20230106-150030', 'Exercices et méthodes', 'Un outil pédagogique pour aider Les étudiants des prémières années d\'études supérieures à appréhender les concepts fondamentaux de la biologie', 'Marc Thiry', 28, 'Editeur de savours Dunod', 'Dunod,2014', '', 'BIOLOGIE CELLULAIRE.pdf', 'IMG_20220203_012749_006.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 34, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (32, 'La biologie de A à Z', 'la-biologie-de-a-a-z-20230106-150030', 'Exposition scientifique', '', 'Pascal Boulanger', 27, 'Université Paris Sud 1', 'France', '', 'Biologie-A-Z.pdf', 'IMG_20220203_014140_433.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 46, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
 (33, 'Microbiologie du sol', 'microbiologie-du-sol-20230106-150030', 'Cours de microbiologie du sol', 'Microbiologie du sol', 'CI MOUREAUX', 164, 'Ortsom', 'ORSTOM', '', 'MICROBIOLOGIE DU SOL.pdf', 'IMG_20220203_015247_309.jpg', 0, 0, 0, NULL, NULL, 0, '2023-01-06 14:00:30', 33, 0, 0, 0, '0000-00-00', '0000-00-00', 0, 1),
@@ -779,7 +780,7 @@ INSERT INTO `t_livre` (`CodeLivre`, `Titre`, `book_slug`, `SousTitre`, `Descript
 (361, 'Cours Typescript', 'cours-typescript-20230106-150031', '', '', '', 15, '', '', '', '1673012311.pdf', '1673012311.PNG', 0, 1, 0, NULL, 1, 1, '2023-01-06 14:00:31', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1),
 (362, 'Cours Typescript', 'cours-typescript-20230106-150031', '', '', '', 15, '', '', '', '1673012339.pdf', '1673012339.PNG', 0, 1, 0, NULL, 1, 1, '2023-01-06 14:00:31', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1),
 (363, 'Cours Typescript', 'cours-typescript-20230106-150031', '', '', '', 15, '', '', '', '1673012409.pdf', '1673012409.PNG', 0, 1, 0, NULL, 1, 1, '2023-01-06 14:00:31', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1),
-(364, 'lé cours de typesc&ripts for, scrq²cj', 'le-cours-de-typescripts-for-scrq2cj-20230106-150031', '', '', '', 15, '', '', '', '1673012457.pdf', '1673012457.PNG', 0, 2, 0, NULL, 1, 1, '2023-01-06 14:00:31', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1),
+(364, 'lé cours de typesc&ripts for, scrq²cj', 'le-cours-de-typescripts-for-scrq2cj-20230106-150031', '', '', '', 15, '', '', '', '1673012457.pdf', '1673012457.PNG', 0, 2, 0, NULL, 1, 1, '2023-01-08 20:38:36', 1, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1),
 (365, 'Cours Typescript', 'cours-typescript-20230106-150031', '', '', '', 15, '', '', '', '1673012703.pdf', '1673012703.PNG', 0, 1, 0, NULL, 1, 1, '2023-01-06 14:00:31', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1),
 (366, 'Cours Typescript', 'cours-typescript-20230106-150031', '', '', '', 15, '', '', '', '1673012842.pdf', '1673012842.PNG', 0, 1, 0, NULL, 1, 1, '2023-01-06 14:00:31', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1),
 (367, 'Cours Typescript', 'cours-typescript-20230106-150031', '', '', '', 15, '', '', '', '1673012977.pdf', '1673012977.PNG', 0, 1, 0, NULL, 1, 1, '2023-01-06 14:00:31', 0, 0, 0, 1, '0000-00-00', '0000-00-00', 0, 1);
@@ -917,10 +918,10 @@ CREATE TABLE `t_superadmin` (
 --
 
 INSERT INTO `t_superadmin` (`CodeSuper`, `Email`, `Password`, `Created_on`, `Last_connection`, `NomComplet`, `Photo`, `CodeCategorie`) VALUES
-(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-08 11:57:13', '2023-01-08 12:57:13', 'Baraka Bigega Espoir', '', 1),
+(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-09 10:30:36', '2023-01-09 11:30:36', 'Baraka Bigega Espoir', '', 1),
 (3, 'hortencekitobi@gmail.com', '7b2e9f54cdff413fcde01f330af6896c3cd7e6cd', '2022-12-07 17:50:28', '0000-00-00 00:00:00', 'Hortence Kitobi', '', 1),
 (10, 'passybayongwa@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-12-07 17:50:19', '0000-00-00 00:00:00', 'Passy Bayongwa', '', 1),
-(12, 'siwamumberecarin1998@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-12-19 15:16:04', '0000-00-00 00:00:00', 'Baraka', '', 2);
+(13, 'siwamumberecarin1998@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-08 19:38:44', '2023-01-08 20:38:44', 'Siwa', '', 2);
 
 --
 -- Index pour les tables déchargées
@@ -1139,7 +1140,7 @@ ALTER TABLE `t_faculte`
 -- AUTO_INCREMENT pour la table `t_item`
 --
 ALTER TABLE `t_item`
-  MODIFY `CodeItem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CodeItem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `t_lecture`
@@ -1181,7 +1182,7 @@ ALTER TABLE `t_sous_domaine`
 -- AUTO_INCREMENT pour la table `t_superadmin`
 --
 ALTER TABLE `t_superadmin`
-  MODIFY `CodeSuper` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `CodeSuper` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
