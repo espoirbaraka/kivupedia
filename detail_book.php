@@ -1,4 +1,6 @@
 <?php
+$share = true;
+
 include("includes/sessionclient.php");
 
 include("includes/head.php");
