@@ -69,9 +69,19 @@ $facul = $app->fetch($sql2);
 
 
 
-                                        <a href="detail_item?item=<?php echo $row['item_slug']; ?>" class="avatar avatar-lg">
+                                        <a href="detail_item?item=<?php echo $row['CodeItem']; ?>" class="avatar avatar-lg">
                                             <span class="">
-                                                <i class="fa fa-file-pdf-o fa-5x" style="color: #a15508"></i>
+                                                <i
+                                                        <?php
+                                                        if($row['TypeFichier']=='pdf'){
+                                                            echo "class='fa fa-file-pdf-o fa-5x' style='color: #B70C0CFF'";
+                                                        }elseif ($row['TypeFichier']=='docx'){
+                                                            echo "class='fa fa-file-text fa-5x' style='color: #0861A1FF'";
+                                                        }else{
+                                                            echo "class='fa fa-file-image-o fa-5x' style='color: #FCB418FF'";
+                                                        }
+                                                        ?>
+                                                        ></i>
                                             </span>
                                         </a>
 

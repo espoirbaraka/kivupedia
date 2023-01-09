@@ -21,7 +21,7 @@
                                     <li><a href="courses" class="navv">Cours</a></li>
                                     <li><a href="item" class="navv">ITEM</a></li>
                                     <li><a href="about-us" class="navv">A propos</a></li>
-                                    <li><a href="login" style="float: right; border: 2px solid #b70c0c; color: #b70c0c;">Se connecter</a></li>
+                                    <li><a href="login" style="float: right; border: 2px solid #ffc200; color: #ffc200;">Se connecter</a></li>
                                 </ul>
 
 
