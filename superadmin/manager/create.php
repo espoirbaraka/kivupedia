@@ -88,7 +88,7 @@ if ($event == 'CREATE_LIVRE') {
             }
         }
     }
-    header("Location: ../books");
+    header("Location: ../newbook");
 
 }
 
@@ -169,7 +169,7 @@ if ($event == 'CREATE_MEMOIRE') {
             }
         }
     }
-    header("Location: ../memoire");
+    header("Location: ../newmemoire");
 }
 
 
@@ -209,7 +209,7 @@ if ($event == 'CREATE_COURS') {
             }
         }
     }
-    header("Location: ../cours");
+    header("Location: ../newcours");
 }
 
 
@@ -241,5 +241,34 @@ if ($event == 'CREATE_ITEM') {
             }
         }
     }
-    header("Location: ../item");
+    header("Location: ../newitem");
+}
+
+
+if ($event == 'CREATE_OFFRE') {
+    $admin = $_SESSION['super'];
+    $file_dir = "../offre/";
+    $file = explode(".", $_FILES["fichier"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($file);
+    $target_file = $file_dir . basename($newfilename);
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    if (file_exists($target_file)) {
+        $_SESSION['error'] = 'Un fichier avec le meme nom existe. Veuillez renomer votre fichier';
+    }else {
+        if ($_FILES["fichier"]["size"] > 10485760) {
+            $_SESSION['error'] = 'Le fichier depasse 10 MB';
+        } else {
+            if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
+                $data = [$_POST['entreprise'], $_POST['nombre'], $_POST['poste'], $_POST['debut'], $_POST['fin'], $newfilename, $admin, 1];
+                $sql = "INSERT INTO t_offre(Entreprise,NombrePoste,Poste,DateDebut,DateExpiration,Fichier,Created_on,Statut) VALUES(?,?,?,?,?,?,?,?)";
+                if ($app->prepare($sql, $data, 1)) {
+                    $_SESSION['success'] = 'Offre d\'emploi ajoutée';
+                } else {
+                    $_SESSION['error'] = 'Problème d\'insertion';
+                }
+            }
+        }
+    }
+    header("Location: ../newoffre");
 }

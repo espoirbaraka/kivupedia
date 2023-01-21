@@ -20,6 +20,8 @@
                                     <li><a href="article" class="navv">TFC/Memoire</a></li>
                                     <li><a href="courses" class="navv">Cours</a></li>
                                     <li><a href="item" class="navv">ITEM</a></li>
+                                    <li><a href="offre" class="navv">Offre d'emploi</a></li>
+                                    <li><a href="quiz" class="navv">Quiz</a></li>
                                     <li><a href="about-us" class="navv">A propos</a></li>
                                     <li><a href="login" style="float: right; border: 2px solid #ffc200; color: #ffc200;">Se connecter</a></li>
                                 </ul>
