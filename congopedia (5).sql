@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 09 jan. 2023 à 12:06
+-- Généré le :  sam. 21 jan. 2023 à 19:54
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -169,10 +169,10 @@ CREATE TABLE `t_compte` (
   `PostnomPersonne` varchar(50) NOT NULL,
   `PrenomPersonne` varchar(50) DEFAULT NULL,
   `TelephonePersonne` varchar(15) NOT NULL,
-  `EmailPersonne` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
   `Password` text NOT NULL,
   `Image` text NOT NULL,
-  `CodeCategoriePersonne` int(11) DEFAULT NULL,
+  `Last_connection` datetime NOT NULL,
   `Created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Statut` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -181,13 +181,13 @@ CREATE TABLE `t_compte` (
 -- Déchargement des données de la table `t_compte`
 --
 
-INSERT INTO `t_compte` (`CodeCompte`, `NomPersonne`, `PostnomPersonne`, `PrenomPersonne`, `TelephonePersonne`, `EmailPersonne`, `Password`, `Image`, `CodeCategoriePersonne`, `Created_on`, `Statut`) VALUES
-(11, 'Baraka', 'Bigega', 'Espoir', '+243977553723', 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', NULL, '2022-01-09 13:45:31', 1),
-(12, 'Akilimali', 'Baraka', 'Michael', '+243971292017', 'mick@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', 2, '2022-01-12 14:42:11', 1),
-(13, 'Ismael', 'Baraka', 'Bigega', '+2439977553723', 'isma@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', 2, '2022-01-09 15:04:18', 1),
-(14, 'Siwa', 'Mumbere', 'Carin', '+2439977553723', 'siwamumberecarin1998@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', 2, '2022-01-09 17:13:55', 0),
-(16, 'Akilimali ', 'Badesi', 'Gulain', '0977553643', 'gullain@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', NULL, '2022-01-09 13:45:31', 1),
-(17, 'Abio', 'Bamongoyo', 'Gaetan', '+2439776655442', 'gaetan@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', NULL, '2022-01-09 13:52:53', 1);
+INSERT INTO `t_compte` (`CodeCompte`, `NomPersonne`, `PostnomPersonne`, `PrenomPersonne`, `TelephonePersonne`, `Email`, `Password`, `Image`, `Last_connection`, `Created_on`, `Statut`) VALUES
+(11, 'Baraka', 'Bigega', 'Espoir', '+243977553723', 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-09 13:45:31', 1),
+(12, 'Akilimali', 'Baraka', 'Michael', '+243971292017', 'mick@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-12 14:42:11', 1),
+(13, 'Ismael', 'Baraka', 'Bigega', '+2439977553723', 'isma@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-09 15:04:18', 1),
+(14, 'Siwa', 'Mumbere', 'Carin', '+2439977553723', 'siwamumberecarin1998@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-09 17:13:55', 0),
+(16, 'Akilimali ', 'Badesi', 'Gulain', '0977553643', 'gullain@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-09 13:45:31', 1),
+(17, 'Abio', 'Bamongoyo', 'Gaetan', '+2439776655442', 'gaetan@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-09 13:52:53', 1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +218,7 @@ CREATE TABLE `t_cours` (
 INSERT INTO `t_cours` (`CodeCours`, `Cours`, `cours_slug`, `Auteur`, `Readed`, `Liked`, `Fichier`, `Institution`, `Created_On`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`) VALUES
 (1, 'Labo info', 'labo-info-20230108-134430', '', 2, 0, '1671453462.pdf', 'ISIG-GOMA', '2023-01-08 16:49:58', 0, 1, 1, 1),
 (2, 'Labo info', 'labo-info-20230108-134430', 'Prof KALA', 0, 0, '1671452062.pdf', 'ISIG-GOMA', '2023-01-08 12:44:30', 0, 1, 1, 1),
-(3, 'E-commerce', 'e-commerce-20230108-134430', 'CT Serge kikobya', 5, 0, '1673181856.pdf', 'ISIG-GOMA', '2023-01-08 12:17:41', 0, 1, 1, 1);
+(3, 'E-commerce', 'e-commerce-20230108-134430', 'CT Serge kikobya', 6, 0, '1673181856.pdf', 'ISIG-GOMA', '2023-01-21 14:50:58', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -821,6 +821,36 @@ INSERT INTO `t_memoire` (`CodeMemoire`, `Sujet`, `article_slug`, `Auteur`, `Fich
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `t_offre`
+--
+
+CREATE TABLE `t_offre` (
+  `CodeOffre` int(11) NOT NULL,
+  `Entreprise` varchar(250) NOT NULL,
+  `offre_slug` text NOT NULL,
+  `NombrePoste` int(11) NOT NULL,
+  `Poste` text NOT NULL,
+  `DateDebut` datetime NOT NULL,
+  `DateExpiration` datetime NOT NULL,
+  `Fichier` text NOT NULL,
+  `Statut` int(11) NOT NULL,
+  `Created_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Created_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `t_offre`
+--
+
+INSERT INTO `t_offre` (`CodeOffre`, `Entreprise`, `offre_slug`, `NombrePoste`, `Poste`, `DateDebut`, `DateExpiration`, `Fichier`, `Statut`, `Created_on`, `Created_by`) VALUES
+(1, 'Institut supérieur d\'informatique et de gestion', 'enseignants-20230121-115642', 10, 'Enseignants', '2023-01-21 00:00:00', '2023-01-29 00:00:00', '1674298603.pdf', 1, '2023-01-21 14:25:25', 0),
+(2, 'Societe national d\'éléctricité', 'agents-de-terrain-20230121-150404', 2, 'Agents de terrain', '2023-01-11 00:00:00', '2023-01-20 00:00:00', '1674309844.pdf', 1, '2023-01-21 14:24:25', 0),
+(3, 'REGIDESO', 'informaticiens-20230121-150532', 4, 'Informaticiens', '2023-01-22 00:00:00', '2023-01-29 00:00:00', '1674309932.pdf', 1, '2023-01-21 14:05:32', 1),
+(4, 'SNEL', 'agents-de-terrain-20230121-155852', 4, 'Agents de terrain', '2023-01-29 00:00:00', '2023-01-31 00:00:00', '1674313132.pdf', 1, '2023-01-21 15:19:44', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `t_option`
 --
 
@@ -918,7 +948,7 @@ CREATE TABLE `t_superadmin` (
 --
 
 INSERT INTO `t_superadmin` (`CodeSuper`, `Email`, `Password`, `Created_on`, `Last_connection`, `NomComplet`, `Photo`, `CodeCategorie`) VALUES
-(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-09 10:30:36', '2023-01-09 11:30:36', 'Baraka Bigega Espoir', '', 1),
+(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-21 14:01:22', '2023-01-21 15:01:22', 'Baraka Bigega Espoir', '', 1),
 (3, 'hortencekitobi@gmail.com', '7b2e9f54cdff413fcde01f330af6896c3cd7e6cd', '2022-12-07 17:50:28', '0000-00-00 00:00:00', 'Hortence Kitobi', '', 1),
 (10, 'passybayongwa@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-12-07 17:50:19', '0000-00-00 00:00:00', 'Passy Bayongwa', '', 1),
 (13, 'siwamumberecarin1998@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-08 19:38:44', '2023-01-08 20:38:44', 'Siwa', '', 2);
@@ -974,7 +1004,7 @@ ALTER TABLE `t_categorie_question`
 --
 ALTER TABLE `t_compte`
   ADD PRIMARY KEY (`CodeCompte`),
-  ADD UNIQUE KEY `un_mail` (`EmailPersonne`);
+  ADD UNIQUE KEY `un_mail` (`Email`);
 
 --
 -- Index pour la table `t_cours`
@@ -1035,6 +1065,12 @@ ALTER TABLE `t_livre`
 --
 ALTER TABLE `t_memoire`
   ADD PRIMARY KEY (`CodeMemoire`);
+
+--
+-- Index pour la table `t_offre`
+--
+ALTER TABLE `t_offre`
+  ADD PRIMARY KEY (`CodeOffre`);
 
 --
 -- Index pour la table `t_option`
@@ -1159,6 +1195,12 @@ ALTER TABLE `t_livre`
 --
 ALTER TABLE `t_memoire`
   MODIFY `CodeMemoire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `t_offre`
+--
+ALTER TABLE `t_offre`
+  MODIFY `CodeOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `t_option`
