@@ -86,7 +86,7 @@ $req = $app->fetch($sql);
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Lien de lecture</div>
                                         <div class="book-table-cell"><a href="read_article?article=<?php echo $req['article_slug'] ?>"
-                                                                        >https://congopedia.net/read_article?article=<?php echo $req['article_slug'] ?></a>
+                                                                        >https://kivupedia.net/read_article?article=<?php echo $req['article_slug'] ?></a>
                                         </div>
                                     </div>
 

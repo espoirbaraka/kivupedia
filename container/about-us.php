@@ -6,9 +6,9 @@
                 <div class="row">
                     <div class="col-md-9 col-sm-12 col-xs-12">
                         <div class="channel-text">
-                            <h1><strong>1. A propos de congopedia</strong></h1>
+                            <h1><strong>1. A propos de kivupedia</strong></h1>
 
-                            <p><strong>CONGOPEDIA</strong> est un projet de l'association estudiantine <strong><i>FILLES et TECHNOLOGIES</i></strong> dirigée par l' étudiante KAHINDO KITOBI HORTANCE étudiante à l'Institut Supérieur d'Informatique et de Gestion.</p>
+                            <p><strong>KIVUPEDIA</strong> est un projet de l'association estudiantine <strong><i>FILLES et TECHNOLOGIES</i></strong> dirigée par l' étudiante KAHINDO KITOBI HORTANCE étudiante à l'Institut Supérieur d'Informatique et de Gestion.</p>
                             <p>Ce site est un espace de partage des documents d'enseignement entre différentes écoles et universités. </p>
                             <p>Il a été développé dans l'idée de supprimer le Gap entre écoles mieux équipées et les autres se trouvant en difficulté. </p>
                             <p>Un de nos buts , c'est de voir tous les étudiants, élèves , enseignants et chercheurs se partager des travaux , publications , inventions , opportunités et toute autre ressource et connaissances et contribuer ainsi à standardiser notre système éducatif en RDC et ailleurs.</p>
