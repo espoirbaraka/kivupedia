@@ -12,7 +12,7 @@ if(isset($_GET['year']) AND isset($_GET['month'])){
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1 style="font-weight: bold;">
-        Dashboard::Admin
+        Dashboard::Visiteur
 </h1>
     </section>
 
