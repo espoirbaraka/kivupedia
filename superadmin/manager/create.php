@@ -260,8 +260,12 @@ if ($event == 'CREATE_OFFRE') {
             $_SESSION['error'] = 'Le fichier depasse 10 MB';
         } else {
             if ((move_uploaded_file($_FILES["fichier"]["tmp_name"], $target_file))) {
-                $data = [$_POST['entreprise'], $_POST['nombre'], $_POST['poste'], $_POST['debut'], $_POST['fin'], $newfilename, $admin, 1];
-                $sql = "INSERT INTO t_offre(Entreprise,NombrePoste,Poste,DateDebut,DateExpiration,Fichier,Created_on,Statut) VALUES(?,?,?,?,?,?,?,?)";
+                $offre_slug = $app->slugify($_POST['Entreprise'].''.$_POST['poste']);
+                $today_slug = $app->slugify(date('Y:m:d H:i:s'));
+                $slug = $offre_slug.'-'.$today_slug;
+
+                $data = [$_POST['entreprise'],$slug, $_POST['nombre'], $_POST['poste'], $_POST['debut'], $_POST['fin'], $newfilename, $admin, 1];
+                $sql = "INSERT INTO t_offre(Entreprise,offre_slug,NombrePoste,Poste,DateDebut,DateExpiration,Fichier,Created_on,Statut) VALUES(?,?,?,?,?,?,?,?,?)";
                 if ($app->prepare($sql, $data, 1)) {
                     $_SESSION['success'] = 'Offre d\'emploi ajoutée';
                 } else {
