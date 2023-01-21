@@ -18,7 +18,7 @@ $premier = ($currentPage * $parPage) - $parPage;
 $sql3 = "SELECT * FROM t_offre WHERE Statut = 1 ORDER BY Created_on DESC LIMIT $premier,$parPage";
 $req = $app->fetchPrepared($sql3);
 ?>
-<div class="slide-single slide-single-page">
+<div class="slide-single slide-single-page" style="background-image: url('');">
     <div class="overlay"></div>
     <div class="text text-page">
         <div class="this-item">
@@ -47,7 +47,7 @@ $req = $app->fetchPrepared($sql3);
                         <div class="seach">
                             <form action="search-option?word=" method="get">
                                 <input type="text" autocomplete="off" name="word" class="form-control"
-                                       placeholder="Recherchez une option">
+                                       placeholder="Recherchez par entreprise">
                             </form>
                         </div>
 
@@ -70,11 +70,12 @@ $req = $app->fetchPrepared($sql3);
                                         <table class="table user-list">
                                             <thead>
                                             <tr>
-                                                <th><span>User</span></th>
-                                                <th><span>Created</span></th>
-                                                <th class="text-center"><span>Status</span></th>
-                                                <th><span>Email</span></th>
-                                                <th>&nbsp;</th>
+                                                <th><span>Employeur</span></th>
+                                                <th><span>Description du poste</span></th>
+                                                <th><span>Nombre poste</span></th>
+                                                <th><span>Echéance</span></th>
+                                                <th><span>Statut</span></th>
+                                                <th><span>Télécharger</span></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -86,7 +87,7 @@ $req = $app->fetchPrepared($sql3);
                                                         <img src="image/offre.jpeg"
                                                              alt="">
                                                         <a href="#" class="user-link"><?php echo $offre['Entreprise'] ?></a>
-                                                        <span class="user-subhead">Admin</span>
+                                                        <span class="user-subhead">Posté le <?php echo $app->dateconv($offre['Created_on']) ?></span>
                                                     </td>
                                                     <td>
                                                         <?php echo $offre['Poste'] ?>
@@ -95,33 +96,35 @@ $req = $app->fetchPrepared($sql3);
                                                         <?php echo $offre['NombrePoste'] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $app->dateconv($offre['Created_on']) ?>
+                                                        <?php echo "Du ".$app->dateconv($offre['DateDebut'])." au ".$app->dateconv($offre['DateExpiration']) ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <span class="label label-default">Inactive</span>
+                                                        <?php
+                                                        $debut = $offre['DateDebut'];
+                                                        $fin = $offre['DateExpiration'];
+                                                        $today = date('Y-m-d');
+                                                        if($today < $debut){
+                                                            ?>
+                                                            <span class="label label-default">En attente ...</span>
+                                                        <?php
+                                                        }elseif ($debut<$today AND $today<$fin){
+                                                            ?>
+                                                            <span class="label label-primary">En cours</span>
+                                                        <?php
+                                                        }elseif ($debut<$today AND $fin<$today){
+                                                            ?>
+                                                            <span class="label label-danger">Dépassé</span>
+                                                        <?php
+                                                        }
+                                                        ?>
+
                                                     </td>
+
                                                     <td>
-                                                        <a href="#">mila@kunis.com</a>
-                                                    </td>
-                                                    <td style="width: 20%;">
-                                                        <a href="#" class="table-link">
-									<span class="fa-stack">
-										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-									</span>
+                                                        <a href="#">
+                                                            <i class="fa fa-download"></i>
                                                         </a>
-                                                        <a href="#" class="table-link">
-									<span class="fa-stack">
-										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-									</span>
-                                                        </a>
-                                                        <a href="#" class="table-link danger">
-									<span class="fa-stack">
-										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-									</span>
-                                                        </a>
+
                                                     </td>
                                                 </tr>
                                             <?php
