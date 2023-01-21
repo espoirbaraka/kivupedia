@@ -98,7 +98,7 @@
               </a>
               <ul class="treeview-menu">
                   <li><a href="newoffre"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="offre"><i class="fa fa-circle-o"></i> Liste</a></li>
+                  <li><a href="offre.php"><i class="fa fa-circle-o"></i> Liste</a></li>
 
               </ul>
           </li>
