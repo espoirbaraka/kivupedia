@@ -265,7 +265,7 @@ if ($event == 'CREATE_OFFRE') {
                 $slug = $offre_slug.'-'.$today_slug;
 
                 $data = [$_POST['entreprise'],$slug, $_POST['nombre'], $_POST['poste'], $_POST['debut'], $_POST['fin'], $newfilename, $admin, 1];
-                $sql = "INSERT INTO t_offre(Entreprise,offre_slug,NombrePoste,Poste,DateDebut,DateExpiration,Fichier,Created_on,Statut) VALUES(?,?,?,?,?,?,?,?,?)";
+                $sql = "INSERT INTO t_offre(Entreprise,offre_slug,NombrePoste,Poste,DateDebut,DateExpiration,Fichier,Created_by,Statut) VALUES(?,?,?,?,?,?,?,?,?)";
                 if ($app->prepare($sql, $data, 1)) {
                     $_SESSION['success'] = 'Offre d\'emploi ajoutée';
                 } else {
