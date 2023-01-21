@@ -23,7 +23,11 @@
                                     <li><a href="offre" class="navv">Offre d'emploi</a></li>
                                     <li><a href="quiz" class="navv">Quiz</a></li>
                                     <li><a href="about-us" class="navv">A propos</a></li>
-                                    <li><a href="login" style="float: right; border: 2px solid #ffc200; color: #ffc200;">Se connecter</a></li>
+                                    <li><a href="login" style="float: right; border: 2px solid #ffc200; color: #ffc200;"><?php if (isset($_SESSION['visitor']) AND $_SESSION['visitor']!=''){
+                                        echo $_SESSION['namevisitor'];
+                                            }else{
+                                            echo "Se connecter";
+                                            } ?></a></li>
                                 </ul>
 
 
