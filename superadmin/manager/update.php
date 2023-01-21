@@ -68,6 +68,15 @@ if($event=='UPDATE_COURS'){
     header("Location: ../cours");
 }
 
+if($event=='UPDATE_OFFRE'){
+    $data=[$_POST['entreprise'],$_POST['nombre'],$_POST['poste'],$_POST['id']];
+    $sql="UPDATE t_offre SET Entreprise=?, NombrePoste=?, Poste=? WHERE CodeOffre=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Offre modifié';
+    }
+    header("Location: ../offre");
+}
+
 if($event=='ACTIVATE_LIVRE'){
     $data=[1,$_POST['id']];
     $sql="UPDATE t_livre SET Statut=?  WHERE CodeLivre=?";
@@ -84,6 +93,24 @@ if($event=='DESACTIVATE_LIVRE'){
         $_SESSION['success'] = 'Livre desactivé';
     }
     header("Location: ../books");
+}
+
+if($event=='ACTIVATE_OFFRE'){
+    $data=[1,$_POST['id']];
+    $sql="UPDATE t_offre SET Statut=?  WHERE CodeOffre=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Offre activé';
+    }
+    header("Location: ../offre");
+}
+
+if($event=='DESACTIVATE_OFFRE'){
+    $data=[0,$_POST['id']];
+    $sql="UPDATE t_offre SET Statut=?  WHERE CodeOffre=?";
+    if($app->prepare($sql,$data,1)){
+        $_SESSION['success'] = 'Offre desactivé';
+    }
+    header("Location: ../offre");
 }
 
 if($event=='ACTIVATE_MEMOIRE'){
