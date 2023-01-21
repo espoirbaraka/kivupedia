@@ -1,7 +1,7 @@
 <?php
 $share = false;
 
-include("visitor/includes/sessionoutconnected.php");
+include("includes/sessionclientoutconnected.php");
 
 include("includes/head.php");
 
