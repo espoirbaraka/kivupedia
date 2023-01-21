@@ -1,15 +1,9 @@
 <?php
-$item = $_GET['item'];
+$offre = $_GET['offre'];
 
-$sql = "SELECT * FROM t_item
-                WHERE CodeItem = '$item'";
+$sql = "SELECT * FROM t_offre
+                WHERE offre_slug = '$offre'";
 $req = $app->fetch($sql);
-$readed = $req['Readed'];
-$newreaded = $readed + 1;
-
-$data = [$newreaded, $req['CodeItem']];
-$sql2 = "UPDATE t_item SET Readed=? WHERE CodeItem=?";
-$app->prepare($sql2, $data, 1);
 ?>
 
 
@@ -23,7 +17,7 @@ $app->prepare($sql2, $data, 1);
                         <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-arrow-left"></i> <a href="<?php echo $_SERVER["HTTP_REFERER"]; ?>">Retour</a></li>
                     </ol>
                 </nav>
-                <iframe src="superadmin/fichier/<?php echo $req['Fichier'] ?>" style="width: 100%; height: 100vh;"></iframe>
+                <iframe src="superadmin/offre/<?php echo $req['Fichier'] ?>" style="width: 100%; height: 100vh;"></iframe>
             </div>
         </div>
     </div>
