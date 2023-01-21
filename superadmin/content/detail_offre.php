@@ -51,7 +51,6 @@ $req1 = $app->fetch($sql);
                         <img class="profile-user-img img-responsive img-circle" src="img/work.webp"
                              alt="User profile picture">
 
-                        <a class="btn file btn-primary btn-sm" data-id="<?php echo $req1['Entreprise'] ?>"><i class="fa fa-file"></i></a>
 
 
 
