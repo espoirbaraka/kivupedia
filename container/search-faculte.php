@@ -18,15 +18,6 @@ $pages = ceil($nbArticles / $parPage);
 $premier = ($currentPage * $parPage) - $parPage;
 
 
-//$sql = "SELECT * FROM t_memoire LEFT JOIN t_annee_academique
-//         ON t_memoire.CodeAnnee=t_annee_academique.CodeAnnee
-//         LEFT JOIN t_categorie_memoire
-//         ON t_memoire.CodeCategorie=t_categorie_memoire.CodeCategorie
-//         LEFT JOIN t_faculte
-//         ON t_memoire.CodeFaculte=t_faculte.CodeFaculte
-//         WHERE Statut=1
-//         ORDER BY Created_on DESC LIMIT $premier,$parPage";
-//$req = $app->fetchPrepared($sql);
 
 
 $sql3 = "SELECT * FROM t_faculte WHERE Faculte LIKE '%$word%' ORDER BY Faculte LIMIT $premier,$parPage";
@@ -47,7 +38,7 @@ $req = $app->fetchPrepared($sql3);
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="home"><i class="fa fa-home"></i> Acceuil</a></li>
+                <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-home"></i> Acceuil</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-arrow-left"></i> <a href="<?php echo $_SERVER["HTTP_REFERER"]; ?>">Retour</a></li>
             </ol>
         </nav>

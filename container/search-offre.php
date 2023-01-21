@@ -1,11 +1,14 @@
 <?php
+$word = $_GET['word'];
+$search = '%'.$word.'%';
+
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int)strip_tags($_GET['page']);
 } else {
     $currentPage = 1;
 }
 
-$sql1 = "SELECT COUNT(*) AS nbre FROM t_offre";
+$sql1 = "SELECT COUNT(*) AS nbre FROM t_offre WHERE Statut=1 AND Entreprise LIKE '%$word%'";
 $nbre = $app->fetch($sql1);
 $nbArticles = $nbre['nbre'];
 $parPage = 20;
@@ -14,18 +17,18 @@ $pages = ceil($nbArticles / $parPage);
 
 $premier = ($currentPage * $parPage) - $parPage;
 
-
-$sql3 = "SELECT * FROM t_offre WHERE Statut = 1 ORDER BY Created_on DESC LIMIT $premier,$parPage";
+$sql3 = "SELECT * FROM t_offre WHERE Statut=1 AND Entreprise LIKE '%$word%' ORDER BY Created_on DESC LIMIT $premier,$parPage";
 $req = $app->fetchPrepared($sql3);
 ?>
-<div class="slide-single slide-single-page" style="background-image: url('');">
+<div class="slide-single slide-single-page">
     <div class="overlay"></div>
     <div class="text text-page">
         <div class="this-item">
-            <h2>OFFRES D'EMPLOIS </h2>
+            <h2><?php echo $nbArticles; ?> Offres trouvés chez : <?php echo $word; ?> ... </h2>
         </div>
     </div>
 </div>
+
 
 
 <div class="single-channel">
@@ -33,8 +36,7 @@ $req = $app->fetchPrepared($sql3);
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-home"></i> Acceuil</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-arrow-left"></i> <a
-                            href="<?php echo $_SERVER["HTTP_REFERER"]; ?>">Retour</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-arrow-left"></i> <a href="<?php echo $_SERVER["HTTP_REFERER"]; ?>">Retour</a></li>
             </ol>
         </nav>
 
@@ -55,6 +57,7 @@ $req = $app->fetchPrepared($sql3);
                 </div>
             </div>
         </div>
+
 
 
         <div class="row">
@@ -84,7 +87,7 @@ $req = $app->fetchPrepared($sql3);
                                                 ?>
                                                 <tr>
                                                     <td>
-                                                        <img src="image/offre.jpeg" style="height: 40px; width: 40px;"
+                                                        <img src="image/offre.jpeg"
                                                              alt="">
                                                         <a href="read_offre?offre=<?php echo $offre['offre_slug'] ?>" class="user-link"><?php echo $offre['Entreprise'] ?></a>
                                                         <span class="user-subhead">Posté le <?php echo $app->dateconv($offre['Created_on']) ?></span>
@@ -106,15 +109,15 @@ $req = $app->fetchPrepared($sql3);
                                                         if($today < $debut){
                                                             ?>
                                                             <span class="label label-default">En attente ...</span>
-                                                        <?php
+                                                            <?php
                                                         }elseif ($debut<$today AND $today<$fin){
                                                             ?>
                                                             <span class="label label-primary">En cours</span>
-                                                        <?php
+                                                            <?php
                                                         }elseif ($debut<$today AND $fin<$today){
                                                             ?>
                                                             <span class="label label-danger">Dépassé</span>
-                                                        <?php
+                                                            <?php
                                                         }
                                                         ?>
 
@@ -127,7 +130,7 @@ $req = $app->fetchPrepared($sql3);
 
                                                     </td>
                                                 </tr>
-                                            <?php
+                                                <?php
                                             }
                                             ?>
 
@@ -136,11 +139,11 @@ $req = $app->fetchPrepared($sql3);
                                         </table>
                                     </div>
                                     <ul class="pagination pull-right">
-                                        <li><a href="offre?page=<?= $currentPage - 1 ?>"><i class="fa fa-chevron-left <?= ($currentPage == 1) ? "disabled" : "" ?>"></i></a></li>
+                                        <li><a href="offre?word=<?php echo $word; ?>&page=<?= $currentPage - 1 ?>"><i class="fa fa-chevron-left <?= ($currentPage == 1) ? "disabled" : "" ?>"></i></a></li>
                                         <?php for($page = 1; $page <= $pages; $page++): ?>
-                                            <li><a href="offre?page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a></li>
+                                            <li><a href="offre?word=<?php echo $word; ?>&page=<?= $page ?>"><span class="<?= ($currentPage == $page) ? "current" : "" ?>"><?= $page ?></span></a></li>
                                         <?php endfor ?>
-                                        <li><a href="offre?page=<?= $currentPage + 1 ?>"><i class="fa fa-chevron-right <?= ($currentPage == $pages) ? "disabled" : "" ?>"></i></a></li>
+                                        <li><a href="offre?word=<?php echo $word; ?>&page=<?= $currentPage + 1 ?>"><i class="fa fa-chevron-right <?= ($currentPage == $pages) ? "disabled" : "" ?>"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -151,10 +154,13 @@ $req = $app->fetchPrepared($sql3);
                 </div>
 
 
+
             </div>
 
 
-        </div>
 
+
+
+        </div>
     </div>
 </div>
