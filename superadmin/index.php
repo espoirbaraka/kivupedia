@@ -46,6 +46,4 @@ include("includes/head_login_register.php");
 include("includes/script_login_register.php");
 ?>
 </body>
-
-<!-- Mirrored from adminlte.io/themes/AdminLTE/pages/examples/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Sep 2021 10:11:53 GMT -->
 </html>

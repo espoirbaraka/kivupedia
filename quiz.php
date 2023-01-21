@@ -1,13 +1,13 @@
 <?php
 $share = false;
 
-include("includes/sessionclientoutconnected.php");
+include("includes/sessionclient.php");
 
 include("includes/head.php");
 
 include("includes/header.php");
 
-include("container/login.php");
+include("container/quiz.php");
 
 include("includes/footer.php");
 ?>
