@@ -70,7 +70,7 @@ $req = $app->fetch($sql);
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Lien de lecture</div>
                                         <div class="book-table-cell"><a href="read_item?item=<?php echo $req['CodeItem'] ?>"
-                                            >https://congopedia.net/read_item?item=<?php echo $req['CodeItem'] ?></a>
+                                            >https://kivupedia.net/read_item?item=<?php echo $req['CodeItem'] ?></a>
                                         </div>
                                     </div>
 

@@ -63,7 +63,7 @@ $req = $app->fetch($sql);
                                     <div class="book-table-row">
                                         <div class="book-table-cell">Lien de lecture</div>
                                         <div class="book-table-cell"><a href="read_course?course=<?php echo $req['cours_slug'] ?>"
-                                            >https://congopedia.net/read_course?course=<?php echo $req['cours_slug'] ?></a>
+                                            >https://kivupedia.net/read_course?course=<?php echo $req['cours_slug'] ?></a>
                                         </div>
                                     </div>
 
