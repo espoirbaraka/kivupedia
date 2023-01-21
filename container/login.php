@@ -1,43 +1,44 @@
-<div class="single-channel">
+<div class="single-channel" style="background-color: #d2d6de;">
     <div class="container">
 
-        <div class="single-channel">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-
-                        <form class="form-signin">
-<!--                            <div class="text-center mb-4">-->
-<!--                                <img class="mb-4" src="superadmin/img/user.png" alt="" width="72" height="72">-->
-<!--                                <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>-->
-<!--                                -->
-<!--                            </div>-->
-
-                            <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required autofocus>
-                                <label for="inputEmail">Adresse mail</label>
-                            </div>
-
-                            <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-                                <label for="inputPassword">Mot de passe</label>
-                            </div>
-
-                            <div class="checkbox mb-3">
-                                <label>
-                                    <input type="checkbox" value="remember-me"> Se souvenir de moi
-                                </label>
-                            </div>
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
-
-                        </form>
-
-
-
-                    </div>
-                </div>
+        <div class="form-signin" style="background: #bcccd0; padding: 20px; border-top: 0; color: #666;">
+            <div class="login-logo">
+                <a href="index.php"><b>Congopedia</b></a>
             </div>
+            <div class="login-box-body">
+                <p class="login-box-msg">Login::Admin</p>
+                <?php
+                if(isset($_SESSION['error'])){
+                    echo "
+                                        <p style='color: red; text-align: center;'>".$_SESSION['error']."</p> 
+                                    
+                                    ";
+                    unset($_SESSION['error']);
+                }
+                ?>
+                <form action="verify.php" method="POST">
+                    <div class="form-group has-feedback">
+                        <input type="email" class="form-control"
+                               placeholder="Adresse mail" name="email" required>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off" required>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat" name="login">Connection</button>
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </div>
+            <!-- /.login-box-body -->
         </div>
+
 
 
 
