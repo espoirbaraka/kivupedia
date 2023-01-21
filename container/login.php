@@ -1,12 +1,12 @@
 <div class="single-channel" style="background-color: #d2d6de;">
     <div class="container">
 
-        <div class="form-signin" style="background: #bcccd0; padding: 20px; border-top: 0; color: #666;">
+        <div class="form-signin" style="background: #ffffff; padding: 20px; border-top: 0; color: #666;">
             <div class="login-logo">
                 <a href="index.php"><b>Congopedia</b></a>
             </div>
             <div class="login-box-body">
-                <p class="login-box-msg">Login::Admin</p>
+                <p class="login-box-msg" style="text-align: center;">Connectez-vous</p>
                 <?php
                 if(isset($_SESSION['error'])){
                     echo "
@@ -33,6 +33,8 @@
                     </div>
                 </form>
 
+                <br>
+                <p class="login-box-msg">Vous n'avez pas un compte?</p>
 
 
             </div>
