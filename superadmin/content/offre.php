@@ -57,7 +57,7 @@
                             $req = $app->fetchPrepared($sql);
                             foreach($req as $row){
                                 $status = ($row['Statut']) ? '<span class="label label-success">Disponible</span>' : '<span class="label label-danger">Non-disponible</span>';
-                                $active = (!$row['Statut']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeCours'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeCours'].'"><i class="fa fa-check-square-o"></i></a></span>';
+                                $active = (!$row['Statut']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="'.$row['CodeOffre'].'"><i class="fa fa-check-square-o"></i></a></span>' : '<span class="pull-right"><a href="#desactivate" class="status" data-toggle="modal" data-id="'.$row['CodeOffre'].'"><i class="fa fa-check-square-o"></i></a></span>';
                                 ?>
                                 <tr>
                                     <td><?php echo $row['Entreprise']; ?></td>
@@ -66,8 +66,8 @@
                                     <td><?php echo $row['DateExpiration']; ?></td>
                                     <td><?php echo $status; echo $active;?></td>
                                     <td>
-                                        <a href="detail_offre?offre=<?php echo $row['offre_slug'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
-                                        <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['offre_slug'] ?>"><i class='fa fa-edit'></i> </button>
+                                        <a href="detail_offre?offre=<?php echo $row['CodeOffre'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-angle-double-down"></i> Detail</a>
+                                        <button class='btn btn-success btn-sm edit btn-flat' data-id="<?php echo $row['CodeOffre'] ?>"><i class='fa fa-edit'></i> </button>
                                     </td>
                                 </tr>
                                 <?php

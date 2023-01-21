@@ -74,7 +74,7 @@ if($event=='UPDATE_OFFRE'){
     if($app->prepare($sql,$data,1)){
         $_SESSION['success'] = 'Offre modifié';
     }
-    header("Location: ../offre");
+    header("Location: ../offre.php");
 }
 
 if($event=='ACTIVATE_LIVRE'){
@@ -101,7 +101,7 @@ if($event=='ACTIVATE_OFFRE'){
     if($app->prepare($sql,$data,1)){
         $_SESSION['success'] = 'Offre activé';
     }
-    header("Location: ../offre");
+    header("Location: ../offre.php");
 }
 
 if($event=='DESACTIVATE_OFFRE'){
@@ -110,7 +110,7 @@ if($event=='DESACTIVATE_OFFRE'){
     if($app->prepare($sql,$data,1)){
         $_SESSION['success'] = 'Offre desactivé';
     }
-    header("Location: ../offre");
+    header("Location: ../offre.php");
 }
 
 if($event=='ACTIVATE_MEMOIRE'){
