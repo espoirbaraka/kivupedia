@@ -1,5 +1,20 @@
 <?php
 include '../../class/app.php';
+session_start();
+
+if(!isset($_SESSION['super']) || trim($_SESSION['super']) == ''){
+    header('location: ./index');
+    exit();
+}
+
+$conn = $app->getPDO();
+
+$id = $_SESSION['super'];
+$sql = "SELECT * FROM t_superadmin
+         WHERE CodeSuper=$id";
+$req = $app->fetch($sql);
+
+
 
 if(isset($_GET['return'])){
     $return = $_GET['return'];
@@ -11,10 +26,8 @@ else{
 
 if(isset($_POST['save'])){
     $password_actuel = sha1($_POST['password_actuel']);
-    $nom = $_POST['nom'];
-    $password = sha1($_POST['password']);
-    $email = $_POST['email'];
     $photo = $_FILES['photo']['name'];
+    $password = $_POST['password'];
     if($password_actuel == $req['Password']){
         if(!empty($photo)){
             $file_dir = "../img/";
@@ -31,25 +44,25 @@ if(isset($_POST['save'])){
                     $newphoto = $req['Photo'];
                 }
             }
-        }
-        else{
-            $filename = $req['Photo'];
-        }
-
-
-        $conn = $pdo->open();
-
-        try{
-            $stmt = $conn->prepare("UPDATE t_user SET Username=:username, Password=:password, Nom=:firstname, Postnom=:postnom, Prenom=:prenom, Email=:email, Photo=:photo WHERE CodeUser=:code");
-            $stmt->execute(['username'=>$username, 'password'=>$password, 'firstname'=>$firstname, 'postnom'=>$postnom, 'prenom'=>$prenom, 'email'=>$email, 'photo'=>$filename, 'code'=>$user['CodeUser']]);
-
-            $_SESSION['success'] = 'Compte mis à jour avec succès';
-        }
-        catch(PDOException $e){
-            $_SESSION['error'] = $e->getMessage();
+        }else{
+            $newphoto = $req['Photo'];
         }
 
-        $pdo->close();
+
+        if($password == $req['Password'])
+        {
+            $pass = $req['Password'];
+        }else{
+            $pass = sha1($_POST['password']);
+        }
+
+        $data=[$_POST['nom'],$_POST['email'],$pass,$newphoto,$req['CodeSuper']];
+        $sql="UPDATE t_superadmin SET NomComplet=?, Email=?, Password=?, Photo=? WHERE CodeSuper=?";
+        if($app->prepare($sql,$data,1)){
+            $_SESSION['success'] = 'Profile modifié';
+        }else{
+            $_SESSION['error'] = 'Profile non modifié';
+        }
 
     }
     else{
