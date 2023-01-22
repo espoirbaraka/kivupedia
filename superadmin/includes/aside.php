@@ -99,6 +99,7 @@
               <ul class="treeview-menu">
                   <li><a href="newquestion"><i class="fa fa-circle-o"></i> Ajouter</a></li>
                   <li><a href="question"><i class="fa fa-circle-o"></i> Liste</a></li>
+                  <li><a href="question"><i class="fa fa-circle-o"></i> Réaction</a></li>
 
               </ul>
           </li>
@@ -114,7 +115,7 @@
               </a>
               <ul class="treeview-menu">
                   <li><a href="newoffre"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="offre"><i class="fa fa-circle-o"></i> Liste</a></li>
+                  <li><a href="offre.php"><i class="fa fa-circle-o"></i> Liste</a></li>
 
               </ul>
           </li>
