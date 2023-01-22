@@ -42,7 +42,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                   <div class="pull-left">
-                      <a href="#updateprofile" data-toggle="modal" class="btn btn-default btn-flat">Modifier mon profil</a>
+                      <a href="#profile" data-toggle="modal" class="btn btn-default btn-flat">Modifier mon profil</a>
                   </div>
 
                 <div class="pull-right">
@@ -57,3 +57,7 @@
       </div>
     </nav>
   </header>
+
+    <?php
+include ("modal/profile.php");
+?>
