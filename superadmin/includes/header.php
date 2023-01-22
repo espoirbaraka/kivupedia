@@ -41,7 +41,10 @@
               
               <!-- Menu Footer-->
               <li class="user-footer">
-                
+                  <div class="pull-left">
+                      <a href="#updateprofile" data-toggle="modal" class="btn btn-default btn-flat">Modifier mon profil</a>
+                  </div>
+
                 <div class="pull-right">
                   <a href="logout.php" class="btn btn-default btn-flat">Se deconnecter</a>
                 </div>
