@@ -46,6 +46,10 @@
                         <input type="password" class="form-control" placeholder="Mot de passe" name="password" autocomplete="off" required>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Rétaper le mot de passe" name="password2" autocomplete="off" required>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <button type="submit" class="btn btn-primary btn-block btn-flat" name="login">S'inscrire</button>
