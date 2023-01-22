@@ -71,7 +71,7 @@
               </ul>
           </li>
 
-          <li class="header">QUESTIONNAIRES</li>
+          <li class="header">ITEM</li>
           <li class="treeview">
               <a href="#">
                   <i class="fa fa-pencil"></i>
@@ -87,6 +87,22 @@
               </ul>
           </li>
 
+          <li class="header">QUESTION DU JOUR</li>
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-pencil"></i>
+                  <span>Question du jour</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="newquestion"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                  <li><a href="question"><i class="fa fa-circle-o"></i> Liste</a></li>
+
+              </ul>
+          </li>
+
           <li class="header">EMPLOI</li>
           <li class="treeview">
               <a href="#">
@@ -98,10 +114,13 @@
               </a>
               <ul class="treeview-menu">
                   <li><a href="newoffre"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                  <li><a href="offre.php"><i class="fa fa-circle-o"></i> Liste</a></li>
+                  <li><a href="offre"><i class="fa fa-circle-o"></i> Liste</a></li>
 
               </ul>
           </li>
+
+
+
 
           <li class="header">LECTEURS</li>
           <li><a href="lecteur"><i class="fa fa-user"></i> <span>Nos lecteurs</span></a></li>

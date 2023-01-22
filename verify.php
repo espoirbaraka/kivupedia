@@ -12,6 +12,7 @@ if(isset($_POST['login'])){
         if($nbre == 1){
             $row = $stmt->fetch();
             $_SESSION['visitor'] = $row['CodeCompte'];
+            $_SESSION['namevisitor'] = $row['NomPersonne'].' '.$row['PostnomPersonne'];
             $today = date('Y-m-d H:i:s');
             $stmt = $conn->prepare("UPDATE t_compte SET Last_connection = ? WHERE CodeCompte=?");
             $stmt->execute(array($today,$_SESSION['visitor']));
