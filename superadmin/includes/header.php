@@ -2,7 +2,7 @@
 <div class="wrapper">
 <header class="main-header">
     <!-- Logo -->
-    <a href="index" class="logo">
+    <a href="../index" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>K</b>P</span>
       <!-- logo for regular state and mobile devices -->
