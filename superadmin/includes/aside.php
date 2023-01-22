@@ -107,7 +107,7 @@
           <li class="header">EMPLOI</li>
           <li class="treeview">
               <a href="#">
-                  <i class="fa fa-pencil"></i>
+                  <i class="fa fa-building"></i>
                   <span>Offre d'emploi</span>
                   <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
