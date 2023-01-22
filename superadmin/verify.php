@@ -12,9 +12,10 @@ if(isset($_POST['login'])){
 		if($nbre == 1){
 			$row = $stmt->fetch();
 			$_SESSION['super'] = $row['CodeSuper'];
+			$date_creation = $row['Created_on'];
 			$today = date('Y-m-d H:i:s');
-			$stmt = $conn->prepare("UPDATE t_superadmin SET Last_connection = ? WHERE CodeSuper=?");
-			$stmt->execute(array($today,$_SESSION['super']));
+			$stmt = $conn->prepare("UPDATE t_superadmin SET Last_connection = ?, Created_on=? WHERE CodeSuper=?");
+			$stmt->execute(array($today,$date_creation,$_SESSION['super']));
 		}
 		else{
 			$_SESSION['error'] = 'Utilisateur inexistant';
