@@ -19,6 +19,6 @@
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="dist/select2/css/select2.min.css" type="text/css">
-<!--    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">-->
-<!--    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">-->
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
 </head>
