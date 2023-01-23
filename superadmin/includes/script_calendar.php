@@ -191,24 +191,24 @@
             //Random default events
             events: [
                 <?php
-                $date = '2022-01-01';
-                $date_end = '2030-01-01';
-                $dates = array();
-                while(strtotime($date) <= strtotime($date_end)){
-                $dates[] = $date;
-                $date = date("Y-m-d", strtotime("+1 day", strtotime($date)));
-                $day = date("d", strtotime($date));
-                $month = date("m", strtotime($date));
-                $year = date("Y", strtotime($date));
-                ?>
-                {
-                    title: 'Ajouter questionnaire',
-                    start: new Date(<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>),
-                    url: 'http://google.com/',
-                    backgroundColor: '#3c8dbc', //Primary (light-blue)
-                    borderColor: '#3c8dbc' //Primary (light-blue)
-                },
-                <?php
+                $startTime = strtotime( '2023-01-01 00:00' );
+                $endTime = strtotime( '2023-03-10 00:00' );
+
+                // Loop between timestamps, 24 hours at a time
+                for ( $i = $startTime; $i <= $endTime; $i = $i + 86400 ) {
+                    $thisDate = date( 'Y-m-d', $i );
+                    $day = date("d", strtotime($thisDate));
+                    $month = date("m", strtotime($thisDate));
+                    $year = date("Y", strtotime($thisDate));
+                    ?>
+                    {
+                        title: '<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>',
+                        start: new Date(<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>),
+                        url: 'http://google.com/',
+                        backgroundColor: '#3c8dbc',
+                        borderColor: '#3c8dbc'
+                    },
+                    <?php
                 }
                 ?>
 
