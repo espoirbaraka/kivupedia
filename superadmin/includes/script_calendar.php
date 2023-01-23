@@ -191,24 +191,27 @@
             //Random default events
             events: [
                 <?php
-                $startTime = strtotime( '2023-01-01 00:00' );
-                $endTime = strtotime( '2023-03-10 00:00' );
+                $begin = new DateTime('2023-01-01');
+                $end = new DateTime('2024-01-10');
 
-                // Loop between timestamps, 24 hours at a time
-                for ( $i = $startTime; $i <= $endTime; $i = $i + 86400 ) {
-                    $thisDate = date( 'Y-m-d', $i );
-                    $day = date("d", strtotime($thisDate));
-                    $month = date("m", strtotime($thisDate));
-                    $year = date("Y", strtotime($thisDate));
+                $interval = DateInterval::createFromDateString('1 day');
+                $period = new DatePeriod($begin, $interval, $end);
+
+                foreach ($period as $dt) {
+                    $today = $dt->format("Y-m-d");
+                    $day = date("d", strtotime($today));
+                    $month = date("m", strtotime($today));
+                    $year = date("Y", strtotime($today));
                     ?>
                     {
-                        title: '<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>',
-                        start: new Date(<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>),
+                        title: '<?php echo $today ?>',
+                        start: "<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>",
                         url: 'http://google.com/',
                         backgroundColor: '#3c8dbc',
                         borderColor: '#3c8dbc'
                     },
                     <?php
+
                 }
                 ?>
 

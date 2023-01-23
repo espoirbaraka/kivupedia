@@ -2,11 +2,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1 style="font-weight: bold;">
-            Ajouter la question jour
+            Ajouter la question du jour
         </h1>
         <ol class="breadcrumb">
             <li><a href="dashboard"><i class="fa fa-dashboard"></i> Acceuil</a></li>
-            <li class="active">Ajouter la question jour</li>
+            <li class="active">Ajouter la question du jour</li>
         </ol>
     </section>
 
