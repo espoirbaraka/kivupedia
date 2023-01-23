@@ -191,24 +191,25 @@
             //Random default events
             events: [
                 <?php
-                $date = '2020-01-01';
-                $date_end = '2050-01-01';
+                $date = '2022-01-01';
+                $date_end = '2030-01-01';
                 $dates = array();
                 while(strtotime($date) <= strtotime($date_end)){
-                    $dates[] = $date;
-                    $date = date("Y-m-d", strtotime("+1 day", strtotime($date)));
-                    ?>
+                $dates[] = $date;
+                $date = date("Y-m-d", strtotime("+1 day", strtotime($date)));
+                $day = date("d", strtotime($date));
+                $month = date("m", strtotime($date));
+                $year = date("Y", strtotime($date));
+                ?>
                 {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
+                    title: 'Ajouter questionnaire',
+                    start: new Date(<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>),
                     url: 'http://google.com/',
                     backgroundColor: '#3c8dbc', //Primary (light-blue)
                     borderColor: '#3c8dbc' //Primary (light-blue)
                 },
-            <?php
+                <?php
                 }
-                var_dump($dates);
                 ?>
 
             ],
