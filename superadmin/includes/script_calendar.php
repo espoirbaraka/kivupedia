@@ -1,7 +1,7 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uibutton', $.ui.button);
 </script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/raphael/raphael.min.js"></script>
@@ -22,25 +22,25 @@
 <script src="ad.js"></script>
 <script src="dist/select2/js/select2.min.js"></script>
 <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
+        $('#example3').DataTable({
+            responsive: true
+        });
     })
-    $('#example3').DataTable({
-        responsive: true
-    });
-  })
 </script>
 <script>
-  function imprimer(){
-    window.print();
-  }
+    function imprimer(){
+        window.print();
+    }
 </script>
 <script>
     $(function(){
@@ -301,7 +301,6 @@
         })
     })
 </script>
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
 
 </body>

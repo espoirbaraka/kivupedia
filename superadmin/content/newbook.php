@@ -169,8 +169,9 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Description </label>
-                                            <!--                                            <textarea class="form-control" name="description"></textarea>-->
-                                            <textarea class="textarea" name="description" style="width: 100%; height: 130px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                            <textarea class="textarea" name="description" style="width: 100%; height: 130px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                                
+                                            </textarea>
                                         </div>
 
                                     </div>
