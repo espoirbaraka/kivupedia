@@ -190,42 +190,14 @@
             },
             //Random default events
             events: [
-                {
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    backgroundColor: '#f56954', //red
-                    borderColor: '#f56954' //red
-                },
-                {
-                    title: 'Long Event',
-                    start: new Date(y, m, d - 5),
-                    end: new Date(y, m, d - 2),
-                    backgroundColor: '#f39c12', //yellow
-                    borderColor: '#f39c12' //yellow
-                },
-                {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false,
-                    backgroundColor: '#0073b7', //Blue
-                    borderColor: '#0073b7' //Blue
-                },
-                {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    allDay: false,
-                    backgroundColor: '#00c0ef', //Info (aqua)
-                    borderColor: '#00c0ef' //Info (aqua)
-                },
-                {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    allDay: false,
-                    backgroundColor: '#00a65a', //Success (green)
-                    borderColor: '#00a65a' //Success (green)
-                },
+                <?php
+                $date = '2020-01-01';
+                $date_end = '2050-01-01';
+                $dates = array();
+                while(strtotime($date) <= strtotime($date_end)){
+                    $dates[] = $date;
+                    $date = date("Y-m-d", strtotime("+1 day", strtotime($date)));
+                    ?>
                 {
                     title: 'Click for Google',
                     start: new Date(y, m, 28),
@@ -233,7 +205,12 @@
                     url: 'http://google.com/',
                     backgroundColor: '#3c8dbc', //Primary (light-blue)
                     borderColor: '#3c8dbc' //Primary (light-blue)
+                },
+            <?php
                 }
+                var_dump($dates);
+                ?>
+
             ],
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
