@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 22 jan. 2023 à 07:03
+-- Généré le :  lun. 23 jan. 2023 à 08:12
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -182,7 +182,7 @@ CREATE TABLE `t_compte` (
 --
 
 INSERT INTO `t_compte` (`CodeCompte`, `NomPersonne`, `PostnomPersonne`, `PrenomPersonne`, `TelephonePersonne`, `Email`, `Password`, `Photo`, `Last_connection`, `Created_on`, `Statut`) VALUES
-(11, 'Baraka', 'Bigega', 'Espoir', '+243977553723', 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '2023-01-21 21:12:34', '2023-01-21 20:12:34', 1),
+(11, 'Nsengiyunva', 'Bigega', 'Espoir', '+243977553723', 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '2023-01-22 16:07:16', '2023-01-22 15:07:16', 1),
 (12, 'Akilimali', 'Baraka', 'Michael', '+243971292017', 'mick@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '2023-01-21 20:50:05', '2023-01-21 19:50:05', 1),
 (13, 'Ismael', 'Baraka', 'Bigega', '+2439977553723', 'isma@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-09 15:04:18', 1),
 (14, 'Siwa', 'Mumbere', 'Carin', '+2439977553723', 'siwamumberecarin1998@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '', '0000-00-00 00:00:00', '2022-01-09 17:13:55', 0),
@@ -324,7 +324,7 @@ CREATE TABLE `t_item` (
 
 INSERT INTO `t_item` (`CodeItem`, `Fichier`, `TypeFichier`, `CodeSession`, `Created_On`, `CodeOption`, `CodeAnnee`, `CodeAdmin`, `CodeCompte`, `CodePropriete`, `Statut`, `Readed`, `Liked`) VALUES
 (1, '1671276875.pdf', 'pdf', 1, '2023-01-08 13:06:12', 3, 5, 1, NULL, 1, 1, 0, 0),
-(2, '1671453444.pdf', 'pdf', 5, '2023-01-09 10:31:06', 3, 5, 1, NULL, 1, 1, 3, 0),
+(2, '1671453444.pdf', 'pdf', 5, '2023-01-22 14:47:14', 3, 5, 1, NULL, 1, 0, 3, 0),
 (3, '1673260259.PNG', 'png', 2, '2023-01-09 10:31:21', 3, 5, 1, NULL, 1, 1, 1, 0);
 
 -- --------------------------------------------------------
@@ -815,7 +815,7 @@ CREATE TABLE `t_memoire` (
 --
 
 INSERT INTO `t_memoire` (`CodeMemoire`, `Sujet`, `article_slug`, `Auteur`, `Fichier`, `CodeAnnee`, `Institution`, `CodeCategorie`, `CodeFaculte`, `CodeCompte`, `CodeAdmin`, `CodePropriete`, `Statut`, `Created_on`, `Readed`, `Liked`) VALUES
-(2, 'Conception d’un système de monitoring de l’énergie solaire au sein d’une institution privée Cas de l’ISIG-GOMA', 'conception-dun-systeme-de-monitoring-de-lenergie-solaire-au-sein-dune-institution-privee-cas-de-lisig-goma-20230108-130646', 'Baraka Bigega Espoir, Abio Bamongoyo', '1671451213.pdf', 5, 'ISIG-GOMA', 2, 2, NULL, 1, 1, 1, '2023-01-08 12:29:59', 4, 0),
+(2, 'Conception d’un système de monitoring de l’énergie solaire au sein d’une institution privée Cas de l’ISIG-GOMA', 'conception-dun-systeme-de-monitoring-de-lenergie-solaire-au-sein-dune-institution-privee-cas-de-lisig-goma-20230108-130646', 'Baraka Bigega Espoir, Abio Bamongoyo', '1671451213.pdf', 5, 'ISIG-GOMA', 2, 2, NULL, 1, 1, 1, '2023-01-22 15:16:29', 6, 0),
 (3, 'DEVELOPPEMENT D’UNE API D’ECHANGE DE S DONNEES ENTRE LES SITES WEB MARCHANDS P ARTENAIRES D’UNE ENTREPRISE COMME RCIA L E, CAS DE MALEKANI SARLU', 'developpement-dune-api-dechange-de-s-donnees-entre-les-sites-web-marchands-p-artenaires-dune-entreprise-comme-rcia-l-e-cas-de-malekani-sarlu-20230108-130646', 'Kavira Malekani Shekinah', '1673179537.pdf', 5, 'ISIG-GOMA', 2, 2, NULL, 1, 1, 1, '2023-01-08 12:30:09', 1, 0);
 
 -- --------------------------------------------------------
@@ -966,7 +966,7 @@ CREATE TABLE `t_superadmin` (
 --
 
 INSERT INTO `t_superadmin` (`CodeSuper`, `Email`, `Password`, `Created_on`, `Last_connection`, `NomComplet`, `Photo`, `CodeCategorie`) VALUES
-(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-22 05:31:23', '2023-01-22 07:00:36', 'Baraka Bigega Espoir', '', 1),
+(1, 'esbarakabigega@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-22 12:08:39', '2023-01-22 16:17:37', 'Baraka Bigega', '1674389320.jpg', 1),
 (3, 'hortencekitobi@gmail.com', '7b2e9f54cdff413fcde01f330af6896c3cd7e6cd', '2022-12-07 17:50:28', '0000-00-00 00:00:00', 'Hortence Kitobi', '', 1),
 (10, 'passybayongwa@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '2022-12-07 17:50:19', '0000-00-00 00:00:00', 'Passy Bayongwa', '', 1),
 (13, 'siwamumberecarin1998@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2023-01-08 19:38:44', '2023-01-08 20:38:44', 'Siwa', '', 2);
