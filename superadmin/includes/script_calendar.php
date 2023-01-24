@@ -204,9 +204,9 @@
                     $year = date("Y", strtotime($today));
                     ?>
                     {
-                        title: '<?php echo $today ?>',
+                        title: 'Ajouter questionnaire',
                         start: "<?php echo $year ?>, <?php echo $month ?>, <?php echo $day ?>",
-                        url: 'http://google.com/',
+                        url: 'askquestion?day=<?php echo $today; ?>',
                         backgroundColor: '#3c8dbc',
                         borderColor: '#3c8dbc'
                     },
