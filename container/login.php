@@ -36,17 +36,7 @@
                 <br>
                 <p class="login-box-msg">Vous n'avez pas un compte? <a href="register">Inscrivez-vous ici</a></p>
 
-                <?php
-                $begin = new DateTime('2010-01-01');
-                $end = new DateTime('2011-01-10');
-
-                $interval = DateInterval::createFromDateString('1 day');
-                $period = new DatePeriod($begin, $interval, $end);
-
-                foreach ($period as $dt) {
-                    echo $dt->format("Y-m-d \n");
-                }
-                ?>
+                
 
             </div>
             <!-- /.login-box-body -->
