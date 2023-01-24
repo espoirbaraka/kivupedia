@@ -36,7 +36,7 @@
         ?>
         <div class="row">
             <div class="col-xs-12">
-                <div class="box" style="overflow: auto;">
+                <div class="box">
 
                     <div class="box-body">
                         <form action="manager/create.php" method="POST" enctype="multipart/form-data">
