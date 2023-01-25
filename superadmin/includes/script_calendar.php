@@ -192,7 +192,7 @@
             events: [
                 <?php
                 $begin = new DateTime('2023-01-01');
-                $end = new DateTime('2024-01-10');
+                $end = new DateTime('2028-01-10');
 
                 $interval = DateInterval::createFromDateString('1 day');
                 $period = new DatePeriod($begin, $interval, $end);
