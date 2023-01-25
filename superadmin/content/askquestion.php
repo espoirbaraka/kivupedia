@@ -40,7 +40,7 @@ $day = $_GET['day'];
         <div class="row">
             <div class="col-xs-12">
 
-                <form>
+                <form action="" method="POST">
                     <?php
                     for($j=1; $j<=5; $j++){
                         ?>

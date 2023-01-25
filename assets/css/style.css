@@ -626,7 +626,7 @@ Slider
     padding-top: 12%;
 }
 .slide-single h2 {
-    font-family: "Open Sans", serif;
+    /*font-family: "Open Sans", serif;*/
     font-size: 40px;
     font-weight: 700;
     color: #fff;
@@ -1149,22 +1149,22 @@ Videos
 .videos .prop-3-col:nth-of-type(3n+1) {
 	clear: both;
 }
-.videos h2 {
-    color: #464646;
-    font-family: "Open Sans", serif;
-    font-size: 26px;
-    font-weight: 800;
-    position: relative;
-    text-transform: uppercase;
-}
-.videos h3 {
-    color: #464646;
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 40px;
-    margin-top: 20px;
-}
+/*.videos h2 {*/
+/*    color: #464646;*/
+/*    font-family: "Open Sans", serif;*/
+/*    font-size: 26px;*/
+/*    font-weight: 800;*/
+/*    position: relative;*/
+/*    text-transform: uppercase;*/
+/*}*/
+/*.videos h3 {*/
+/*    color: #464646;*/
+/*    font-family: "Open Sans", sans-serif;*/
+/*    font-size: 16px;*/
+/*    font-weight: 500;*/
+/*    margin-bottom: 40px;*/
+/*    margin-top: 20px;*/
+/*}*/
 .single-room {
     position: relative;
     margin-bottom: 30px;
@@ -1708,7 +1708,7 @@ Subscribe
 }
 .table thead > tr > th > a span:after {
     content: "\f0dc";
-    font-family: FontAwesome;
+    /*font-family: FontAwesome;*/
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;

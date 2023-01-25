@@ -52,7 +52,7 @@ $req = $app->fetchPrepared($sql);
                                 <div class="photo-col3"
                                      style="background-image:url(superadmin/thumbmnail/<?php echo $row['Image']; ?>); margin: 5px 5px 5px 0px;"></div>
                                 <div class="single-room-text">
-                                    <h2 style="font-weight: bold;"><a href=""><?php echo $row['Titre']; ?></a></h2>
+                                    <h2 style="font-weight: bold;"><a href="detail_book?book=<?php echo $row['book_slug'] ?>"><?php echo $row['Titre']; ?></a></h2>
                                     <p>Auteur: <span style="font-weight: bold;"><?php echo $row['AuteurPrincipal']; ?></span>
                                     </p>
                                     <p>Domaine: <span style="font-weight: bold; color: red;">
