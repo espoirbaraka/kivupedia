@@ -139,6 +139,13 @@ $day = $_GET['day'];
                         <?php
                     }
                     ?>
+
+                        <div style="float: right;">
+
+                            <button type="submit" class="btn btn-primary btn-flat" name="add"><i
+                                        class="fa fa-save"></i> Poser
+                            </button>
+                        </div>
                 </form>
 
                 <!-- /.box -->
