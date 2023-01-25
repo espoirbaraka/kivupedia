@@ -40,7 +40,8 @@ $day = $_GET['day'];
         <div class="row">
             <div class="col-xs-12">
 
-                <form action="" method="POST">
+                <form action="manager/create.php" method="POST">
+                    <input type="hidden" name="event" value="ASK_QUESTION">
                     <?php
                     for($j=1; $j<=5; $j++){
                         ?>
@@ -59,7 +60,7 @@ $day = $_GET['day'];
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Question <span style="color: red;">*</span></label>
-                                            <textarea class="textarea" name="description" style="width: 100%; height: 80px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                            <textarea class="textarea" name="question<?php echo $j; ?>" style="width: 100%; height: 80px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
 
                                         </textarea>
                                         </div>
@@ -69,51 +70,26 @@ $day = $_GET['day'];
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>Réponse 1 <span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control" name="reponse" required>
+
+                                    <?php
+                                    for($i=1; $i<=5; $i++){
+                                        ?>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Assertion <?php echo $i; ?> <span style="color: red;">*</span></label>
+                                                <input type="text" class="form-control" name="reponse<?php echo $i; ?>" required>
+                                            </div>
+
                                         </div>
-
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>Réponse 2 <span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control" name="reponse" required>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>Réponse 3 <span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control" name="reponse" required>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>Réponse 4 <span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control" name="reponse" required>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                            <label>Réponse 5 <span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control" name="reponse" required>
-                                        </div>
-
-                                    </div>
+                                    <?php
+                                    }
+                                    ?>
 
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Cochez la bonne reponse <span style="color: red;">*</span></label>
                                             <select class="form-control" name="bn_reponse" required>
-                                                <option>-- Choissessez une assertion --</option>
+                                                <option>-- Choisissez une assertion --</option>
                                                 <?php
                                                 for($i=1; $i<=5; $i++)
                                                 {
