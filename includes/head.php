@@ -4,8 +4,10 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="description" content="Congopedia, la bibliothèque numerique">
-    <meta name="keywords" content="Congopedia"><title>Congopedia::La bibliothèque mumerique</title>
+    <meta name="description" content="Kivupedia, la bibliothèque numerique">
+    <title>Kivupedia::La bibliothèque mumerique</title>
+    <meta name="keywords" content="Kivupedia, kivupedia.com, KIVUPEDIA, livre, Nord-Kivu, kivu, lecture, RDC, TFC, MEMOIRE, Thèse, Formation">
+    <meta name="author" content="Baraka Bigega">
     <link rel="icon" type="image/png" href="image/cp.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
